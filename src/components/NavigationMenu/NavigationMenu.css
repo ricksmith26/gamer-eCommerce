@@ -1,0 +1,8 @@
+.menuContainer {
+    height: 50px;
+    background-color: #FDED2A;
+    display: flex;
+    flex-direction: row;    
+    color: #343409;
+    position: relative;
+}

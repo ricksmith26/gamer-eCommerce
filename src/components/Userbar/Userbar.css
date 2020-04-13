@@ -1,0 +1,22 @@
+.userbarContainer {
+    width: 100%;
+    height: 75px;
+    background-color: #343409;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.userBarItem {
+    height: 75px;
+    width: 75px;
+    object-fit: fill;
+}
+
+.usrImg {
+    height: 50px;
+    /* padding: 16px; */
+    padding-top: 12px;
+}

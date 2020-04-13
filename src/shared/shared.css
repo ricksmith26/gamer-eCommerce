@@ -1,0 +1,22 @@
+.cardBorder {
+    border: 2px solid #FEFE9A;
+    width: 100%;
+    padding: 16px;
+    background-color: #FFFFDB;
+    border-radius: 4px;
+}
+
+.centeredRowFlex {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.yellowBackground {
+    background-color: #FDED2A;
+    width: 100%;
+}
