@@ -16,7 +16,48 @@
 }
 
 .usrImg {
-    height: 50px;
-    /* padding: 16px; */
+    height: 35px;
     padding-top: 12px;
+}
+
+.login {
+    color: #FFFFDB;
+    width: max-content;
+    font-size: 12px;
+    margin: 0;
+    margin-top: 4px;
+
+
+}
+
+.userBarProfile {
+    height: 75px;
+    width: 85px;
+    object-fit: fill;
+    display: flex;
+    flex-direction: column;
+    text-align: center;margin-right: 16px;
+    cursor: pointer;
+
+}
+
+.companyName {
+    font-size: 50px;
+    color: #FFFFDB;
+}
+
+.logo {
+    height: 70px;
+    margin-top: -4px;
+}
+.logoBarItem {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+#search {
+    margin-top: 16px;
 }

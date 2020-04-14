@@ -7,10 +7,10 @@ class NavigationMenu extends Component {
 
     render() {
         return (
-            <div class="menuContainer">
+            <div className="menuContainer">
                 {menuItems.map((item, i) => {
                     return(
-                        <MenuItem navMenuItem={item} index={i}></MenuItem>
+                        <MenuItem navMenuItem={item} index={i} key={i}></MenuItem>
                        
                          
                          )

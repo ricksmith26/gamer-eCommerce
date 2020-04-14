@@ -52,8 +52,9 @@
     position: absolute;
     width: calc(100% - 80px);
     height: 637px;
-    border: 40px solid white;
-    z-index: 4;
+    border-left: 40px solid white;
+    border-right: 40px solid white;
+    z-index: 1;
 
 }
 

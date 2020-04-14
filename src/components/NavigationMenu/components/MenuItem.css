@@ -40,18 +40,29 @@
 .subcategoryTitle {
     font-weight: 600;
     line-height: 20px;
+    text-decoration: none;
+    padding-left: 16px;
+}
+
+.subcategoryTitle:link {
+    text-decoration: none;
 }
 
 .subcategoryTitle:hover {
-    background-color: #FFFFDB;
+    background-color: #FFFF85;
+    border-radius: 8px;
 }
 
 .term {
     font-size: small;
     line-height: 24px;
     padding-left: 16px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    text-decoration: none;
 
 }
 .term:hover {
    background-color: #FFFF85;
+   border-radius: 8px;
 }

@@ -1,39 +1,54 @@
+import doomPs from './gameImages/PS4Doom.webp';
+import doomXbox from './gameImages/doomxbox.webp'
+
+
 export const menuItems = [
     {
         category: 'PlayStation',
         subcategories: [
             {
                 subcategory: 'PS4 Games',
+                link: 'PS4Games',
                 searchTerms: [
                     {
-                        term: 'Action/Adventure'
+                        term: 'Action/Adventure',
+                        link: 'PS4Games/Adventure',
                     },
                     {
-                        term: 'Family/Kids'
+                        term: 'Family/Kids',
+                        link: 'PS4Games/Kids',
                     },
                     {
-                        term: 'Fighting'
+                        term: 'Fighting',
+                        link: 'PS4Games/Fighting',
                     },
                     {
-                        term: 'Horror'
+                        term: 'Horror',
+                        link: 'PS4Games/Horror',
                     },
                     {
-                        term: 'Racing'
+                        term: 'Racing',
+                        link: 'PS4Games/Racing',
                     },
                     {
-                        term: 'RPG'
+                        term: 'RPG',
+                        link: 'PS4Games/RPG',
                     },
                     {
-                        term: 'Shooter'
+                        term: 'Shooter',
+                        link: 'PS4Games/Shooter',
                     },
                     {
-                        term: 'Simulation'
+                        term: 'Simulation',
+                        link: 'PS4Games/Simulation',
                     },
                     {
-                        term: 'Sport'
+                        term: 'Sport',
+                        link: 'PS4Games/Sport',
                     },
                     {
-                        term: 'Strategy'
+                        term: 'Strategy',
+                        link: 'PS4Games/Strategy',
                     },
 
 
@@ -41,6 +56,7 @@ export const menuItems = [
             },
             {
                 subcategory: 'PS4 Consoles',
+                link:'PS4Consoles',
                 searchTerms: [
                     {
                         term: '500GB'
@@ -122,40 +138,51 @@ export const menuItems = [
         ]
     },
     {
-        category: 'Xbox',
+        category: 'XboxOne',
         subcategories: [
             {
                 subcategory: 'Xbox One Games',
+                link: 'XboxOne',
                 searchTerms: [
                     {
-                        term: 'Action/Adventure'
+                        term: 'Action/Adventure',
+                        link: 'XboxOne/Adventure',
                     },
                     {
-                        term: 'Family/Kids'
+                        term: 'Family/Kids',
+                        link: 'XboxOne/Kids',
                     },
                     {
-                        term: 'Fighting'
+                        term: 'Fighting',
+                        link: 'XboxOne/Fighting',
                     },
                     {
-                        term: 'Horror'
+                        term: 'Horror',
+                        link: 'XboxOne/Horror',
                     },
                     {
-                        term: 'Racing'
+                        term: 'Racing',
+                        link: 'XboxOne/Racing',
                     },
                     {
-                        term: 'RPG'
+                        term: 'RPG',
+                        link: 'XboxOne/RPG',
                     },
                     {
-                        term: 'Shooter'
+                        term: 'Shooter',
+                        link: 'XboxOne/Shooter',
                     },
                     {
-                        term: 'Simulation'
+                        term: 'Simulation',
+                        link: 'XboxOne/Simulation',
                     },
                     {
-                        term: 'Sport'
+                        term: 'Sport',
+                        link: 'XboxOne/Sport',
                     },
                     {
-                        term: 'Strategy'
+                        term: 'Strategy',
+                        link: 'XboxOne/Strategy',
                     },
 
 
@@ -283,7 +310,7 @@ export const menuItems = [
                         term: 'Switch Online Games'
                     },
                     {
-                        term: '2DS/3DS Digital Games'
+                        term: '2DS / 3DS Digital Games'
                     },
                     {
                         term: 'eShop Currency'
@@ -291,7 +318,7 @@ export const menuItems = [
                 ]
             },
             {
-                subcategory: '2DS/3DS',
+                subcategory: '2DS / 3DS',
                 searchTerms: [
                     {
                         term: 'Consoles'
@@ -474,3 +501,138 @@ export const menuItems = [
         ]
     }
 ]
+
+
+
+export const games = {
+    PS4Games: [
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomPs,
+            price: '£45.99'
+        }
+    ],
+    XboxOne: [
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        },
+        {
+            name: 'Doom Eternal',
+            description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
+            pegi: 'Suitable for people aged 18 and over.',
+            genre: 'Shooter',
+            image: doomXbox,
+            price: '£45.99'
+        }
+    ]
+}
