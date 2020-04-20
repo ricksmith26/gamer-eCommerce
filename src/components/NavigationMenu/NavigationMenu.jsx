@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import {menuItems} from '../../shared/game-data';
 import MenuItem from './components/MenuItem';
 import './NavigationMenu.css';
+import * as api from '../../routes/menuItemsRoutes';
 
 class NavigationMenu extends Component {
+
+    state = {
+        menuItems: []
+    }
+
+    componentDidMount = async() => {
+        this.setState({ menuItems: await api.getMenuItems()});
+    }
 
     render() {
         return (
             <div className="menuContainer">
-                {menuItems.map((item, i) => {
+                {this.state.menuItems.map((item, i) => {
                     return(
                         <MenuItem navMenuItem={item} index={i} key={i}></MenuItem>
                        

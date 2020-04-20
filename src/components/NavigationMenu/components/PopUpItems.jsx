@@ -10,16 +10,31 @@ class PopUpItems extends Component {
         return (
 
             <div className='popUp cardBorder' style={this.handleGetMargin(this.props.index)}>
-                {this.props.subcategory.map((subcategory) => {
+                {this.props.subcategory && this.props.subcategory.map((subcategory) => {
+                    if (subcategory) {
+                        return (
+                            <div>
+                                <Link to={subcategory.subcategory_link ? `/games/${subcategory.subcategory_link}+${subcategory.subcategory_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}>
 
-                    return (
-                        <div>
-                            <Link to={subcategory.link ? `/${subcategory.link}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}><div className='subcategoryTitle'>{subcategory.subcategory}</div></Link>
-                            <div> {subcategory.searchTerms.map((searchTerm, i) => {
-                                return <Link to={searchTerm.link ? `/${searchTerm.link}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}><div className="term" key={i}>{searchTerm.term}</div></Link>
-                            })}</div>
-                        </div>
-                    )
+                                    <div className='subcategoryTitle'>{subcategory.subcategory_name}</div>
+
+                                </Link>
+
+                                <div> {subcategory.searchTerms.map((searchTerm, i) => {
+
+                                    return <Link to={searchTerm.search_term_link ? `/games/${searchTerm.search_term_link}+${searchTerm.search_term_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }} >
+
+                                        <div className="term" key={i}>{searchTerm.search_term}</div>
+
+                                    </Link>
+
+                                })}</div>
+
+                            </div>
+                        )
+
+                    }
+
                 })}
             </div>
         )

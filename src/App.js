@@ -19,8 +19,8 @@ function App() {
 			</div>
 			<div>
 			<Route exact path="/" component={AdvertSlider} />
-			<Route exact path="/:console" component={DisplayGrid} />
-			<Route exact path="/:console/:term" component={DisplayGrid} />
+			{/* <Route path="games/:console/:term" component={DisplayGrid} /> */}
+			<Route path="/games/:console/:term" component={DisplayGrid} />
 			</div>
 		</div>
 	);

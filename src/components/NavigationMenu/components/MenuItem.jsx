@@ -7,11 +7,14 @@ class MenuItem extends Component {
         open: false,
     }
 
-    render(){
+    render() {
         return (
-            <div onMouseEnter={() => this.setState({open: true})} onMouseLeave={() => this.setState({open: false})} className='menuItem'>
-               {this.props.navMenuItem.category}
-               { this.state.open && this.props.navMenuItem.subcategories && <PopUpItems index={this.props.index} subcategory={this.props.navMenuItem.subcategories}></PopUpItems> }
+            <div onMouseEnter={() => this.setState({ open: true })} onMouseLeave={() => this.setState({ open: false })} className='menuItem'>
+                {this.props.navMenuItem.category_name}
+                {this.state.open
+                    && this.props.navMenuItem.subcategories
+                    && this.props.navMenuItem.subcategories.length > 0
+                    && <PopUpItems index={this.props.index} subcategory={this.props.navMenuItem.subcategories}></PopUpItems>}
             </div>
         )
     }

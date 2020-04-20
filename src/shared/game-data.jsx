@@ -138,11 +138,11 @@ export const menuItems = [
         ]
     },
     {
-        category: 'XboxOne',
+        category: 'Xbox One',
         subcategories: [
             {
                 subcategory: 'Xbox One Games',
-                link: 'XboxOne',
+                link: 'XboxOneGames',
                 searchTerms: [
                     {
                         term: 'Action/Adventure',
@@ -259,7 +259,7 @@ export const menuItems = [
                 subcategory: 'Switch Games',
                 searchTerms: [
                     {
-                        term: 'Action / Adventure'
+                        term: 'Action/Adventure'
                     },
                     {
                         term: 'Family/Kids'
@@ -380,7 +380,7 @@ export const menuItems = [
                 subcategory: 'PC Games',
                 searchTerms: [
                     {
-                        term: 'Action / Adventure'
+                        term: 'Action/Adventure'
                     },
                     {
                         term: 'Family/Kids'
@@ -509,11 +509,14 @@ export const games = {
         {
             name: 'Doom Eternal',
             description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
-            moreDetails: 'Release Date: 20/03/2020 \n This new chapter in the iconic DOOM franchise maintains the intense combat that made the predecessors such classics. However, don’t get too comfortable, this addition brings all new features, enhancing every aspect of gameplay. \n Features include: \n All new movement mechanics for you to master, including dash moves and swift wall climbing \n Twice as many types of demons compared to previous games, including a new system of “Destructible Demons”. \n An all new lives system in which the player can collect items scattered around the game to boost number of lives. \n If you happen to be unsuccessful in combat, you will conveniently respawn where you died as opposed to the nearest checkpoint \n An awesome multiplayer mode called ‘Invasion’ where you can fight against others’ single player campaigns, not as the Doom Slayer, but as a hellbent demon. \n An all new pulse pounding soundtrack composed by Mick Gordon. \n Get to grips with various epic firearms including a plasma rifle, a heavy cannon, a rocket launcher and too much more to mention. Alongside a variety of melee weapons (including the iconic Crucible blade and chainsaw). You must utilise these tools, battle the forces of hell and become the warrior the Earth deserves.',
-            pegi: 'Suitable for people aged 18 and over.',
+            moreDetails: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
+            ReleaseDate: '20/03/2020',
+            pegi: 18,
             genre: 'Shooter',
             image: doomPs,
-            price: '£45.99'
+            price: '£45.99',
+
+
         },
         {
             name: 'Doom Eternal',
@@ -570,7 +573,7 @@ export const games = {
             price: '£45.99'
         }
     ],
-    XboxOne: [
+    XboxOneGames: [
         {
             name: 'Doom Eternal',
             description: 'What you interfere with now, is bigger than you can ever imagine. This world is overrun by demonic forces. In order to save it, you must become the Doom Slayer, an ancient warrior whose task is defeat the hordes of demons and protect the Earth. From a first-person perspective; face all new, terrifying enemies, straight from the depths of hell. This role is not for the faint of heart. Intricate, fast paced, and gory battles take your gaming experience to a whole new level. It is their time to give penance.',
