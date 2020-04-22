@@ -22,24 +22,24 @@ class DisplayGrid extends Component {
         //     this.setState({collection: games[this.props.match.params.console]})
         // }
         if (this.props.match.params.term) {
-            return this.getGamesByTerm();            
+            return this.getGamesByTerm();
         }
         if (this.props.match.params.console) {
             //// CHANGE TO GET GAMES BY CONSOLE
-            return this.getGamesByTerm();            
+            return this.getGamesByTerm();
         }
-      }
-      
-      async componentDidUpdate(prevProps) {
+    }
+
+    async componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             if (this.props.location.pathname.split('/')[1] === 'games') {
-                this.getGamesByTerm();            
+                this.getGamesByTerm();
             }
 
         }
-      }
+    }
 
-      
+
     render() {
 
         return (
@@ -51,9 +51,18 @@ class DisplayGrid extends Component {
                             <div class="productBox">
                                 <img className="gameImage" src={item.game_image} />
                                 <div className="title darkText">{item.game_name}</div>
-                                <img className="brandIcon" src={this.handleIconSelection()} />
-                                <div className="greyLine"></div>
+                                <img className="brandIcon iconPosition" src={this.handleIconSelection()} />
+                                <div className="greyLine linePosition"></div>
                                 <div className="priceBanner lightText">£{item.game_price}</div>
+                                <div class="mask mask-1"></div>
+                                <div class="mask mask-2"></div>
+                                <img/>
+                                <div class="content2">
+                                <h4 className="lightText popUpTitle">{item.game_name}</h4>
+                                </div>
+                                <div class="content">
+                                    <p className="lightText description">{item.game_description}</p>
+                                </div>
                             </div>
                         )
                     })}
@@ -62,19 +71,19 @@ class DisplayGrid extends Component {
         )
     }
     handleIconSelection() {
-        if (this.props.match.params.console.includes('PS4Games')){
+        if (this.props.match.params.console.includes('PS4Games')) {
             return playStation;
         }
-        if (this.props.match.params.console.includes('XboxOneGames')){
+        if (this.props.match.params.console.includes('XboxOneGames')) {
             return xbox;
         }
     }
 
     async getGamesByTerm() {
         const term = Number(this.props.match.params.term.split('+')[1]);
-            this.setState({term});
-            const products = await gameApi.getGamesByTerm(term);
-            this.setState({collection: products});
+        this.setState({ term });
+        const products = await gameApi.getGamesByTerm(term);
+        this.setState({ collection: products });
     }
 }
 

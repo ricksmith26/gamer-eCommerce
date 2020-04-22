@@ -58,4 +58,10 @@
 
 }
 
+.mobile {
+    padding-top: 75px;
+}
 
+.desktop {
+    padding-top: 0px;
+}

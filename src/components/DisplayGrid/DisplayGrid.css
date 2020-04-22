@@ -27,6 +27,7 @@
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.36); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.36);
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .priceBanner {
@@ -47,11 +48,153 @@
 
 .title {
     height: 20px;
-    margin-top: -8px;
     text-align: center;
     width: 100%;
+    position: absolute;
+    bottom: 88px;
+}
+
+.iconPosition {
+    position: absolute;
+    bottom: 54px;
+}
+
+.linePosition {
+    position: absolute;
+    bottom: 46px;
+    width: 80%;
 }
 
 .gameImage {
     height: 200px;
+    position: absolute;
+}
+.mask {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 300px;
+    width: 200px;
+    z-index: 0;
+}
+
+.mask-1,
+.mask-2{
+	background-color: rgba(0,0,0,0.5);
+    height: 361px;
+    width: 361px;
+	background: #FDED2A;
+	opacity: 0.5;
+    transition: all 0.3s ease-in-out 0.6s;
+}
+
+.mask-1 { 
+    left: auto;
+    right: 0px;
+    transform: rotate(56.5deg) translateX(-180px);
+    transform-origin: 100% 0%;
+}
+
+.mask-2 { 
+    top: auto;
+    bottom: 0px;
+    transform: rotate(56.5deg) translateX(180px);
+    transform-origin: 0% 100%;
+}
+
+.content{
+    background:black;
+    height: 0px;
+    width: 361px;
+    overflow: hidden;
+    transform: rotate(-33.5deg) translate(-112px,166px);
+    transform-origin: 0% 100%;
+    transition: all 0.4s ease-in-out 0.3s;
+    border-radius: 4px;
+    z-index: 2;
+    position: absolute;
+    top: 200px;
+}
+.content2{
+    background: black;
+    height: 0px;
+    width: 361px;
+    overflow: hidden;
+    transform: rotate(33.5deg) translate(112px,166px);
+    transform-origin: 0% 100%;
+    transition: all 0.4s ease-in-out 0.3s;
+    border-radius: 4px;
+    z-index: 2;
+    position: absolute;
+    top: 0px;
+}
+h2{
+    background: transparent;
+    margin-top: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+a.info{
+    display: none;
+}
+
+.productBox:hover .content{
+    height: 120px;
+    width: 214px;
+    opacity: 0.9;
+    top: 250px;
+    transform: rotate(0deg) translate(0px,-100px);
+    overflow-y: auto;
+}
+.productBox:hover .content2{
+    height: 32px;
+    width: 214px;
+    opacity: 0.9;
+    top: 75px;
+    transform: rotate(0deg) translate(0px,32px);
+    overflow-y: auto;
+}
+.productBox:hover .mask-1,
+.productBox:hover .mask-2{
+	transition-delay: 0s;
+}
+.productBox:hover .mask-1{
+    transform: rotate(56.5deg) translateX(74px);
+}
+.productBox:hover .mask-2 {  
+    transform: rotate(56.5deg) translateX(-75px);
+}
+
+.description {
+    display: inline-block;
+    width: calc(100% - 8px);
+    padding: 4px;
+    text-align: center;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #343409;;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FDED2A;
+  }
+
+.popUpTitle {
+    text-align: center;
+    margin: 0px;
+    margin-top: 8px;
 }

@@ -24,8 +24,9 @@ class AdvertSlider extends Component {
 
 
     render() {
+        console.log(this.props)
         return (
-            <div className="advertSliderContainer">
+            <div className={this.getClassName()}>
             <div className='advertBorder'></div>
   
                 {advertData.map((data, i) => {
@@ -39,6 +40,12 @@ class AdvertSlider extends Component {
          
                 </div>
         )
+    }
+
+    getClassName() {
+        if (this.props.screenWidth <= 750) {
+            return 'mobile';
+        } else { return 'desktop'}
     }
 }
 export default AdvertSlider;

@@ -1,0 +1,31 @@
+.sideMenuContainer {
+    width: 100%;
+
+    background-color: #fceb26;
+}
+
+.arrow {
+    width: max-content;
+}
+
+.accordianTitle {
+    width: max-content;
+}
+
+.titleArea {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.positioned {
+    position: relative;
+    overflow: hidden;
+}
+
+.titleArea {
+    background-color: #fceb26;
+    z-index: 6;
+}
