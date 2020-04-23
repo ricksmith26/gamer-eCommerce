@@ -56,7 +56,6 @@ class DisplayGrid extends Component {
                                 <div className="priceBanner lightText">£{item.game_price}</div>
                                 <div class="mask mask-1"></div>
                                 <div class="mask mask-2"></div>
-                                <img/>
                                 <div class="content2">
                                 <h4 className="lightText popUpTitle">{item.game_name}</h4>
                                 </div>

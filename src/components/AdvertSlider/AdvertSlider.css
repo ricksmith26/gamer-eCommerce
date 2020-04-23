@@ -5,13 +5,14 @@
 }
 
 .img-slideIn {
-    width: calc(100% - 80px);
-    padding: 36px;
+    width: calc(100%);
+    /* padding: 36px; */
     position: absolute;
-    left: calc(-100% + 80px)  ;
+    left: calc(-100%)  ;
     -webkit-animation: slideIn 2s forwards;
     -webkit-animation-delay: 2s;
     animation: slideIn 2s forwards;
+    z-index: 3;
     
 }
 
@@ -25,43 +26,53 @@
 
 
 .img-slideOut {
-    width: calc(100% - 76px);
-    padding: 36px;
+    width: calc(100%);
+    /* padding: 36px; */
     position: absolute;
     right: 0px;
     -webkit-animation: slideOut 2s forwards;
     -webkit-animation-delay: 2s;
     animation: slideOut 2s forwards;
+    z-index: 0;
 }
 
 @-webkit-keyframes slideOut {
     100% { 
-        right: calc(-100% + 76px); 
+        right: calc(-100%); 
         display: none;
     }
 }
 
 @keyframes slideOut {
     100% {
-        right: calc(-100% + 76px);
+        right: calc(-100%);
         display: none;
     }
 }
 
 .advertBorder {
-    position: absolute;
     width: calc(100% - 80px);
     height: 637px;
     border-left: 40px solid white;
     border-right: 40px solid white;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 
 }
+
 
 .mobile {
-    padding-top: 75px;
+    overflow-x: hidden;
+    width: calc(100% - 32px);
+    position: absolute;
+    height: 200px;
+    border: 16px solid white;
+    
 }
-
 .desktop {
-    padding-top: 0px;
+    overflow-x: hidden;
+    width: calc(100% - 64px);
+    position: relative;
+    height: 500px;
+    border: 32px solid white;
 }

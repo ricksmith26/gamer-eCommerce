@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './InnerAccordian.css';
 import '../../../../shared/shared.css';
+import { Link } from 'react-router-dom';
 // const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 class InnerAccordian extends Component {
@@ -30,7 +31,7 @@ class InnerAccordian extends Component {
 
     renderList() {
         return this.state.open && <div>{this.props.subcategory.searchTerms.map((term) => {
-            return <div className="searchTerm">{term.search_term}</div>
+            return <Link to={term.search_term_link ? `/games/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }}><div className="searchTerm">{term.search_term}</div></Link>
         })}</div>
     }
 }

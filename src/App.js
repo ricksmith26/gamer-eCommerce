@@ -39,7 +39,7 @@ class App extends Component {
 				<div>
 					<Route exact path="/" component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
 					{/* <Route path="games/:console/:term" component={DisplayGrid} /> */}
-					<Route path="/games/:console/:term" component={DisplayGrid} />
+					<Route path="/games/:console/:term" component={DisplayGrid}/>
 				</div>
 			</div>
 		);

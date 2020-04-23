@@ -82,12 +82,12 @@
 }
 .example-enter.example-enter-active {
 	opacity: 1;
-	transition: opacity 1s ease;
+	transition: opacity 0.6s ease;
 	transform:   translate(0,0);
 	transform: translate3d(0,0,0);
 	transition-property: transform, opacity;
 	transition-duration: 300ms;
-	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 0.3), linear;
 }
 .example-leave {
 	opacity: 1;
@@ -95,7 +95,7 @@
 	transform: translate3d(0,0,0);
    transition-property: transform, opacity;
 	transition-duration: 300ms;
-	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 0.3), linear;
 }
 .example-leave.example-leave-active {
 	opacity: 0;
@@ -109,12 +109,13 @@
 
 .listMenu {
 	overflow: hidden;
-	transition: max-height 0.5s linear;
+	transition: max-height 0.6s linear;
 	max-height: 0px;
 }
 
 .listMenu.expanded {
-	max-height: 1000px;
+    max-height: 1000px;
+    transition: max-height 0.6s linear;
 }
 
 .triangle-bottom {
