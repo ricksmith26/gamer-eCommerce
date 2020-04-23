@@ -27,24 +27,19 @@ class MobileNavigation extends Component {
                     <div id="sidebarMenu">
                     <ul class="sidebarMenuInner">
                     {this.state.menuItems && this.state.open && this.state.menuItems.map((item) => {
-                        return <li className="category"><Accordian item={item}>
+                        return <li className="category"><Accordian handleClose={() => this.handleClose()} item={item}>
 
                         </Accordian></li>
                     })}</ul>
-                        
-                        {/* <ul class="sidebarMenuInner">
-                            <li>Jelena Jovanovic <span>Web Developer</span></li>
-                            <li><a href="https://vanila.io" target="_blank">Company</a></li>
-                            <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
-                            <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
-                            <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
-                            <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
-                        </ul> */}
                     </div>
 
             </div>
 
         )
+    }
+
+    handleClose() {
+        document.getElementById('openSidebarMenu').click();
     }
 }
 

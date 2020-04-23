@@ -26,7 +26,7 @@ class Accordian extends Component {
     }
     renderMenu() {
         return this.state.open && this.props.item.subcategories.map((subcategory) => {
-            return <div className="positioned"><InnerAccordian subcategory={subcategory}></InnerAccordian></div>
+            return <div className="positioned"><InnerAccordian handleClose={() => this.props.handleClose()} subcategory={subcategory}></InnerAccordian></div>
         })
     }
 }

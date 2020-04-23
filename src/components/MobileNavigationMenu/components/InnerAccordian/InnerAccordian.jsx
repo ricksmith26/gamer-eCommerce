@@ -31,7 +31,7 @@ class InnerAccordian extends Component {
 
     renderList() {
         return this.state.open && <div>{this.props.subcategory.searchTerms.map((term) => {
-            return <Link to={term.search_term_link ? `/games/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }}><div className="searchTerm">{term.search_term}</div></Link>
+            return <Link to={term.search_term_link ? `/games/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }} onClick={() => this.props.handleClose()}><div className="searchTerm">{term.search_term}</div></Link>
         })}</div>
     }
 }
