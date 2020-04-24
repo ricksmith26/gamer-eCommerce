@@ -6,15 +6,22 @@
     padding-top: 16px;
     margin-top: 16px;
     position: relative;
+    transition: max-height 0.3s linear;
+	max-height: 0px;
+}
+.sideInnerMenuContainer{
+    max-height: 1000px;
+    transition: max-height 0.3s linear;
 }
 
 .arrow {
     width: max-content;
 }
 
-.accordianTitle {
-    width: max-content;
+.innerAccordianTitle {
+    width: 50%;
 }
+
 
 .innerList {
     width: 100%;
@@ -27,8 +34,26 @@
 .searchTerm {
     font-size: 14px;
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 4px;    
+}
+
+.searchTerm:hover {
+    background-color: #FFFF85;
+    border-radius: 8px;
 }
 .animContainer {
     overflow: hidden;
+	transition: max-height 0.3s linear;
+	max-height: 0px;
+}
+
+.animContainer.expanded {
+    max-height: 1000px;
+    transition: max-height 0.3s linear;
+}
+
+
+.subcategoryTitle:hover {
+    background-color: #FFFF85;
+    border-radius: 8px;
 }

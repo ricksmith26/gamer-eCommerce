@@ -13,13 +13,13 @@ class InnerAccordian extends Component {
     render() {
         console.log(this.props.subcategory)
         return (
-            <div className="sideInnerMenuContainer">
+            <div className={`sideInnerMenuContainer ${this.state.open && 'expanded'}`}>
                 <div className="innerList" onClick={() => this.setState({open: !this.state.open})}>
-                    <div className="accordianTitle">{this.props.subcategory.subcategory_name}</div>
+                    <div className="innerAccordianTitle">{this.props.subcategory.subcategory_name}</div>
                     <div className={!this.state.open ? 'triangle-bottom' : 'triangle-bottom rotate'}></div>
                 </div>
                 
-                <div className="animContainer">
+                <div className={`animContainer ${this.state.open && 'expanded'}`}>
 
 					<ReactCSSTransitionGroup transitionName="example">
 						{this.renderList()}
@@ -31,7 +31,7 @@ class InnerAccordian extends Component {
 
     renderList() {
         return this.state.open && <div>{this.props.subcategory.searchTerms.map((term) => {
-            return <Link to={term.search_term_link ? `/games/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }} onClick={() => this.props.handleClose()}><div className="searchTerm">{term.search_term}</div></Link>
+            return <Link to={term.search_term_link ? `/games/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }} onClick={() => this.props.handleClose()}><div className="searchTerm  subcategoryTitle">{term.search_term}</div></Link>
         })}</div>
     }
 }

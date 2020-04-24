@@ -109,13 +109,13 @@
 
 .listMenu {
 	overflow: hidden;
-	transition: max-height 0.6s linear;
+	transition: max-height 0.3s linear;
 	max-height: 0px;
 }
 
 .listMenu.expanded {
     max-height: 1000px;
-    transition: max-height 0.6s linear;
+    transition: max-height 0.3s linear;
 }
 
 .triangle-bottom {

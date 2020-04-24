@@ -27,8 +27,6 @@ class AdvertSlider extends Component {
         console.log(this.props)
         return (
             <div className={this.getClassName()}>
-            {/* <div className='advertBorder'> */}
-            {/* <div className='advertContainer'> */}
                 {advertData.map((data, i) => {
                     return  <img
                             alt={i}
@@ -37,8 +35,6 @@ class AdvertSlider extends Component {
                             src={advertData[i].image}
                             />
                 })}
-                {/* </div> */}
-                {/* </div> */}
                 </div>
         )
     }
