@@ -14,7 +14,7 @@ class PopUpItems extends Component {
                     if (subcategory) {
                         return (
                             <div>
-                                <Link to={subcategory.subcategory_link ? `/games/${subcategory.subcategory_link}+${subcategory.subcategory_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}>
+                                <Link to={subcategory.subcategory_link ? `/subcategory/${subcategory.subcategory_link}+${subcategory.subcategory_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}>
 
                                     <div className='subcategoryTitle'>{subcategory.subcategory_name}</div>
 
@@ -22,7 +22,7 @@ class PopUpItems extends Component {
 
                                 <div> {subcategory.searchTerms.map((searchTerm, i) => {
 
-                                    return <Link to={searchTerm.search_term_link ? `/games/${searchTerm.search_term_link}+${searchTerm.search_term_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }} >
+                                    return <Link to={searchTerm.search_term_link ? `/searchTerm/${searchTerm.search_term_link}+${searchTerm.search_term_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }} >
 
                                         <div className="term" key={i}>{searchTerm.search_term}</div>
 

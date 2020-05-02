@@ -17,26 +17,23 @@ class DisplayGrid extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props.location, this.props.match.params.console.includes('PS4Games'))
+        console.log(this.props.location, this.props.match.params)
         // if (this.props.match.params.console) {
         //     this.setState({collection: games[this.props.match.params.console]})
         // }
-        if (this.props.match.params.term) {
-            return this.getGamesByTerm();
-        }
-        if (this.props.match.params.console) {
-            //// CHANGE TO GET GAMES BY CONSOLE
-            return this.getGamesByTerm();
-        }
+        this.getGames()
     }
 
     async componentDidUpdate(prevProps) {
+        console.log('>>>>>>>>>>>>>>>>>>>>UPDATING<<<<<<<<<<<<<<<<<')
         if (this.props.location.pathname !== prevProps.location.pathname) {
-            if (this.props.location.pathname.split('/')[1] === 'games') {
-                this.getGamesByTerm();
-            }
+            this.getGames();
 
         }
+    }
+
+    async componentWillUnmount() {
+        this.getGames()
     }
 
 
@@ -46,21 +43,21 @@ class DisplayGrid extends Component {
             <div>
                 <h3>{}</h3>
                 <div className="gridContainer">
-                    {this.state.collection && this.state.collection.map((item, i) => {
+                    {this.state.collection && this.state.collection.length > 0 && this.state.collection.map((item, i) => {
                         return (
                             <div class="productBox">
-                                <img className="gameImage" src={item.game_image} />
-                                <div className="title darkText">{item.game_name}</div>
+                                <img className="gameImage" src={JSON.parse(item.product_images)[0]} />
+                                <div className="title darkText">{item.product_name}</div>
                                 <img className="brandIcon iconPosition" src={this.handleIconSelection()} />
                                 <div className="greyLine linePosition"></div>
-                                <div className="priceBanner lightText">£{item.game_price}</div>
+                                <div className="priceBanner lightText">£{item.product_price}</div>
                                 <div class="mask mask-1"></div>
                                 <div class="mask mask-2"></div>
                                 <div class="content2">
-                                <h4 className="lightText popUpTitle">{item.game_name}</h4>
+                                <h4 className="lightText popUpTitle">{item.product_name}</h4>
                                 </div>
                                 <div class="content">
-                                    <p className="lightText description">{item.game_description}</p>
+                                    <p className="lightText description">{item.product_description}</p>
                                 </div>
                             </div>
                         )
@@ -70,7 +67,7 @@ class DisplayGrid extends Component {
         )
     }
     handleIconSelection() {
-        if (this.props.match.params.console.includes('PS4Games')) {
+        if (this.props.match.params.subcategory.includes('PS4Games')) {
             return playStation;
         }
         if (this.props.match.params.console.includes('XboxOneGames')) {
@@ -79,10 +76,39 @@ class DisplayGrid extends Component {
     }
 
     async getGamesByTerm() {
-        const term = Number(this.props.match.params.term.split('+')[1]);
-        this.setState({ term });
-        const products = await gameApi.getGamesByTerm(term);
-        this.setState({ collection: products });
+        try {
+            const term = Number(this.props.match.params.term.split('+')[1]);
+            this.setState({ term });
+            const collection = await gameApi.getGamesByTerm(term);
+            this.setState({ collection });
+
+        }
+
+        catch {
+            this.setState({collection: []})
+        }
+    }
+    async getGamesBySubcategory() {
+        try {
+            const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
+            this.setState({ subcategory });
+            const collection = await gameApi.getGamesBySubcategory(subcategory);
+            this.setState({ collection });
+
+        }
+
+        catch {
+            this.setState({collection: []})
+        }
+    }
+
+    async getGames() {
+        if (this.props.match.params.subcategory.split('+')[1]) {
+            return this.getGamesBySubcategory();
+        }
+        if (this.props.match.params.term.split('+')[1]) {
+            return this.getGamesByTerm();
+        }
     }
 }
 
