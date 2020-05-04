@@ -8,8 +8,15 @@ import DisplayGrid from './components/DisplayGrid/DisplayGrid';
 import MobileNavigationMenu from './components/MobileNavigationMenu/MobileNavigationMenu';
 
 import { Route } from 'react-router-dom';
+import FullView from './components/Fullview/Fullview';
+import View from './components/View/View';
+import Basket from './components/Basket/Basket';
 
 class App extends Component {
+
+	state = {
+		basket: []
+	}
 
 	constructor() {
 		super();
@@ -30,6 +37,7 @@ class App extends Component {
 
 		return (
 			<div>
+				
 				{this.state.screenWidth > 750 ? <div><Userbar></Userbar>
 					<div className='yellowBackground'>
 						<div className="centeredRowFlex">
@@ -37,16 +45,25 @@ class App extends Component {
 						</div>
 					</div></div> : <MobileNavigationMenu></MobileNavigationMenu>}
 				<div>
-					<Route exact path="/" component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
-					{/* <Route path="games/:console/:term" component={DisplayGrid} /> */}
-					<Route path="/subcategory/:subcategory" component={DisplayGrid}/>
-					<Route path="/searchTerm/:subcategory/:term" component={DisplayGrid}/>
+					<Route exact path="/"
+						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
+					<Route path="/products/subcategory/:subcategory"
+						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
+					<Route path="/products/searchTerm/:subcategory/:term"
+						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
+					<Route path="/fullView/:id"
+						render={routeProps => <FullView  basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
 				</div>
+				<Basket basket={this.state.basket} addToBasket={this.addToBasket}></Basket>
 			</div>
 		);
 	}
 	updateWindowDimensions() {
 		this.setState({ screenWidth: window.innerWidth });
+	}
+
+	addToBasket(item) {
+		this.setState({basket: [...this.state.basket, item]})
 	}
 }
 

@@ -10,21 +10,26 @@ class PopUpItems extends Component {
         return (
 
             <div className='popUp cardBorder' style={this.handleGetMargin(this.props.index)}>
-                {this.props.subcategory && this.props.subcategory.map((subcategory) => {
+                {this.props.subcategory && this.props.subcategory.map((subcategory, i) => {
                     if (subcategory) {
                         return (
-                            <div>
-                                <Link to={subcategory.subcategory_link ? `/subcategory/${subcategory.subcategory_link}+${subcategory.subcategory_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }}>
+                            <div key={subcategory.subcategory_name + i}>
+                                <Link
+                                    to={subcategory.subcategory_link ? `/products/subcategory/${subcategory.subcategory_link}+${subcategory.subcategory_id}` : '/'}
+                                    style={{ textDecoration: 'none', color: '#343409' }}>
 
-                                    <div className='subcategoryTitle'>{subcategory.subcategory_name}</div>
+                                    <div className='subcategoryTitle' onClick={() => this.props.handleClose()}>{subcategory.subcategory_name}</div>
 
                                 </Link>
 
                                 <div> {subcategory.searchTerms.map((searchTerm, i) => {
 
-                                    return <Link to={searchTerm.search_term_link ? `/searchTerm/${searchTerm.search_term_link}+${searchTerm.search_term_id}` : '/'} style={{ textDecoration: 'none', color: '#343409' }} >
+                                    return <Link
+                                            to={searchTerm.search_term_link ? `/products/searchTerm/${searchTerm.search_term_link}+${searchTerm.search_term_id}` : '/'}
+                                            style={{ textDecoration: 'none', color: '#343409' }}
+                                            key={searchTerm.search_term + i}>
 
-                                        <div className="term" key={i}>{searchTerm.search_term}</div>
+                                        <div className="term" onClick={() => this.props.handleClose()}>{searchTerm.search_term}</div>
 
                                     </Link>
 

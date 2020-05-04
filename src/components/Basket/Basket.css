@@ -1,0 +1,23 @@
+.basketContainer {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #343409;
+    height: 56px;
+    width: 56px;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 4px solid #FDED2A;
+}
+
+.floatingBtn {
+    height: 36px;
+    border: 1px solid #343409;
+    border-radius: 32px;
+    padding: 13px;
+}

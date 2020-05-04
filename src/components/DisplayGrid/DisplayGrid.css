@@ -18,14 +18,9 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    border: 2px solid 	#C0C0C0;
     border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
     position: relative;
     cursor: pointer;
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.36); 
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.36);
     margin-bottom: 20px;
     overflow: hidden;
 }

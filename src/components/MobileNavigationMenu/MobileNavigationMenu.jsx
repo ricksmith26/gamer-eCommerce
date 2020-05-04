@@ -14,18 +14,22 @@ class MobileNavigation extends Component {
         this.setState({ menuItems: await api.getMenuItems()});
     }
 
+    componentWillUnmount = async () => {
+        await api.getMenuItems()
+    }
+
     render() {
         return (
             <div>
-                <div class="header"></div>
-                <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onChange={() => this.setState({open: !this.state.open})}/>
-                    <label for="openSidebarMenu" class="sidebarIconToggle">
-                        <div class="spinner diagonal part-1"></div>
-                        <div class="spinner horizontal"></div>
-                        <div class="spinner diagonal part-2"></div>
+                <div className="header"></div>
+                <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu" onChange={() => this.setState({open: !this.state.open})}/>
+                    <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
+                        <div className="spinner diagonal part-1"></div>
+                        <div className="spinner horizontal"></div>
+                        <div className="spinner diagonal part-2"></div>
                     </label>
                     <div id="sidebarMenu">
-                    <ul class="sidebarMenuInner">
+                    <ul className="sidebarMenuInner">
                     {this.state.menuItems && this.state.open && this.state.menuItems.map((item) => {
                         return <li className="category"><Accordian handleClose={() => this.handleClose()} item={item}>
 

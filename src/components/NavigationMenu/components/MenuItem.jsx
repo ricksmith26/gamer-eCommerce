@@ -14,9 +14,12 @@ class MenuItem extends Component {
                 {this.state.open
                     && this.props.navMenuItem.subcategories
                     && this.props.navMenuItem.subcategories.length > 0
-                    && <PopUpItems index={this.props.index} subcategory={this.props.navMenuItem.subcategories}></PopUpItems>}
+                    && <PopUpItems index={this.props.index} subcategory={this.props.navMenuItem.subcategories} handleClose={this.handleClose.bind(this)}></PopUpItems>}
             </div>
         )
+    }
+    handleClose() {
+        this.setState({open: false})
     }
 
 }
