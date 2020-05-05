@@ -14,13 +14,12 @@ import Basket from './components/Basket/Basket';
 
 class App extends Component {
 
-	state = {
-		basket: []
-	}
-
 	constructor() {
 		super();
-		this.state = { screenWidth: null };
+		this.state = { 
+			screenWidth: null,
+			basket: []
+		};
 		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 	}
 
@@ -52,7 +51,7 @@ class App extends Component {
 					<Route path="/products/searchTerm/:subcategory/:term"
 						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
 					<Route path="/fullView/:id"
-						render={routeProps => <FullView  basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
+						render={routeProps => <FullView  basket={this.state.basket} addToBasket={this.addToBasket.bind(this)} screenWidth={this.state.screenWidth} {...routeProps}/>}/>
 				</div>
 				<Basket basket={this.state.basket} addToBasket={this.addToBasket}></Basket>
 			</div>
@@ -63,6 +62,7 @@ class App extends Component {
 	}
 
 	addToBasket(item) {
+		console.log(this.state, 'this.state.basket')
 		this.setState({basket: [...this.state.basket, item]})
 	}
 }

@@ -52,7 +52,7 @@ class FullView extends Component {
 
 
     render() {
-        console.log(JSON.parse(this.props.location.state.product_images))
+        console.log(this.props, '<<<<<<<BASKET')
         return (
 
             <div className='centeredRowFlex'>
@@ -65,10 +65,10 @@ class FullView extends Component {
                             <img className="fullViewImage" src={JSON.parse(this.props.location.state.product_images)[this.state.imageIndex]} alt='na' />
                             <div className={this.state.screenWidth < 1535 ? 'smallWidthView'  : 'hidden' } >
                             <div className='cardBorder centeredColumnFlex buy'>
-                                    <div class="buyNow">
+                                    <div className="buyNow">
                                         Buy now
                                     </div>
-                                    <div class="buyText">
+                                    <div className="buyText">
                                     <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
@@ -81,10 +81,10 @@ class FullView extends Component {
                                     {this.state.product_description}
                                 </div>
                                 <div className={this.state.screenWidth > 1535 ? 'cardBorder centeredColumnFlex buy'  : 'hidden' }>
-                                    <div class="buyNow">
+                                    <div className="buyNow">
                                         Buy now
                                     </div>
-                                    <div class="buyText">
+                                    <div className="buyText" onClick={() => this.props.addToBasket({product_name: this.state.product_name})}>
                                     <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
