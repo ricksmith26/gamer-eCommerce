@@ -308,3 +308,36 @@
 .horizontalOpen3 {
     width: 248px;
 }
+
+.screenClosed {
+    padding: 1px;
+    background-color: rgb(54, 54, 46, 0.5);
+    /* transition: transform .4s, opacity0.4s; */
+    -moz-transition: width 0.4s ease-in-out, height 0.4s ease-in-out, right 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out, height 0.4s ease-in-out, right 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    -webkit-transition: width 0.4s ease-in-out, height 0.4s ease-in-out, right 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out, height 0.4s ease-in-out, right 0.4s ease-in-out, bottom 0.4s ease-in-out;
+    transition-delay: 0.4s;
+    width: 0px;
+    height: 0px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 244px;
+    right: 212px;
+    z-index: -101;
+    opacity: 0;
+    border-radius: 8px;
+    overflow: auto;
+    
+  }
+  
+  .screenOpen {
+    /* -ms-transform: scale(84); /* IE 9 */
+  /* -webkit-transform: scale(84); /* Safari 3-8 */
+  /* transform: scale(84);   */ 
+  opacity: 0.5;
+  height: 200px;
+  width: 300px;
+  right: 62px;
+  bottom: 136px;
+  }

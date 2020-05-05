@@ -35,8 +35,21 @@ class Basket extends Component {
                 <div className={!this.state.open ? 'horizontalClosed1' : 'horizontalClosed1 horizontalOpen1'}></div>
                 <div className={!this.state.open ? 'horizontalClosed2' : 'horizontalClosed2 horizontalOpen2'}></div>
                 <div className={!this.state.open ? 'horizontalClosed3' : 'horizontalClosed3 horizontalOpen3'}></div>
+                <div className={!this.state.open ? 'screenClosed' :  'screenClosed screenOpen'}>
+                    {this.props.basket.map((item) => {
+                        return <div>{item.product_name}</div>
+                    })}
+                </div>
             </div>
         )
+    }
+
+    getScreenClassName() {
+        // if (this.state.open) {
+        //     setTimeout(() => {
+        //         return 
+        //     },225)
+        // }
     }
 
 
