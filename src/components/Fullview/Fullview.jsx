@@ -15,9 +15,11 @@ class FullView extends Component {
         this.state = {
             screenWidth: null,
             imageIndex: 0,
+            product_id: 0,
             product_description: '',
             product_images: '',
             product_more_details: '',
+            product_release_date: '',
             ready: false
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -26,6 +28,7 @@ class FullView extends Component {
     async componentDidMount() {
         if (this.props.location.state) {
             this.setState({
+                product_id: this.props.location.state.product_id,
                 product_name: this.props.location.state.product_name,
                 product_description: this.props.location.state.product_description,
                 product_images: this.props.location.state.product_images,
@@ -35,6 +38,7 @@ class FullView extends Component {
         } else {
             const product = await gameApi.getProductById(Number(this.props.match.params.id));
             this.setState({
+                product_id: this.props.location.state.product_id,
                 product_name: product.product_name,
                 product_description: product.product_description,
                 product_images: product.product_images,
@@ -52,7 +56,7 @@ class FullView extends Component {
 
 
     render() {
-        console.log(this.props, '<<<<<<<BASKET')
+        // console.log(this.props, '<<<<<<<BASKET')
         return (
 
             <div className='centeredRowFlex'>
@@ -68,7 +72,17 @@ class FullView extends Component {
                                     <div className="buyNow">
                                         Buy now
                                     </div>
-                                    <div className="buyText">
+                                    <div className="buyText"
+                                        onClick={() => {
+                                            this.props.addToBasket({
+                                                product_id: this.state.product_id,
+                                                product_name: this.state.product_name,
+                                                product_description: this.state.product_description,
+                                                product_images: this.state.product_images,
+                                                product_more_details: this.state.product_more_details,
+                                                product_release_date: this.state.product_release_date
+                                            })
+                                        }}>
                                     <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
@@ -84,7 +98,17 @@ class FullView extends Component {
                                     <div className="buyNow">
                                         Buy now
                                     </div>
-                                    <div className="buyText" onClick={() => this.props.addToBasket({product_name: this.state.product_name})}>
+                                    <div className="buyText"
+                                        onClick={() => {
+                                            this.props.addToBasket({
+                                                product_id: this.state.product_id,
+                                                product_name: this.state.product_name,
+                                                product_description: this.state.product_description,
+                                                product_images: this.state.product_images,
+                                                product_more_details: this.state.product_more_details,
+                                                product_release_date: this.state.product_release_date
+                                            })
+                                        }}>
                                     <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
