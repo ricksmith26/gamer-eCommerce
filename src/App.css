@@ -1,8 +1,12 @@
 body {
   font-family: sans-serif;
-  overflow-x: hidden;
-  max-width: 100%;
+  overflow: hidden;
+  
   }
   /* html, body {
     overflow-x:hidden 
   }  */
+
+  /* .viewer {
+    height: max-content;
+  } */

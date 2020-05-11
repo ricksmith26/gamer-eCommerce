@@ -58,7 +58,7 @@ class FullView extends Component {
     render() {
         // console.log(this.props, '<<<<<<<BASKET')
         return (
-
+            <div>
             <div className='centeredRowFlex'>
                 <div className={this.state.screenWidth < 750 ? 'mobileFullView' : 'cardContainer'}>
                     <div className='boxShadow'>
@@ -67,7 +67,7 @@ class FullView extends Component {
                         </div>
                         <div className="spaceBetweenFlex">
                             <img className="fullViewImage" src={JSON.parse(this.props.location.state.product_images)[this.state.imageIndex]} alt='na' />
-                            <div className={this.state.screenWidth < 1535 ? 'smallWidthView'  : 'hidden' } >
+                            <div className={this.state.screenWidth < 1220 ? 'smallWidthView'  : 'hidden' } >
                             <div className='cardBorder centeredColumnFlex buy'>
                                     <div className="buyNow">
                                         Buy now
@@ -87,14 +87,14 @@ class FullView extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className={this.state.screenWidth < 1535 ? 'fullViewMobileText' : 'hidden'}>
+                            <div className={this.state.screenWidth < 1220 ? 'fullViewMobileText' : 'hidden'}>
                                 {this.state.product_description}
                             </div>
-                            <div className={this.state.screenWidth > 1535 ? 'buyContainer' : 'hidden'}>
-                                <div className={this.state.screenWidth > 1535 ? 'fullViewText' : 'fullViewMobileText'}>
+                            <div className={this.state.screenWidth > 1220 ? 'buyContainer' : 'hidden'}>
+                                <div className={this.state.screenWidth > 1220 ? 'fullViewText' : 'fullViewMobileText'}>
                                     {this.state.product_description}
                                 </div>
-                                <div className={this.state.screenWidth > 1535 ? 'cardBorder centeredColumnFlex buy'  : 'hidden' }>
+                                <div className={this.state.screenWidth > 1220 ? 'cardBorder centeredColumnFlex buy'  : 'hidden' }>
                                     <div className="buyNow">
                                         Buy now
                                     </div>
@@ -124,6 +124,7 @@ class FullView extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
         )

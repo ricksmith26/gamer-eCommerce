@@ -9,6 +9,7 @@
     align-content: center;
     align-items: center;
     margin-top: 44px;
+    overflow: auto;
 }
 
 .productBox {

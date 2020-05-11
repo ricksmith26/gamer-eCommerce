@@ -39,7 +39,9 @@ class App extends Component {
 
 				{this.state.screenWidth > 750 ? <div><Userbar></Userbar>
 					<div className='yellowBackground'>
-						<div className="centeredRowFlex">
+						<div className="centeredRowFlex" 
+							// style={{overflow: 'hidden'}}
+							>
 							<NavigationMenu></NavigationMenu>
 						</div>
 					</div></div> : <MobileNavigationMenu></MobileNavigationMenu>}

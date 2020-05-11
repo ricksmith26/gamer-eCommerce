@@ -9,6 +9,8 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Varela Round', sans-serif;
+    /* overflow: hidden; */
+    height: 100%;
 }
 .header {
     display: block;
@@ -17,9 +19,9 @@ body {
     max-width: 100%;
     box-shadow: none;
     background-color: #FDED2A;
-    /* position: fixed; */
+    position: relative;; 
     height: 60px!important;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 10;
     border-bottom: 1px solid #343409 ;
     /* position: fixed; */
@@ -54,7 +56,7 @@ body {
     transition: transform 250ms ease-in-out;
     background: #FDED2A;
     z-index: 5;
-    overflow: auto;
+    /* overflow: auto; */
 }
 .sidebarMenuInner{
     margin:0;

@@ -31,11 +31,7 @@ class Basket extends Component {
                 </div>
                 <div class="outLine"></div>
             </div>
-                <div className={!this.state.open ? 'verticalClosed1' : 'verticalClosed1 verticalOpen1'}>
-                    {/* <div className={!this.state.open ? 'verticalEmitClosed1' : 'verticalEmitClosed1 verticalEmitOpen1'}>
-                        <div className={!this.state.open ? 'verticalLightClosed1' : 'verticalLightClosed1 verticalLightOpen1'}></div>
-                    </div> */}
-                </div>
+                <div className={!this.state.open ? 'verticalClosed1' : 'verticalClosed1 verticalOpen1'}></div>
                 <div className={!this.state.open ? 'verticalClosed2' : 'verticalClosed2 verticalOpen2'}></div>
                 <div className={!this.state.open ? 'verticalClosed3' : 'verticalClosed3 verticalOpen3'}></div>
 

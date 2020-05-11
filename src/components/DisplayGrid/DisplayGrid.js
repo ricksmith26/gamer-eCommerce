@@ -35,7 +35,6 @@ class DisplayGrid extends Component {
 
     async componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname.includes('products')) {
-            console.log('>>>>>>>',this.props.location.pathname, prevProps.location.pathname, '<<<<<<<<<')
             this.getGames();
 
         }
@@ -105,13 +104,10 @@ class DisplayGrid extends Component {
     }
 
     async getGames() {
-        console.log(this.props.match.params, 'this.props.match.paramsthis.props.match.paramsthis.props.match.paramsthis.props.match.params', this.props.match.params.subcategory.split('+')[1] )
         if (this.props.match.params.subcategory.split('+')[1]) {
-            console.log('sub>>>>>>>>>>', this.props.match.params.subcategory)
             return this.getProductsBySubcategory();
         }
         if (this.props.match.params.term.split('+')[1]) {
-            console.log('term>>>>>>>>>>', this.props.match.params.term)
             return this.getProductsByTerm();
         }
     }
