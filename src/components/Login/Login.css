@@ -1,0 +1,64 @@
+
+.userBarProfile {
+    height: 75px;
+    width: 85px;
+    object-fit: fill;
+    display: flex;
+    flex-direction: column;
+    text-align: center;margin-right: 16px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+
+}
+
+.usrImg {
+    height: 35px;
+    padding-top: 12px;
+}
+
+.login {
+    color: #FFFFDB;
+    width: max-content;
+    font-size: 12px;
+    margin: 0;
+    margin-top: 4px;
+}
+
+.loginBox {
+    padding: 1px;
+    background-color: lightgrey;
+    -moz-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition-delay: 0s;
+    width: 0px;
+    height: 0px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50px;
+    right: 212px;
+    z-index: 121;
+    opacity: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    visibility: hidden
+
+
+}
+
+.loginOpen {
+    opacity: 1;
+    height: calc(100vh - 200px);
+    width: calc(100vw - 200px);
+    right: 62px;
+    overflow: auto;
+    -moz-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition-delay: 0.3s;
+    visibility: visible;
+    z-index: 121;
+}

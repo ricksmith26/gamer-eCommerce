@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Userbar.css';
 import userProfile from '../../userprofile.svg';
 import logo2 from '../../LogoMakr_3jtory.png';
+import Login from '../Login/Login';
 
 class Userbar extends Component {
 
@@ -13,10 +14,7 @@ class Userbar extends Component {
                     <img className="logo" src={logo2} />
                     <input id="search" className="text-input" type="text" placeholder="Search.."/>
                 </div>
-                <div className="userBarProfile">
-                    <img className="usrImg" alt='user-login' src={userProfile} />
-                    <h5 className='login'>Login / Register</h5>
-                </div>
+               <Login/>
             </div>
         )
     }

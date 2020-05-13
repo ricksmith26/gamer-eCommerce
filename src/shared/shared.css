@@ -161,3 +161,14 @@
     padding: 16px;
     margin: 16px;
 }
+
+.blackBackground {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 120;
+}

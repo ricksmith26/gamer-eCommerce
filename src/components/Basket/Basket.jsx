@@ -6,10 +6,20 @@ import closeIcon from '../../shared/close.svg';
 import './Basket.css';
 
 class Basket extends Component {
-
-    state = {
-        open: false
+    constructor(props) {
+        super(props);
+      
+    this.state = {
+        open: false,
+        basketEmpty: false
     }
+    }
+    componentDidUpdate(prevProps) {
+        if (Object.values(this.props.basket).length === 0 && this.state.open) {
+            this.setState({open: false})
+        }
+    }
+
 
     render() {
         return (
