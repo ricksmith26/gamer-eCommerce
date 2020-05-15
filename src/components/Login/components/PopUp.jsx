@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import * as userApi from '../../../routes/usersRoutes';
+import UserSignUp from './UserSignUp';
+import AccountDetails from './AccountDetails';
+import EditAccountDetails from './EditAccountDetail';
+import RegisteredAccount from './RegisteredAccount';
+import { addToCache } from '../../../utils/cache';
 import './PopUp.css';
 import '../../../shared/shared.css';
 import '../Login.css';
@@ -10,81 +15,78 @@ class PopUp extends Component {
         user_last_name: 'Smith',
         user_email: 'ricksmith26@hotmail.com',
         user_password: 'password',
+        user_confirm_password: 'password',
         user_phone_number: '07939456789',
         user_address1: '1233 street',
         user_address2: 'Town',
         user_address3: 'County',
         user_post_code: 'Pr7 8uj',
-
+        index: 0,
+        viewProfile: false,
+        title: 'Register'
     }
+
+    static getDerivedStateFromProps(props, state) {
+        console.log(props, 'PopUpPopUp')
+        if (props.viewProfile !== state.viewProfile) {
+          return { viewProfile: props.viewProfile, index: 2 }
+        } else {
+            return null
+        }
+    }
+
+    // componentDidMount() {
+    //     console.log
+    //     if (this.props.viewProfile) {
+    //         this.setState({index: 2})
+    //     }
+    // }
 
     render() {
         return (
             <div onClick={this.handleClick}>
                 <div className={!this.props.open ? 'hidden' : 'blackBackground'}></div>
                 <div className={!this.props.open ? 'loginBox' : 'loginBox loginOpen'}>
-                    {!this.state.created ? <div className="loginContainer">
-                        <h2>Register</h2>
-                        <div className="details1">
-                            <div className="inputContainer">
-                                <label htmlFor="Firstname">Firstname</label>
-                                <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_first_name')} value="Rick" />
-                            </div>
-                            <div className="inputContainer">
-                                <label htmlFor="Lastname">Lastname</label>
-                                <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_last_name')} value="Smith" />
-                            </div>
+                    {this.state.index === 0 &&
+                        (<div className="loginContainer">
+                            <h3>Login</h3>
                             <div className="inputContainer">
                                 <label htmlFor="Lastname">Email</label>
-                                <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_email')} value="ricksmith26@hotmail.com" />
+                                <input className="text-input inputAdj" />
                             </div>
                             <div className="inputContainer">
                                 <label htmlFor="Lastname">Password</label>
-                                <input className="text-input inputAdj" type="password" onChange={(e) => this.handleTextInput(e, 'user_password')} value="password" />
+                                <input className="text-input inputAdj" />
                             </div>
-                            <div className="inputContainer">
-                                <label htmlFor="Lastname">Confirm Password</label>
-                                <input className="text-input inputAdj" type="password" onChange={(e) => this.handleTextInput(e, 'user_password')} value="password" />
-                            </div>
-                            <div className="inputContainer">
-                                <label htmlFor="Lastname">Phone Number</label>
-                                <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_phone_number')} value="07939456789" />
-                            </div>
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="Lastname">Address Line 1</label>
-                            <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_address1')} value="1233 street" />
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="Lastname">Address Line 2</label>
-                            <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_address2')} value="Town" />
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="Lastname">Address Line 3</label>
-                            <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_address3')} value="County" />
-                        </div>
-                        <div className="inputContainer">
-                            <label htmlFor="Lastname">Postcode</label>
-                            <input className="text-input inputAdj" type="text" onChange={(e) => this.handleTextInput(e, 'user_post_code')} value="Pr7 8uj" />
-                        </div>
-                        <div className="btnCon">
-                            <button className="yellowBtn" onClick={() => this.handleRegister()}>Submit</button>
-                            <button className="redBtn" onClick={() => this.props.handleClose()}>Cancel</button>
-                        </div>
+                            <button className="yellowBtn" onClick={() => this.login({user_email: this.state.user_email, user_password: this.state.user_password})}>Login</button>
+                            <p>Not Registered?</p>
+                            <button className="yellowBtn" onClick={() => this.setState({ index: 1 })}>Register</button>
+                        </div>)
+                    }
+                    {this.state.index === 1 &&
+                        (!this.state.created
+                            ? <UserSignUp
+                                handleTextInput={this.handleTextInput.bind(this)}
+                                handleRegister={this.handleRegister}
+                                handleClose={this.props.handleClose}
+                                state={this.state}
+                            ></UserSignUp>
+                            : 
+                            <RegisteredAccount userProfile={this.state}></RegisteredAccount>)
+                    }
+                    {this.state.index === 2 && (
+                        <AccountDetails
+                            userProfile={this.props.userProfile}
+                            editDetails={this.editDetails.bind(this)}></AccountDetails>
+                    )}
 
-                    </div> : <div className="loginContainer">
-                            <h3>Registered</h3><svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
-                            <h4 className="confirmationText">{this.state.user_first_name} {this.state.user_last_name}</h4>
-                            <div className="centeredRowFlex">
-                                <h4 className="confirmationText">{this.state.user_email}</h4>
-                                <h4 className="confirmationText">{this.state.user_phone_number}</h4>
-                            </div>
-                            <h4 className="confirmationText">{this.state.user_address1}</h4>
-                            <h4 className="confirmationText">{this.state.user_address2}</h4>
-                            <h4 className="confirmationText">{this.state.user_address3}</h4>
-                            <h4 className="confirmationText">{this.state.user_post_code}</h4>
-                            <button className="yellowBtn" onClick={() => this.props.handleClose()}>Continue</button>
-                        </div>}
+                    {this.state.index === 3 && (
+                        <EditAccountDetails
+                            handleTextInput={this.handleTextInput.bind(this)}
+                            userProfile={this.props.userProfile}
+                            handleClose={this.props.handleClose.bind(this)}></EditAccountDetails>
+                    )}
+
                 </div>
             </div>
         )
@@ -99,6 +101,7 @@ class PopUp extends Component {
 
     async handleRegister() {
         const user = this.state;
+        console.log(user, '<<<<<USERMMMMM<<,')
         const newUser = await userApi.registerUser(user);
         if (newUser.status === 200) {
             this.setState({ created: true },
@@ -109,7 +112,24 @@ class PopUp extends Component {
     handleLoginData(user) {
         delete user['user_password'];
         this.props.handleIconChange(`${user.user_first_name[0]}${user.user_last_name[0]}`.toUpperCase());
-        this.props.setUserInfo(user)
+        this.props.setUserInfo(user);
+    }
+
+    async login(loginDetails) {
+        const userDetails = await userApi.loginFromEmail(loginDetails);
+        console.log(userDetails,'<<<<')
+        if (userDetails.valid) {
+            this.props.handleClose();
+            addToCache('game_shack_user', userDetails.user);
+            this.handleLoginData(userDetails.user);
+        } else {
+            console.log('incorrect');
+            this.setState({index: 2})
+        }
+    }
+
+    editDetails() {
+        this.setState({index: 3, title: 'Edit Details'}, () => console.log('EDITING>>' , this.state))
     }
 }
 export default PopUp;

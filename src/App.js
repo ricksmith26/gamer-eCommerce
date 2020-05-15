@@ -13,7 +13,7 @@ import Basket from './components/Basket/Basket';
 
 import * as userApi from './routes/usersRoutes';
 
-import {loadFromCache, addToCache} from './utils/cache';
+import {loadFromCache, addToCache, clear} from './utils/cache';
 
 class App extends Component {
 
@@ -33,6 +33,7 @@ class App extends Component {
 		const storedLogin = loadFromCache('game_shack_user');
 		if (storedLogin) {
 			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
+			console.log(validToken, '<<<<<<<<<,,,')
 			if (validToken.valid) {
 				this.setState({userProfile: storedLogin});
 			}
@@ -52,6 +53,7 @@ class App extends Component {
 
 		return (
 			<div>
+			{/* <button onClick={() => clear()}>clear</button> */}
 			{this.state.screenWidth > 750 ? <div><Userbar setUserInfo={this.setUserInfo.bind(this)} userProfile={this.state.userProfile}></Userbar>
 					<div className='yellowBackground'>
 						<div className="centeredRowFlex">
@@ -62,8 +64,8 @@ class App extends Component {
 									userProfile={this.state.userProfile}
 									screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
 				
-					<Route exact path="/"
-						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
+					{/* <Route exact path="/"
+						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} /> */}
 					<Route path="/products/subcategory/:subcategory"
 						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps} />} />
 					<Route path="/products/searchTerm/:subcategory/:term"

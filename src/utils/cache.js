@@ -6,3 +6,7 @@ export const loadFromCache = (key) => {
     const item = JSON.parse(localStorage.getItem(key));
     return item;
 }
+
+export const clear = () => {
+    localStorage.clear();
+}

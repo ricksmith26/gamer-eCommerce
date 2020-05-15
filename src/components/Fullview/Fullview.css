@@ -1,15 +1,13 @@
 .fullView {
-    /* max-height: 100vh;
-    overflow-x: hidden; */
-    /* overflow-y: auto; */
+    max-height: 100vh;
+    overflow-x: hidden; 
+    overflow-y: auto;
 }
 
 .cardOverflow {}
 
 .cardContainer {
     width: 80%;
-    /* height: max-content; */
-    /* overflow-y: auto; */
 }
 
 .fullViewTitle {
