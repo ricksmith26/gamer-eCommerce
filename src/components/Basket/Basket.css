@@ -415,6 +415,11 @@
     visibility: visible
 }
 
+.mobileScreen {
+    width: 250px;
+}
+
+
 
 .screenTextClosed {
     height: max-content;

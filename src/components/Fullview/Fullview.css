@@ -1,14 +1,15 @@
+.fullView {
+    /* max-height: 100vh;
+    overflow-x: hidden; */
+    /* overflow-y: auto; */
+}
+
+.cardOverflow {}
+
 .cardContainer {
     width: 80%;
     /* height: max-content; */
     /* overflow-y: auto; */
-}
-
-.mobileFullView {
-    width: 100%;
-    padding: 16px;
-    overflow: auto;
-    height: max-content;
 }
 
 .fullViewTitle {
@@ -100,6 +101,12 @@
 
 }
 
+.mobileBuy {
+    position: absolute;
+    left: -157px;
+    top: 144px
+}
+
 .buyNow {
     width: 100%;
     background-color: #fceb26;
@@ -122,4 +129,5 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-bottom: 24px;
+    position: relative;
 }

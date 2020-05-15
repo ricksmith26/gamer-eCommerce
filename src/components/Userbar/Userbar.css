@@ -36,7 +36,8 @@
     object-fit: fill;
     display: flex;
     flex-direction: column;
-    text-align: center;margin-right: 16px;
+    text-align: center;
+    margin-right: 16px;
     cursor: pointer;
 
 }
@@ -56,6 +57,12 @@
     flex-direction: row;
     flex-wrap: wrap;
 
+}
+
+.loginBarItem {
+    position: fixed;
+    right: 12px;
+    top:12px
 }
 
 #search {

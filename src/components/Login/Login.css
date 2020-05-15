@@ -12,6 +12,13 @@
 
 }
 
+.mobileLogin {
+    color: #343409;
+    position: fixed;
+    right: -20px;
+    top: -4px
+}
+
 .usrImg {
     height: 35px;
     padding-top: 12px;
@@ -112,4 +119,40 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-left: -24px;
+}
+
+.initials {
+    color: #FFFFDB;
+    height: 35px;
+    width: 35px;
+    border: 2px solid #FFFFDB;
+    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.initialsMobile {
+    color: #343409;
+    height: 35px;
+    width: 35px;
+    border: 2px solid #343409;
+    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 10px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
 }

@@ -11,7 +11,6 @@ class View extends Component {
    
 
     render() {
-        console.log(this.props, 'PROPSPROPS<<<<<<<<<<,,')
         return (
             <div>
                 <Route exact path="/products/subcategory/:subcategory" render={routeProps => <DisplayGrid params={this.props.match.params} screenWidth={this.props.screenWidth} {...routeProps}/>}/>

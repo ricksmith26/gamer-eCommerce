@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import './InnerAccordian.css';
 import '../../../../shared/shared.css';
@@ -11,7 +11,6 @@ class InnerAccordian extends Component {
     }
 
     render() {
-        console.log(this.props.subcategory)
         return (
             <div className={`sideInnerMenuContainer ${this.state.open && 'expanded'}`}>
                 <div className="innerList" onClick={() => this.setState({ open: !this.state.open })}>
@@ -30,7 +29,6 @@ class InnerAccordian extends Component {
     }
 
     renderList() {
-        console.log(this.props.subcategory, 'this.props.subcategorythis.props.subcategorythis.props.subcategory')
         return this.state.open && <div>{this.props.subcategory.searchTerms.map((term, i) => {
             return (<div>
                 <Link to={term.search_term_link ? `/products/searchTerm/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }} onClick={() => this.props.handleClose()}><div className="searchTerm  subcategoryTitle">{term.search_term}</div></Link>

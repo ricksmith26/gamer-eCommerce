@@ -4,7 +4,6 @@ import './shared/shared.css';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu'
 import Userbar from './components/Userbar/Userbar';
 import AdvertSlider from './components/AdvertSlider/AdvertSlider';
-import DisplayGrid from './components/DisplayGrid/DisplayGrid';
 import MobileNavigationMenu from './components/MobileNavigationMenu/MobileNavigationMenu';
 
 import { Route } from 'react-router-dom';
@@ -12,20 +11,37 @@ import FullView from './components/Fullview/Fullview';
 import View from './components/View/View';
 import Basket from './components/Basket/Basket';
 
+import * as userApi from './routes/usersRoutes';
+
+import {loadFromCache, addToCache} from './utils/cache';
+
 class App extends Component {
 
 	constructor() {
 		super();
 		this.state = {
 			screenWidth: null,
-			basket: {}
+			basket: {},
+			userProfile: {}
 		};
 		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		this.updateWindowDimensions()
 		window.addEventListener("resize", () => this.updateWindowDimensions());
+		const storedLogin = loadFromCache('game_shack_user');
+		if (storedLogin) {
+			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
+			if (validToken.valid) {
+				this.setState({userProfile: storedLogin});
+			}
+		}
+		const storedBasket = loadFromCache('game_shack_basket');
+		if (storedBasket) {
+			this.setState({basket: storedBasket})
+		}
+
 	}
 
 	componentWillUnmount() {
@@ -36,16 +52,16 @@ class App extends Component {
 
 		return (
 			<div>
-
-				{this.state.screenWidth > 750 ? <div><Userbar></Userbar>
+			{this.state.screenWidth > 750 ? <div><Userbar setUserInfo={this.setUserInfo.bind(this)} userProfile={this.state.userProfile}></Userbar>
 					<div className='yellowBackground'>
-						<div className="centeredRowFlex" 
-							// style={{overflow: 'hidden'}}
-							>
+						<div className="centeredRowFlex">
 							<NavigationMenu></NavigationMenu>
 						</div>
-					</div></div> : <MobileNavigationMenu></MobileNavigationMenu>}
-				<div>
+					</div></div> : <MobileNavigationMenu
+									setUserInfo={this.setUserInfo.bind(this)}
+									userProfile={this.state.userProfile}
+									screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
+				
 					<Route exact path="/"
 						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
 					<Route path="/products/subcategory/:subcategory"
@@ -54,8 +70,13 @@ class App extends Component {
 						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps} />} />
 					<Route path="/fullView/:id"
 						render={routeProps => <FullView basket={this.state.basket} addToBasket={this.addToBasket.bind(this)} screenWidth={this.state.screenWidth} {...routeProps} />} />
-				</div>
-				<Basket basket={this.state.basket} addToBasket={this.addToBasket} addRemoveFromBasket={this.addRemoveFromBasket.bind(this)} deleteFromBasket={this.deleteFromBasket.bind(this)}></Basket>
+				
+				<Basket
+					basket={this.state.basket}
+					addToBasket={this.addToBasket}
+					addRemoveFromBasket={this.addRemoveFromBasket.bind(this)}
+					deleteFromBasket={this.deleteFromBasket.bind(this)}
+					screenWidth={this.state.screenWidth}></Basket>
 			</div>
 		);
 	}
@@ -66,18 +87,22 @@ class App extends Component {
 	addToBasket(item) {
 		if (Object.keys(this.state.basket).length > 0) {
 			const duplicateProducts = Object.values(this.state.basket).filter((basketItem) => {
-				if (Number(basketItem.product_id) === Number(item.product_id)) {
-					return basketItem;
-				}
+					return Number(basketItem.product_id) === Number(item.product_id);
 			});
 			if (duplicateProducts.length === 0) {
-				this.setState({ basket: { ...this.state.basket, [item.product_id]: { ...item, qty: 1 } } }, () => console.log(this.state.basket, 'this.state.basket222'))
+				this.setState({
+					basket: { ...this.state.basket, [item.product_id]: { ...item, qty: 1 } } },
+					() => addToCache('game_shack_basket', this.state.basket))
 			} else {
-				this.setState({ basket: { ...this.state.basket, [item.product_id]: { ...item, qty: duplicateProducts[0].qty + 1 } } }, () => console.log(this.state.basket, 'this.state.basket222'))
+				this.setState({
+					basket: { ...this.state.basket, [item.product_id]: { ...item, qty: duplicateProducts[0].qty + 1 } } },
+					() => addToCache('game_shack_basket', this.state.basket))
 			}
 
 		} else {
-			this.setState({ basket: { [item.product_id.toString()]: { ...item, qty: 1 } } }, () => console.log(this.state.basket, 'this.state.basket222'))
+			this.setState({
+				basket: { [item.product_id.toString()]: { ...item, qty: 1 } } },
+				() => addToCache('game_shack_basket', this.state.basket))
 		}
 	}
 
@@ -85,14 +110,17 @@ class App extends Component {
 		const basket = this.state.basket;
 		if (direction === 'up'){
 			basket[product_id].qty++;
-			this.setState({basket});
+			this.setState({basket},
+				() => addToCache('game_shack_basket', this.state.basket));
 		} else {
 			if (basket[product_id].qty === 1) {
 				delete basket[product_id];
-				this.setState({basket});
+				this.setState({basket},
+					() => addToCache('game_shack_basket', this.state.basket));
 			} else {
 				basket[product_id].qty--;
-				this.setState({basket});
+				this.setState({basket},
+					() => addToCache('game_shack_basket', this.state.basket));
 			}
 		} 
 	}
@@ -100,7 +128,12 @@ class App extends Component {
 	deleteFromBasket(product_id) {
 		const basket = this.state.basket;
 		delete basket[product_id];
-		this.setState({basket});
+		this.setState({basket},
+			() => addToCache('game_shack_basket', this.state.basket));
+	}
+
+	setUserInfo(userProfile) {
+		this.setState({userProfile});
 	}
 }
 

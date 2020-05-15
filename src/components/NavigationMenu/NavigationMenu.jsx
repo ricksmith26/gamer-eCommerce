@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {menuItems} from '../../shared/game-data';
 import MenuItem from './components/MenuItem';
 import './NavigationMenu.css';
 import * as api from '../../routes/menuItemsRoutes';

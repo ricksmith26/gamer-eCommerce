@@ -11,7 +11,6 @@ class PopUpItems extends Component {
 
             <div className='popUp cardBorder' style={this.handleGetMargin(this.props.index)}>
                 {this.props.subcategory && this.props.subcategory.map((subcategory, i) => {
-                    if (subcategory) {
                         return (
                             <div key={subcategory.subcategory_name + i}>
                                 <Link
@@ -37,9 +36,6 @@ class PopUpItems extends Component {
 
                             </div>
                         )
-
-                    }
-
                 })}
             </div>
         )

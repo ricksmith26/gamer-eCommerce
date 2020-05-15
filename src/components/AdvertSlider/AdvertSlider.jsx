@@ -24,7 +24,6 @@ class AdvertSlider extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <div className={this.getClassName()}>
                 {advertData.map((data, i) => {

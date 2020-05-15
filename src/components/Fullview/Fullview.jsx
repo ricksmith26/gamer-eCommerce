@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './Fullview.css';
 import '../../shared/shared.css';
 
-import SelectedContext from '../DisplayGrid/DisplayGrid';
 import * as gameApi from '../../routes/gamesRoutes';
 
 import cartIcon from '../../shared/add-to-cart.svg';
@@ -56,19 +55,19 @@ class FullView extends Component {
 
 
     render() {
-        // console.log(this.props, '<<<<<<<BASKET')
         return (
-            <div>
+            <div className="fullView">
             <div className='centeredRowFlex'>
                 <div className={this.state.screenWidth < 750 ? 'mobileFullView' : 'cardContainer'}>
                     <div className='boxShadow'>
                         <div className="fullViewTitle">
                             {this.state.product_name}
                         </div>
-                        <div className="spaceBetweenFlex">
-                            <img className="fullViewImage" src={JSON.parse(this.props.location.state.product_images)[this.state.imageIndex]} alt='na' />
+                        <div className="spaceBetweenFlex cardOverflow">
+                            <img className="fullViewImage" src={JSON.parse(this.props.location.state.product_images)[this.state.imageIndex]} alt={`${this.state.product_name}`} />
                             <div className={this.state.screenWidth < 1220 ? 'smallWidthView'  : 'hidden' } >
-                            <div className='cardBorder centeredColumnFlex buy'>
+                            {this.state.screenWidth > 444
+                            ? <div className={'cardBorder centeredColumnFlex buy'}>
                                     <div className="buyNow">
                                         Buy now
                                     </div>
@@ -83,10 +82,24 @@ class FullView extends Component {
                                                 product_release_date: this.state.product_release_date
                                             })
                                         }}>
-                                    <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
+                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
-                            </div>
+                                :  <div className="buyText mobileBuy"
+                                        onClick={() => {
+                                            this.props.addToBasket({
+                                                product_id: this.state.product_id,
+                                                product_name: this.state.product_name,
+                                                product_description: this.state.product_description,
+                                                product_images: this.state.product_images,
+                                                product_more_details: this.state.product_more_details,
+                                                product_release_date: this.state.product_release_date
+                                            })
+                                        }}>
+                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
+                                    </div>
+                                    }
+                            </div> 
                             <div className={this.state.screenWidth < 1220 ? 'fullViewMobileText' : 'hidden'}>
                                 {this.state.product_description}
                             </div>
@@ -109,7 +122,7 @@ class FullView extends Component {
                                                 product_release_date: this.state.product_release_date
                                             })
                                         }}>
-                                    <img src={cartIcon} className='cartIcon'/> £{this.props.location.state.product_price}
+                                    <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
                             </div>
