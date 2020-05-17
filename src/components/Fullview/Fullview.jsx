@@ -32,7 +32,8 @@ class FullView extends Component {
                 product_description: this.props.location.state.product_description,
                 product_images: this.props.location.state.product_images,
                 product_more_details: this.props.location.state.product_more_details,
-                product_release_date: this.props.location.state.product_release_date
+                product_release_date: this.props.location.state.product_release_date,
+                product_price: this.props.location.state.product_price
             });
         } else {
             const product = await gameApi.getProductById(Number(this.props.match.params.id));
@@ -42,7 +43,8 @@ class FullView extends Component {
                 product_description: product.product_description,
                 product_images: product.product_images,
                 product_more_details: product.product_more_details,
-                product_release_date: product.product_release_date
+                product_release_date: product.product_release_date,
+                product_price: product.product_price
             })
         }
         this.updateWindowDimensions()
@@ -79,7 +81,8 @@ class FullView extends Component {
                                                 product_description: this.state.product_description,
                                                 product_images: this.state.product_images,
                                                 product_more_details: this.state.product_more_details,
-                                                product_release_date: this.state.product_release_date
+                                                product_release_date: this.state.product_release_date,
+                                                product_price: this.state.product_price
                                             })
                                         }}>
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
@@ -119,7 +122,9 @@ class FullView extends Component {
                                                 product_description: this.state.product_description,
                                                 product_images: this.state.product_images,
                                                 product_more_details: this.state.product_more_details,
-                                                product_release_date: this.state.product_release_date
+                                                product_release_date: this.state.product_release_date,
+                                                product_price: this.state.product_price
+                                                
                                             })
                                         }}>
                                     <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.props.location.state.product_price}

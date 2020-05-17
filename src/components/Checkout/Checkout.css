@@ -1,0 +1,23 @@
+.checkoutContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
+
+/* .viewBasketTitle {
+   width: 250px;
+} */
+
+.checkoutView {
+    width: 100%;
+}
+
+.checkoutDim {
+    width: 90%;
+    min-height: 500px;
+    justify-content: space-around;
+    align-items: space-around;
+}
+

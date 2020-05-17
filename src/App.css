@@ -10,3 +10,7 @@ body {
   /* .viewer {
     height: max-content;
   } */
+
+  .App {
+    height: max-content;
+  }

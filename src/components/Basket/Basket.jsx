@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link }from 'react-router-dom';
 
 import cartIcon from '../../shared/add-to-cart.svg';
 import closeIcon from '../../shared/close.svg';
@@ -41,6 +42,7 @@ class Basket extends Component {
                 </div>
                 <div className="outLine"></div>
             </div>
+                {/* <div className="checkout">Checkout</div> */}
                 <div className={!this.state.open ? 'verticalClosed1' : 'verticalClosed1 verticalOpen1'}></div>
                 <div className={!this.state.open ? 'verticalClosed2' : 'verticalClosed2 verticalOpen2'}></div>
                 <div className={!this.state.open ? 'verticalClosed3' : 'verticalClosed3 verticalOpen3'}></div>
@@ -68,7 +70,11 @@ class Basket extends Component {
                                 onClick={() => this.props.deleteFromBasket(item.product_id)}
                                 style={{paddingBottom: '1px', backgroundColor: '#f44336'}}>x</div>
                             </div>)
-                    })}</div>
+                    })}
+                    <Link to="/checkout">
+                        <div className="screenCheckoutBtn" onClick={() => this.setState({open: false})}>Checkout</div>
+                    </Link>
+                    </div>
                 </div>
             </div>
         )

@@ -11,36 +11,28 @@ import '../Login.css';
 
 class PopUp extends Component {
     state = {
-        user_first_name: 'Rick',
-        user_last_name: 'Smith',
-        user_email: 'ricksmith26@hotmail.com',
-        user_password: 'password',
-        user_confirm_password: 'password',
-        user_phone_number: '07939456789',
-        user_address1: '1233 street',
-        user_address2: 'Town',
-        user_address3: 'County',
-        user_post_code: 'Pr7 8uj',
+        user_first_name: '',
+        user_last_name: '',
+        user_email: '',
+        user_password: '',
+        user_confirm_password: '',
+        user_phone_number: '',
+        user_address1: '',
+        user_address2: '',
+        user_address3: '',
+        user_post_code: '',
         index: 0,
         viewProfile: false,
         title: 'Register'
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log(props, 'PopUpPopUp')
         if (props.viewProfile !== state.viewProfile) {
           return { viewProfile: props.viewProfile, index: 2 }
         } else {
             return null
         }
     }
-
-    // componentDidMount() {
-    //     console.log
-    //     if (this.props.viewProfile) {
-    //         this.setState({index: 2})
-    //     }
-    // }
 
     render() {
         return (
@@ -84,7 +76,7 @@ class PopUp extends Component {
                         <EditAccountDetails
                             handleTextInput={this.handleTextInput.bind(this)}
                             userProfile={this.props.userProfile}
-                            handleClose={this.props.handleClose.bind(this)}></EditAccountDetails>
+                            handleClose={this.closeEdit.bind(this)}></EditAccountDetails>
                     )}
 
                 </div>
@@ -117,7 +109,7 @@ class PopUp extends Component {
 
     async login(loginDetails) {
         const userDetails = await userApi.loginFromEmail(loginDetails);
-        console.log(userDetails,'<<<<')
+        console.log(userDetails,'<<<<USERDETAILS<<<<')
         if (userDetails.valid) {
             this.props.handleClose();
             addToCache('game_shack_user', userDetails.user);
@@ -130,6 +122,11 @@ class PopUp extends Component {
 
     editDetails() {
         this.setState({index: 3, title: 'Edit Details'}, () => console.log('EDITING>>' , this.state))
+    }
+    
+    closeEdit() {
+        this.props.handleClose();
+        this.setState({index: 2})
     }
 }
 export default PopUp;

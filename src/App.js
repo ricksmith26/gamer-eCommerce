@@ -5,6 +5,7 @@ import NavigationMenu from './components/NavigationMenu/NavigationMenu'
 import Userbar from './components/Userbar/Userbar';
 import AdvertSlider from './components/AdvertSlider/AdvertSlider';
 import MobileNavigationMenu from './components/MobileNavigationMenu/MobileNavigationMenu';
+import Checkout from './components/Checkout/Checkout';
 
 import { Route } from 'react-router-dom';
 import FullView from './components/Fullview/Fullview';
@@ -33,9 +34,10 @@ class App extends Component {
 		const storedLogin = loadFromCache('game_shack_user');
 		if (storedLogin) {
 			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
-			console.log(validToken, '<<<<<<<<<,,,')
 			if (validToken.valid) {
-				this.setState({userProfile: storedLogin});
+				this.setState({userProfile: storedLogin}, () => {
+					addToCache('game_shack_user', validToken.user)
+				});
 			}
 		}
 		const storedBasket = loadFromCache('game_shack_basket');
@@ -52,7 +54,7 @@ class App extends Component {
 	render() {
 
 		return (
-			<div>
+			<div className="App">
 			{/* <button onClick={() => clear()}>clear</button> */}
 			{this.state.screenWidth > 750 ? <div><Userbar setUserInfo={this.setUserInfo.bind(this)} userProfile={this.state.userProfile}></Userbar>
 					<div className='yellowBackground'>
@@ -64,21 +66,39 @@ class App extends Component {
 									userProfile={this.state.userProfile}
 									screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
 				
-					{/* <Route exact path="/"
-						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} /> */}
-					<Route path="/products/subcategory/:subcategory"
-						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps} />} />
-					<Route path="/products/searchTerm/:subcategory/:term"
-						render={routeProps => <View basket={this.state.basket} addToBasket={this.addToBasket} screenWidth={this.state.screenWidth} {...routeProps} />} />
+					<Route exact path="/"
+						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
+					<Route 	path="/products/subcategory/:subcategory"
+							render={routeProps => <View
+							basket={this.state.basket}
+							addToBasket={this.addToBasket}
+							screenWidth={this.state.screenWidth}
+							{...routeProps} />} />
+					<Route 
+						path="/products/searchTerm/:subcategory/:term"
+						render={routeProps => <View
+												basket={this.state.basket}
+												addToBasket={this.addToBasket}
+												screenWidth={this.state.screenWidth}
+												{...routeProps} />} />
 					<Route path="/fullView/:id"
-						render={routeProps => <FullView basket={this.state.basket} addToBasket={this.addToBasket.bind(this)} screenWidth={this.state.screenWidth} {...routeProps} />} />
-				
-				<Basket
-					basket={this.state.basket}
-					addToBasket={this.addToBasket}
-					addRemoveFromBasket={this.addRemoveFromBasket.bind(this)}
-					deleteFromBasket={this.deleteFromBasket.bind(this)}
-					screenWidth={this.state.screenWidth}></Basket>
+						render={routeProps => <FullView
+												basket={this.state.basket}
+												addToBasket={this.addToBasket.bind(this)}
+												screenWidth={this.state.screenWidth}
+												{...routeProps} />} />
+					<Route exact path="/checkout"
+						render={routeProps => <Checkout basket={this.state.basket}
+												addToBasket={this.addToBasket}
+												addRemoveFromBasket={this.addRemoveFromBasket.bind(this)}
+												screenWidth={this.state.screenWidth}
+												deleteFromBasket={this.deleteFromBasket.bind(this)}></Checkout>}></Route>
+					<Basket
+						basket={this.state.basket}
+						addToBasket={this.addToBasket}
+						addRemoveFromBasket={this.addRemoveFromBasket.bind(this)}
+						deleteFromBasket={this.deleteFromBasket.bind(this)}
+						screenWidth={this.state.screenWidth}></Basket>
 			</div>
 		);
 	}
