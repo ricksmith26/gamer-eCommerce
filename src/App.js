@@ -31,19 +31,22 @@ class App extends Component {
 	async componentDidMount() {
 		this.updateWindowDimensions()
 		window.addEventListener("resize", () => this.updateWindowDimensions());
+		const storedBasket = loadFromCache('game_shack_basket');
+		if (storedBasket) {
+			this.setState({basket: storedBasket})
+		}
 		const storedLogin = loadFromCache('game_shack_user');
+		console.log(storedLogin, '@@@@@@@@@@@<<<<<<<,,,,')
 		if (storedLogin) {
 			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
 			if (validToken.valid) {
 				this.setState({userProfile: storedLogin}, () => {
 					addToCache('game_shack_user', validToken.user)
+					console.log('NEW KEY>>>', validToken.user, '<<<<<')
 				});
 			}
 		}
-		const storedBasket = loadFromCache('game_shack_basket');
-		if (storedBasket) {
-			this.setState({basket: storedBasket})
-		}
+		
 
 	}
 
@@ -81,7 +84,8 @@ class App extends Component {
 												addToBasket={this.addToBasket}
 												screenWidth={this.state.screenWidth}
 												{...routeProps} />} />
-					<Route path="/fullView/:id"
+					<Route
+						path="/fullView/:id"
 						render={routeProps => <FullView
 												basket={this.state.basket}
 												addToBasket={this.addToBasket.bind(this)}
@@ -92,7 +96,8 @@ class App extends Component {
 												addToBasket={this.addToBasket}
 												addRemoveFromBasket={this.addRemoveFromBasket.bind(this)}
 												screenWidth={this.state.screenWidth}
-												deleteFromBasket={this.deleteFromBasket.bind(this)}></Checkout>}></Route>
+												deleteFromBasket={this.deleteFromBasket.bind(this)}
+												userProfile={this.state.userProfile}></Checkout>}></Route>
 					<Basket
 						basket={this.state.basket}
 						addToBasket={this.addToBasket}

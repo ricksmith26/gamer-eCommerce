@@ -16,7 +16,6 @@ class Login extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        console.log(props, 'LOGIN<<<')
         if (props.userProfile.user_first_name !== state.userProfile.userProfile) {
           return { initials: `${props.userProfile.user_first_name[0]}${props.userProfile.user_last_name[0]}` }
         } else {

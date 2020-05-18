@@ -25,6 +25,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
 
 .checkoutItem {
@@ -76,6 +77,9 @@
 .addBtn:active {
     background-color: #808080;
 }
+.addBtn:hover {
+    background-color: #696969;
+}
 
 .removeBtn {
     height: 16px;
@@ -89,6 +93,9 @@
 .removeBtn:active {
     background-color: #808080;
 }
+.removeBtn:hover {
+    background-color: #696969;
+}
 
 .deleteBtn {
     height: 16px;
@@ -101,4 +108,11 @@
     justify-content: center;
     cursor: pointer;
     font-size: 8px;
+}
+
+.deleteBtn:active {
+    background-color:#B22222;
+}
+.deleteBtn:hover {
+    background-color: #8B0000;
 }

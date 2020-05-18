@@ -10,7 +10,7 @@
     -webkit-animation: slideIn 2s forwards;
     -webkit-animation-delay: 2s;
     animation: slideIn 2s forwards;
-    z-index: 3;
+    z-index: -100;
     
 }
 

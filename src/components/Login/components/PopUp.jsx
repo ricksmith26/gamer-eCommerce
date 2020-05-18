@@ -39,16 +39,17 @@ class PopUp extends Component {
             <div onClick={this.handleClick}>
                 <div className={!this.props.open ? 'hidden' : 'blackBackground'}></div>
                 <div className={!this.props.open ? 'loginBox' : 'loginBox loginOpen'}>
+                    <div className="closePopup" onClick={() => this.props.handleClose()}>x</div>
                     {this.state.index === 0 &&
                         (<div className="loginContainer">
                             <h3>Login</h3>
                             <div className="inputContainer">
                                 <label htmlFor="Lastname">Email</label>
-                                <input className="text-input inputAdj" />
+                                <input className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_email')} />
                             </div>
                             <div className="inputContainer">
                                 <label htmlFor="Lastname">Password</label>
-                                <input className="text-input inputAdj" />
+                                <input type="password" className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_password')}/>
                             </div>
                             <button className="yellowBtn" onClick={() => this.login({user_email: this.state.user_email, user_password: this.state.user_password})}>Login</button>
                             <p>Not Registered?</p>
@@ -69,14 +70,15 @@ class PopUp extends Component {
                     {this.state.index === 2 && (
                         <AccountDetails
                             userProfile={this.props.userProfile}
-                            editDetails={this.editDetails.bind(this)}></AccountDetails>
+                            editDetails={this.editDetails.bind(this)}
+                            handleClose={this.props.handleClose.bind(this)}></AccountDetails>
                     )}
 
                     {this.state.index === 3 && (
                         <EditAccountDetails
                             handleTextInput={this.handleTextInput.bind(this)}
                             userProfile={this.props.userProfile}
-                            handleClose={this.closeEdit.bind(this)}></EditAccountDetails>
+                            closeEdit={this.closeEdit.bind(this)}></EditAccountDetails>
                     )}
 
                 </div>

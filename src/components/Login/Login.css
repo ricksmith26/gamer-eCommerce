@@ -50,8 +50,8 @@
     opacity: 0;
     border-radius: 8px;
     overflow: hidden;
-    visibility: hidden
-
+    visibility: hidden;
+    cursor: default;
 
 }
 

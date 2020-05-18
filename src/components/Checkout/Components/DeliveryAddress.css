@@ -1,0 +1,22 @@
+.checkbox {
+    height:16px;
+    width: 16px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-right: 16px;
+}
+
+.checkboxCon{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    cursor: pointer;
+    align-self: center;
+}
+
+.tick {
+    color: black;
+}

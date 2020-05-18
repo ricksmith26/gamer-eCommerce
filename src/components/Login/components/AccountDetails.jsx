@@ -13,7 +13,8 @@ function AccountDetails(props) {
             <h4 className="confirmationText">{props.userProfile.user_address2}</h4>
             <h4 className="confirmationText">{props.userProfile.user_address3}</h4>
             <h4 className="confirmationText">{props.userProfile.user_post_code}</h4>
-            <button className="yellowBtn" onClick={() => props.editDetails()}>Edit</button>
+            <button className="yellowBtn" style={{marginBottom: '12px'}} onClick={() => props.editDetails()}>Edit</button>
+            <button className="redBtn" onClick={() => props.handleClose()}>Close</button>
         </div>
     )
 }
