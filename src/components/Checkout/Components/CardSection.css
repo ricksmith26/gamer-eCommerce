@@ -1,0 +1,30 @@
+.StripeElement {
+    height: 40px;
+    padding: 10px 12px;
+    width: 300px;
+    color: #32325d;
+    background-color: #FFFFDB;
+    border: 8px solid #343409;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+    margin-left: calc(50% - 158px);
+    padding-top: 8px;
+  }
+  
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+  
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+  
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+
+  CardElement {
+    align-self: center;
+  }

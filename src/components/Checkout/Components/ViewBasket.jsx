@@ -18,7 +18,7 @@ class ViewBasket extends Component {
                     {Object.values(this.props.basket).length === 0 && <div>Your Basket is Empty</div>}
                     {Object.values(this.props.basket).map((item, i) => {
                         return (
-                            <div className="checkoutItem" style={{ marginTop: i === 0 ? '0px' : '8px' }}>
+                            <div className="checkoutItem" style={{ marginTop: i === 0 ? '0px' : '8px' }} key={item.product_name}>
                                 <div className="qtyName">
                                     <div className="itemQty">{item.qty} x </div>
                                     <div className="itemName">{item.product_name}</div>
