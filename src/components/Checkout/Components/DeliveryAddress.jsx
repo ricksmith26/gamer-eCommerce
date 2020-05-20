@@ -5,7 +5,7 @@ import './DeliveryAddress.css';
 class DeliveryAddress extends Component {
     state = {
         sameDeliveryAddress: true,
-        
+
     }
 
     componentDidMount() {
@@ -41,7 +41,7 @@ class DeliveryAddress extends Component {
                                 <input
                                     className="text-input inputAdj"
                                     type="text"
-                                    onChange={(e) => this.props.setDeliveryAddress(e, 'address1')}
+                                    onChange={(e) => this.props.setDeliveryAddress(e.target.value, 'address1')}
                                     value={this.props.deliveryAddress.address1} />
                             </div>
                             <div className="inputContainer">
@@ -49,7 +49,7 @@ class DeliveryAddress extends Component {
                                 <input
                                     className="text-input inputAdj"
                                     type="text"
-                                    onChange={(e) => this.props.setDeliveryAddress(e, 'address2')}
+                                    onChange={(e) => this.props.setDeliveryAddress(e.target.value, 'address2')}
                                     value={this.props.deliveryAddress.address2} />
                             </div>
                             <div className="inputContainer">
@@ -57,7 +57,7 @@ class DeliveryAddress extends Component {
                                 <input
                                     className="text-input inputAdj"
                                     type="text"
-                                    onChange={(e) => this.props.setDeliveryAddress(e, 'address3')}
+                                    onChange={(e) => this.props.setDeliveryAddress(e.target.value, 'address3')}
                                     value={this.props.deliveryAddress.address3} />
                             </div>
                             <div className="inputContainer">
@@ -65,11 +65,11 @@ class DeliveryAddress extends Component {
                                 <input
                                     className="text-input inputAdj"
                                     type="text"
-                                    onChange={(e) => this.props.setDeliveryAddress(e, 'post_code')}
+                                    onChange={(e) => this.props.setDeliveryAddress(e.target.value, 'post_code')}
                                     value={this.props.deliveryAddress.post_code} />
                             </div>
                         </div>}
-                        <button className="yellowBtn" onClick={() => this.props.changeIndex(2)}>Confirm and proceed to payment</button>
+                    <button className="yellowBtn" onClick={() => this.handleConfirm()}>Confirm and proceed to payment</button>
                 </div>
             </div>
         )
@@ -77,6 +77,19 @@ class DeliveryAddress extends Component {
 
     handleCheckBox() {
         this.setState({ sameDeliveryAddress: !this.state.sameDeliveryAddress })
+    }
+
+    handleConfirm() {
+        console.log(this.state.sameDeliveryAddress)
+        if (this.state.sameDeliveryAddress) {
+            this.props.setDeliveryAddress(this.props.userProfile.user_address1, 'address1');
+            this.props.setDeliveryAddress(this.props.userProfile.user_address2, 'address2');
+            this.props.setDeliveryAddress(this.props.userProfile.user_address3, 'address3');
+            this.props.setDeliveryAddress(this.props.userProfile.user_post_code, 'post_code');
+
+        }
+
+        this.props.changeIndex(2)
     }
 }
 

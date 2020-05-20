@@ -21,13 +21,14 @@ class Payment extends Component {
     state = {
         confirmed: false,
         client_secret: '',
-        pending: false
+        pending: false,
+        error: '',
+        stripe__id: '' 
     }
 
     async componentWillMount() {
-        const intent = await paymentAPi.createIntent([this.createIntentBasket()], this.props.userProfile.user_id);
-        this.setState({ client_secret: intent.client_secret }, () => console.log(this.state.client_secret, '<<<<<'))
-
+        const intent = await paymentAPi.createIntent([this.createIntentBasket(), this.props.userProfile.user_id]);
+        this.setState({ client_secret: intent.client_secret }, () => console.log(this.state.client_secret, '<<<<<', this.props, intent))
     }
 
     render() {
@@ -43,17 +44,23 @@ class Payment extends Component {
                     changeIndex={this.props.changeIndex.bind(this)}
                     setPending={this.setPending.bind(this)}
                     pending={this.state.pending}
+                    clearBasket={this.props.clearBasket.bind(this)}
+                    setConfirmedBasket={this.props.setConfirmedBasket.bind(this)}
+                    deliveryAddress={this.props.deliveryAddress}
+                    setConfirmedOrder={this.props.setConfirmedOrder.bind(this)}
                     />
                 </div>
+                {this.state.error.length > 0 && <p style={{error: '#c62d1f'}}>{this.state.error}</p>}
             </Elements>
         )
     }
 
     getAmount() {
-        return Object.values(this.props.basket).reduce((acc, item) => {
+        const price = Object.values(this.props.basket).reduce((acc, item) => {
             acc += item.qty * item.product_price;
             return acc;
         }, 0);
+        return price.toString().split('.')[1].length > 2 ? price.toFixed(2) : price;
     }
 
     createIntentBasket() {

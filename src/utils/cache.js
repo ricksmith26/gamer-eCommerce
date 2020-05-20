@@ -7,6 +7,6 @@ export const loadFromCache = (key) => {
     return item;
 }
 
-export const clear = () => {
-    localStorage.clear();
+export const clear = (key) => {
+    localStorage.clear(key);
 }
