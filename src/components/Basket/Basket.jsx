@@ -57,7 +57,7 @@ class Basket extends Component {
                             <div className="boxShadow smlCard" key={`${item.product_name}`}>
                             <div className="countAndImg">
                                 <p className="count">{item.qty} x </p>
-                                <img alt={item.product_name} src={JSON.parse(item.product_images)[0]} className="thumbnailImg"/>
+                                <img alt={item.product_name} src={item.product_images} className="thumbnailImg"/>
                             </div>
                             <div className="productName">{item.product_name}</div>
                             <div className="adjustQty">

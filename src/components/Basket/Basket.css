@@ -1,7 +1,7 @@
 .basketContainer,
 .fullBasketContainer {
     position: fixed;
-    bottom: -64px;
+    bottom: -66px;
     right: 16px;
     background-color: #343409;
     height: 56px;

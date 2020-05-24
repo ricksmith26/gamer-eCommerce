@@ -46,8 +46,9 @@ class ViewBasket extends Component {
 
     getTotal() {
         return Object.values(this.props.basket).reduce((acc, item) => {
-            acc += item.qty * item.product_price;
-            return acc.toString().split('.')[1] && acc.toString().split('.')[1].length > 2 ? acc.toFixed(2) : acc;
+            acc += (Number(item.qty) * Number(item.product_price));
+            console.log(acc, Number(item.qty), Number(item.product_price))
+            return acc;
         }, 0)
     }
 }

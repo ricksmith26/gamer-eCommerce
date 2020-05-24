@@ -51,16 +51,18 @@ class App extends Component {
 									setUserInfo={this.setUserInfo.bind(this)}
 									userProfile={this.state.userProfile}
 									screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
+					
 				
 					<Route exact path="/"
 						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
 
-					<Route 	path="/products/subcategory/:subcategory"
-							render={routeProps => <View
-							basket={this.state.basket}
-							addToBasket={this.addToBasket}
-							screenWidth={this.state.screenWidth}
-							{...routeProps} />} />
+					<Route
+						path="/products/subcategory/:subcategory"
+						render={routeProps => <View
+												basket={this.state.basket}
+												addToBasket={this.addToBasket}
+												screenWidth={this.state.screenWidth}
+												{...routeProps} />} />
 
 					<Route 
 						path="/products/searchTerm/:subcategory/:term"
@@ -85,7 +87,7 @@ class App extends Component {
 												deleteFromBasket={this.deleteFromBasket.bind(this)}
 												userProfile={this.state.userProfile}
 												clearBasket={this.clearBasket.bind(this)}></Checkout>}></Route>
-												
+
 					<Basket
 						basket={this.state.basket}
 						addToBasket={this.addToBasket}

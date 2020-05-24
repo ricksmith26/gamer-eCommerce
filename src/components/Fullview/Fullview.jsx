@@ -66,7 +66,7 @@ class FullView extends Component {
                             {this.state.product_name}
                         </div>
                         <div className="spaceBetweenFlex cardOverflow">
-                            <img className="fullViewImage" src={JSON.parse(this.props.location.state.product_images)[this.state.imageIndex]} alt={`${this.state.product_name}`} />
+                            <img className="fullViewImage" src={this.props.location.state.product_images} alt={`${this.state.product_name}`} />
                             <div className={this.state.screenWidth < 1220 ? 'smallWidthView'  : 'hidden' } >
                             {this.state.screenWidth > 444
                             ? <div className={'cardBorder centeredColumnFlex buy'}>
