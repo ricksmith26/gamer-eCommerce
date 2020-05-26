@@ -33,6 +33,14 @@
     align-items: flex-start;
 }
 
+.spaceBetweenCenter {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+}
 .spaceAroundFlex {
     width: 100%;
     display: flex;
@@ -41,6 +49,15 @@
     justify-self: space-around;
     align-content: space-around;
 }
+
+.centerFlex {
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 .yellowBackground {
     background-color: #FDED2A;
     width: 100%;

@@ -1,8 +1,6 @@
 import React from 'react';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 
-import {clear} from '../../../utils/cache';
-
 import * as ordersApi from '../../../routes/ordersRoutes';
 
 import CardSection from './CardSection';
@@ -34,9 +32,7 @@ export default function PaymentForm(props) {
 
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
     } else {
-      console.log(result,'result<<<<<<<<<', props)
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
           const basket = props.setConfirmedBasket();
@@ -48,8 +44,6 @@ export default function PaymentForm(props) {
           })
           props.setConfirmedOrder(order);
           props.changeIndex(3);
-          console.log(result.paymentIntent.status);
-          // clear('game_shack_basket');
           props.clearBasket();
         // Show a success message to your customer
         // There's a risk of the customer closing the window before callback

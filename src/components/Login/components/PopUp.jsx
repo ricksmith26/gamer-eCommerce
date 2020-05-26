@@ -95,7 +95,6 @@ class PopUp extends Component {
 
     async handleRegister() {
         const user = this.state;
-        console.log(user, '<<<<<USERMMMMM<<,')
         const newUser = await userApi.registerUser(user);
         if (newUser.status === 200) {
             this.setState({ created: true },
@@ -111,19 +110,17 @@ class PopUp extends Component {
 
     async login(loginDetails) {
         const userDetails = await userApi.loginFromEmail(loginDetails);
-        console.log(userDetails,'<<<<USERDETAILS<<<<')
         if (userDetails.valid) {
             this.props.handleClose();
             addToCache('game_shack_user', userDetails.user);
             this.handleLoginData(userDetails.user);
         } else {
-            console.log('incorrect');
             this.setState({index: 2})
         }
     }
 
     editDetails() {
-        this.setState({index: 3, title: 'Edit Details'}, () => console.log('EDITING>>' , this.state))
+        this.setState({index: 3, title: 'Edit Details'})
     }
     
     closeEdit() {

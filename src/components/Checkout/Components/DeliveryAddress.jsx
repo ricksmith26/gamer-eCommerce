@@ -15,7 +15,7 @@ class DeliveryAddress extends Component {
     render() {
         return (
             <div className="ViewBasketContainer">
-                <h2 className="viewBasketTitle">Delivery Address</h2>
+                {this.props.userProfile.user_address1 ? <div><h2 className="viewBasketTitle">Delivery Address</h2>
                 <div>
                     <h4>Billing Address</h4>
                     <p>{this.props.userProfile.user_address1}</p>
@@ -70,7 +70,11 @@ class DeliveryAddress extends Component {
                             </div>
                         </div>}
                     <button className="yellowBtn" onClick={() => this.handleConfirm()}>Confirm and proceed to payment</button>
+                </div></div>
+                : <div>
+                    <button className="yellowBtn" onClick={() => this.handleOpenLogin()}>Login to Continue</button>
                 </div>
+                }
             </div>
         )
     }
@@ -80,7 +84,6 @@ class DeliveryAddress extends Component {
     }
 
     handleConfirm() {
-        console.log(this.state.sameDeliveryAddress)
         if (this.state.sameDeliveryAddress) {
             this.props.setDeliveryAddress(this.props.userProfile.user_address1, 'address1');
             this.props.setDeliveryAddress(this.props.userProfile.user_address2, 'address2');
@@ -90,6 +93,9 @@ class DeliveryAddress extends Component {
         }
 
         this.props.changeIndex(2)
+    }
+    handleOpenLogin() {
+        document.getElementById('login').click();
     }
 }
 

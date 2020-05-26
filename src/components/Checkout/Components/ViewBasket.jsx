@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import './ViewBasket.css';
-import { Link } from 'react-router-dom';
 
 class ViewBasket extends Component {
 
@@ -47,7 +46,6 @@ class ViewBasket extends Component {
     getTotal() {
         return Object.values(this.props.basket).reduce((acc, item) => {
             acc += (Number(item.qty) * Number(item.product_price));
-            console.log(acc, Number(item.qty), Number(item.product_price))
             return acc;
         }, 0)
     }

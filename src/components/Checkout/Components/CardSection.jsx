@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardElement, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
+import { CardElement } from '@stripe/react-stripe-js';
 import './CardSection.css'
 
 const CARD_ELEMENT_OPTIONS = {
@@ -25,9 +25,6 @@ function CardSection() {
         <label>
             <p>Card details</p>
             <CardElement options={CARD_ELEMENT_OPTIONS} />
-            {/* <CardNumberElement></CardNumberElement>
-            <CardExpiryElement></CardExpiryElement>
-            <CardCvcElement></CardCvcElement> */}
         </label>
     );
 };

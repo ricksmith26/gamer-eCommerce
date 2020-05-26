@@ -12,7 +12,10 @@ class MobileNavigation extends Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ menuItems: await api.getMenuItems() });
+        if (this.props.screenWidth < 750) {
+
+            this.setState({ menuItems: await api.getMenuItems() });
+        }
     }
 
     componentWillUnmount = async () => {

@@ -78,7 +78,7 @@ class Checkout extends Component {
     setDeliveryAddress(e, input) {
         const deliveryAddress = this.state.deliveryAddress;
         deliveryAddress[input] = e;
-        this.setState({deliveryAddress}, () => console.log(this.state.deliveryAddress, 'STATE<<<<<<<<<<<<<<<<<<<<<<<<<'))
+        this.setState({deliveryAddress})
     }
 
     setConfirmedBasket() {
@@ -95,7 +95,7 @@ class Checkout extends Component {
     }
 
     setConfirmedOrder(order) {
-        this.setState({order}, () => console.log(order, 'ORDER<<<<<'))
+        this.setState({order})
     }
 }
 

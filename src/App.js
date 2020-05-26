@@ -15,7 +15,7 @@ import Basket from './components/Basket/Basket';
 
 import * as userApi from './routes/usersRoutes';
 
-import {loadFromCache, addToCache, clear} from './utils/cache';
+import { loadFromCache, addToCache } from './utils/cache';
 
 class App extends Component {
 
@@ -68,8 +68,8 @@ class App extends Component {
 					<Route
 						path="/products/subcategory/:subcategory"
 						render={routeProps => <View
-												basket={this.state.basket}
-												addToBasket={this.addToBasket}
+												// basket={this.state.basket}
+												addToBasket={this.addToBasket.bind(this)}
 												screenWidth={this.state.screenWidth}
 												{...routeProps} />} />
 
@@ -77,7 +77,7 @@ class App extends Component {
 						path="/products/searchTerm/:subcategory/:term"
 						render={routeProps => <View
 												basket={this.state.basket}
-												addToBasket={this.addToBasket}
+												addToBasket={this.addToBasket.bind(this)}
 												screenWidth={this.state.screenWidth}
 												{...routeProps} />} />
 					<Route

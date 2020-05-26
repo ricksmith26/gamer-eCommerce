@@ -7,7 +7,7 @@ class UserSignUp extends Component {
     }
 
     render() {
-        console.log(this.props)
+        
         return (
             <div className="loginContainer">
                         <h2>Register</h2>

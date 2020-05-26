@@ -130,3 +130,27 @@
     margin-bottom: 24px;
     position: relative;
 }
+
+
+.centerMore{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+.moreContainer {
+    margin-top: 36px;
+    width: 800px;
+    height: 400px;
+    margin-left: -66px;
+}
+.moreMobileContainer {
+    margin-top: 36px;
+    width: 80%;
+    height: 400px;
+    margin-left: -80px;
+}

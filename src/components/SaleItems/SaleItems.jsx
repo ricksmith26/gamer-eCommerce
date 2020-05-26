@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import Carousel from './Components/Carousel';
+import leftArrow from '../../shared/left-arrow.svg';
+import rightArrow from '../../shared/right-arrow.svg';
 
 import './SaleItems.css';
 
@@ -9,9 +11,17 @@ const arr = [0,1,2, 3 ,4]
 class SaleItems extends Component {
 
     state = {
-        products: arr,
+        indexMap: arr,
         direction: '',
-        index: 1
+        products: []
+    }
+
+    async componentWillReceiveProps() {
+
+        const indexMap = this.props.products.map((item, i) =>  i);
+
+        this.setState({indexMap})
+
     }
     
     render() {
@@ -22,42 +32,45 @@ class SaleItems extends Component {
                     <div className="innerBorder">
                         <div className="saleTitle">{this.props.title}</div>
                          <div className="saleItemsContainer">
-                            <div className="rightDirection" onClick={() => this.change('right')}></div>
-                            <div className="leftDirection" onClick={() => this.change('left')}></div>
-                            {this.state.products.map((item, i) => {
-                                console.log(this.state.products.indexOf(i),'this.state.products.indexOf(i)', i, this.state.products)
+                            <div className="rightDirection" onClick={() => this.change('right')}>
+                                <img src={rightArrow} alt="<" className="rightArrow"/>
+                            </div>
+                            <div className="leftDirection" onClick={() => this.change('left')}>
+                                <img src={leftArrow} alt="<" className="leftArrow"/>
+                            </div>
+                            {this.props.products.map((item, i) => {
                                 return (
-                                    <div className={`saleItem${this.state.products.indexOf(i)}`}>
-                                        <div className="saleProductBox boxShadow">
-                                            <img className="gameImage" src={'sdasad'} alt='dasas' />
-                                            <div className="title darkText">Name{i +1}</div>
-                                            <div className="greyLine linePosition"></div>
-                                            <div className="priceBanner lightText">£10.96</div>
+                                    <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }} key={item.product_name}>
+                                        <div className={`saleItem${this.state.indexMap.indexOf(i)}`}>
+                                            <div className="saleProductBox boxShadow">
+                                                <img className="gameImage" src={item.product_images} alt='dasas' />
+                                                <div className="title darkText">{item.product_name}</div>
+                                                <div className="greyLine linePosition"></div>
+                                                <div className="priceBanner lightText">£{item.product_price}</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
 
                                 )
                             })}
                         </div> 
                     </div>
                 </div>
-                <button onClick={() => this.change('up') }>press</button>
             </div>
         )
     }
 
 
     change(direction) {
-        console.log(direction)
         if (direction === 'right') {
-            const item = this.state.products[this.state.products.length - 1];
-            const products = this.state.products.slice(0, this.state.products.length - 1);
-            this.setState({products: [item, ...products]}, () => console.log(this.state.products))
+            const item = this.state.indexMap[this.state.indexMap.length - 1];
+            const products = this.state.indexMap.slice(0, this.state.indexMap.length - 1);
+            this.setState({indexMap: [item, ...products]})
         }
         if (direction === 'left') {
-            const item = this.state.products[0];
-            const products = this.state.products.slice(1, this.state.products.length);
-            this.setState({products: [...products, item]}, () => console.log(this.state.products))
+            const item = this.state.indexMap[0];
+            const products = this.state.indexMap.slice(1, this.state.indexMap.length);
+            this.setState({indexMap: [...products, item]})
         }
 
     }

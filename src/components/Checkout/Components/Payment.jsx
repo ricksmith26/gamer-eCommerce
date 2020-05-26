@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import StripeCheckout from 'react-stripe-checkout';
 import * as paymentAPi from '../../../routes/paymentRoutes';
 
 import PaymentForm from './PaymentForm'
@@ -28,7 +27,7 @@ class Payment extends Component {
 
     async componentWillMount() {
         const intent = await paymentAPi.createIntent([this.createIntentBasket(), this.props.userProfile.user_id]);
-        this.setState({ client_secret: intent.client_secret }, () => console.log(this.state.client_secret, '<<<<<', this.props, intent))
+        this.setState({ client_secret: intent.client_secret })
     }
 
     render() {

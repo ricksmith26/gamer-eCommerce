@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { addToCache } from '../utils/cache';
 
 const URL = 'http://192.168.1.12:9000';
 

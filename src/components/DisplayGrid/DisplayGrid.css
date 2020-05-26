@@ -1,11 +1,11 @@
 .gridContainer {
     width: 100%;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 236px);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 44px; 
+    margin-top: 0px; 
     padding-bottom: 44px; 
 }
 
@@ -235,4 +235,53 @@ a.info{
 .gridscroll {
     /* height: 100vh; */
     overflow: scroll;
+}
+
+.cartIcon {
+    height: 16px;
+    position: absolute;
+    left: 12px;
+    top: 13px;
+}
+
+.checkoutIcon {
+    height: 16px;
+    position: absolute;
+    left: 12px;
+    top: 13px;
+}
+.buyTextD {
+    width: max-content;
+    background-color: green;
+    padding: 12px 24px 12px 40px;
+    border-radius: 24px;
+    color: white;
+    position: relative;
+    padding-left: 36px;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.buyText:hover {
+
+}
+.checkout {
+    width: max-content;
+    background-color: #FDED2A;
+    padding: 12px 24px 12px 40px;
+    border-radius: 24px;
+    color: white;
+    position: relative;
+    padding-left: 36px;
+    cursor: pointer;
+    color: #343409;
+}
+
+.checkout:link  {
+    text-decoration: none;
+}
+
+.displayText {
+    margin-top: 16px;
 }
