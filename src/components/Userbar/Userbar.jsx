@@ -13,7 +13,7 @@ class Userbar extends Component {
                     <img className="logo" src={logo2} alt="logo"/>
                     <input id="search" className="text-input" type="text" placeholder="Search.."/>
                 </div>
-               <Login setUserInfo={this.props.setUserInfo.bind(this)} userProfile={this.props.userProfile}/>
+               <Login setUserInfo={this.props.setUserInfo.bind(this)} userProfile={this.props.userProfile} screenWidth={this.props.screenWidth}/>
             </div>
         )
     }

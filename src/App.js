@@ -3,7 +3,8 @@ import './App.css';
 import './shared/shared.css';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu'
 import Userbar from './components/Userbar/Userbar';
-import AdvertSlider from './components/AdvertSlider/AdvertSlider';
+// import AdvertSlider from './components/AdvertSlider/AdvertSlider';
+import Home from './components/Homepage/Home';
 import MobileNavigationMenu from './components/MobileNavigationMenu/MobileNavigationMenu';
 import Checkout from './components/Checkout/Checkout';
 
@@ -21,7 +22,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			screenWidth: null,
+			screenWidth: 0,
 			basket: {},
 			userProfile: {}
 		};
@@ -42,19 +43,27 @@ class App extends Component {
 
 		return (
 			<div className="App">
-			{this.state.screenWidth > 750 ? <div><Userbar setUserInfo={this.setUserInfo.bind(this)} userProfile={this.state.userProfile}></Userbar>
-					<div className='yellowBackground'>
-						<div className="centeredRowFlex">
-							<NavigationMenu></NavigationMenu>
+			{this.state.screenWidth > 750
+				? 	<div>
+						<Userbar
+							setUserInfo={this.setUserInfo.bind(this)}
+							userProfile={this.state.userProfile}
+							screenWidth={this.state.screenWidth}></Userbar>
+						<div className='yellowBackground'>
+							<div className="centeredRowFlex">
+								<NavigationMenu></NavigationMenu>
+							</div>
 						</div>
-					</div></div> : <MobileNavigationMenu
-									setUserInfo={this.setUserInfo.bind(this)}
-									userProfile={this.state.userProfile}
-									screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
+					</div>
+
+				: <MobileNavigationMenu
+						setUserInfo={this.setUserInfo.bind(this)}
+						userProfile={this.state.userProfile}
+						screenWidth={this.state.screenWidth}></MobileNavigationMenu>}
 					
 				
 					<Route exact path="/"
-						component={() => <AdvertSlider screenWidth={this.state.screenWidth}></AdvertSlider>} />
+						component={() => <Home screenWidth={this.state.screenWidth}></Home>} />
 
 					<Route
 						path="/products/subcategory/:subcategory"

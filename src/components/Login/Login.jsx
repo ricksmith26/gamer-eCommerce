@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import userProfile from '../../userprofile.svg';
+import userProfile from '../../shared/userdeskicon.svg';
+import userMobProfile from '../../shared/mobileusericon.svg';
+
 import PopUp from './components/PopUp';
 import '../../shared/shared.css';
 import './Login.css';
@@ -27,9 +29,12 @@ class Login extends Component {
         return (
             <div className={`userBarProfile ${this.props.screenWidth < 750 ? 'mobileLogin' : ''}`} onClick={() => this.handleOpen()}>
                 {this.state.initials.length === 0
-                    ? <div>
-                        <img className="usrImg" alt='user-login' src={userProfile} />
-                        <h5 className='login'>Login / Register</h5></div>
+                    ? ( this.props.screenWidth > 750
+                        ?   <div>
+                                <img className="usrImg" alt='user-login' src={userProfile} />
+                                <h5 className='login'>Login / Register</h5>
+                            </div> 
+                        : <img className="usrImg" alt='user-login' src={userMobProfile} style={{marginTop: '6px'}}/>)
                     : <div className={`${this.props.screenWidth < 750 ? 'initialsMobile' : 'initials'}`} onClick={() => this.openProfile()}><h1 >{this.state.initials}</h1></div>}
 
                 <PopUp

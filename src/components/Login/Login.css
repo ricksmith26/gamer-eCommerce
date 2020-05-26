@@ -5,7 +5,8 @@
     object-fit: fill;
     display: flex;
     flex-direction: column;
-    text-align: center;margin-right: 16px;
+    text-align: center;
+    margin-right: 16px;
     cursor: pointer;
     position: relative;
     display: flex;

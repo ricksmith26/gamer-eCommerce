@@ -62,7 +62,7 @@
     overflow-x: hidden;
     width: calc(100% - 32px);
     height: 100%;
-    position: absolute;
+    position: relative;
     height: calc(100vw / 3.261006289);
     border: 16px solid white;
     

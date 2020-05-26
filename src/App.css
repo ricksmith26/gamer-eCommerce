@@ -1,17 +1,6 @@
 body {
+  height: 100%;
   font-family: sans-serif;
   overflow: hidden;
-  
-  }
-  /* html, body {
-    overflow-x:hidden 
-  }  */
 
-  /* .viewer {
-    height: max-content;
-  } */
-
-  .App {
-    height: max-content;
   }
-  
