@@ -5,6 +5,7 @@ import AccountDetails from './AccountDetails';
 import EditAccountDetails from './EditAccountDetail';
 import RegisteredAccount from './RegisteredAccount';
 import { addToCache } from '../../../utils/cache';
+import darkClose from '../../../shared/darkclose.svg';
 import './PopUp.css';
 import '../../../shared/shared.css';
 import '../Login.css';
@@ -39,20 +40,24 @@ class PopUp extends Component {
             <div onClick={this.handleClick}>
                 <div className={!this.props.open ? 'hidden' : 'blackBackground'}></div>
                 <div className={!this.props.open ? 'loginBox' : 'loginBox loginOpen'}>
-                    <div className="closePopup" onClick={() => this.props.handleClose()}>x</div>
+                    <div className="closePopup" onClick={() => this.props.handleClose()}>
+                        <img src={darkClose} alt="X" style={{height: '12px', width: '12px'}}/>
+                    </div>
                     {this.state.index === 0 &&
                         (<div className="loginContainer">
-                            <h3>Login</h3>
-                            <div className="inputContainer">
-                                <label htmlFor="Lastname">Email</label>
-                                <input className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_email')} />
-                            </div>
-                            <div className="inputContainer">
-                                <label htmlFor="Lastname">Password</label>
-                                <input type="password" className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_password')}/>
-                            </div>
+                            <form>
+                            <h3 style={{color: '#343409'}}>Login</h3>
+                                <div className="inputContainer">
+                                    <label htmlFor="Lastname" style={{color: '#343409'}}>Email</label>
+                                    <input className="text-input inputAdj" autoComplete="email" onChange={(e) => this.handleTextInput(e, 'user_email')} />
+                                </div>
+                                <div className="inputContainer">
+                                    <label htmlFor="Lastname" style={{color: '#343409'}}>Password</label>
+                                    <input type="password" autoComplete="current-password" className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_password')}/>
+                                </div>
+                            </form>
                             <button className="yellowBtn" onClick={() => this.login({user_email: this.state.user_email, user_password: this.state.user_password})}>Login</button>
-                            <p>Not Registered?</p>
+                            <p style={{color: '#343409'}}>Not Registered?</p>
                             <button className="yellowBtn" onClick={() => this.setState({ index: 1 })}>Register</button>
                         </div>)
                     }

@@ -10,7 +10,7 @@
 }
 
 .mobileHeight {
-    height: calc(100vh - 136px);
+    height: calc(100vh - 172px);
 }
 
 .productBox {
@@ -164,18 +164,18 @@ a.info{
 } */
 
 .productBox:hover .content{
-    height: 120px;
+    height: 184px;
     width: 214px;
     opacity: 0.9;
-    top: 250px;
+    top: 220px;
     transform: rotate(0deg) translate(0px,-100px);
     overflow-y: auto;
 }
 .productBox:hover .content2{
     height: 64px;
-    width: 214px;
+    width: 210px;
     opacity: 0.9;
-    top: 50px;
+    top: 20px;
     transform: rotate(0deg) translate(0px,32px);
     overflow: none;
     display: flex;
@@ -276,6 +276,7 @@ a.info{
     padding-left: 36px;
     cursor: pointer;
     color: #343409;
+    text-decoration: none!important;
 }
 
 .checkout:link  {

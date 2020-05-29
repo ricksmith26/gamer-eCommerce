@@ -48,8 +48,9 @@
 }
 
 .logo {
-    height: 70px;
-    margin-top: -4px;
+    height: 64px;
+    margin-top: 6px;
+    margin-right: 16px;
 }
 .logoBarItem {
     width: max-content;
@@ -68,3 +69,74 @@
 #search {
     margin-top: 16px;
 }
+
+.searchResults {
+    position: absolute;
+    top: 62px;
+    z-index: 50;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.searchResultBox {
+    height: 72px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    text-decoration: none !important;
+    transform: scale(0.95, 0.95);
+    -moz-transition: transform 0.2s ease-in-out;
+    -o-transition: transform 0.2s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+
+.searchResultBox:hover {
+    transform: scale(1, 1);
+    -moz-transition: transform 0.2s ease-in-out;
+    -o-transition: transform 0.2s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+
+.searchResultTextBox {
+    width: 150px;
+    max-height: 58px;
+    padding-right: 4px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.thumbnailBox {
+    height: 64px;
+    width: 64px;
+    object-fit: contain;
+    margin-left: 4px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+Link {
+    text-decoration: none !important;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+  }

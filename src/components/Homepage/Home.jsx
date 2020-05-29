@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import AdvertSlider from '../AdvertSlider/AdvertSlider';
 import SaleItems from '../SaleItems/SaleItems';
-import * as productApi from '../../routes/gamesRoutes';
+import * as productApi from '../../routes/productRoutes';
 import './Home.css';
 import '../../shared/shared.css';
 
 class Home extends Component {
+    _isMounted = true;
 
     state = {
         saleGames: [],
@@ -13,14 +14,21 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        Promise.all([
-            productApi.getSaleItems(),
-            productApi.getSaleHardware()
-        ]).then(([saleGames, saleHardware]) => {
-            this.setState({saleGames, saleHardware})
-        })
-
+        this._isMounted = true;
+        if (this._isMounted) {
+            Promise.all([
+                productApi.getSaleItems(),
+                productApi.getSaleHardware()
+            ]).then(([saleGames, saleHardware]) => {
+                this.setState({saleGames, saleHardware})
+            })
+        }
     }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+      }
+     
 
     render() {
 
@@ -35,20 +43,20 @@ class Home extends Component {
 
                             <div className={this.props.screenWidth > 750 ? "topGamePick" :'mobileGamePick'}>
 
-                                {this.state.saleGames.length && <SaleItems
+                                {this.state.saleGames.length ? <SaleItems
                                                                     title="Top Games"
                                                                     screenWidth={this.props.screenWidth}
                                                                     products={this.state.saleGames}
-                                                                    ></SaleItems>}
+                                                                    ></SaleItems> : null}
 
                             </div>
 
                             <div className={this.props.screenWidth > 750 ? "topGamePick" :'mobileGamePick'}>
 
-                                {this.state.saleHardware.length && <SaleItems
+                                {this.state.saleHardware.length ? <SaleItems
                                                                     title="Top Hardware"
                                                                     screenWidth={this.props.screenWidth}
-                                                                    products={this.state.saleHardware}></SaleItems>}
+                                                                    products={this.state.saleHardware}></SaleItems> : null}
 
                             </div>
                         </div>

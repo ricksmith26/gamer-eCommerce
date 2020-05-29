@@ -3,23 +3,27 @@ import './AdvertSlider.css';
 import { advertData } from '../../shared/advertData'
 
 class AdvertSlider extends Component {
+    recurring = false;
 
     state = {
         currentIndex: 0
     }
 
     componentDidMount() {
-        
-        setInterval(()=> {
-            if (this.state.currentIndex === advertData.length - 1){
-                this.setState({currentIndex: 0})
-            } else { this.setState({currentIndex: this.state.currentIndex + 1 })}
-        }, 5000)
+        this.recurring = true;
+            setInterval(()=> {
+                if (this.recurring) {
+                    if (this.state.currentIndex === advertData.length - 1){
+                        this.setState({currentIndex: 0})
+                    } else { this.setState({currentIndex: this.state.currentIndex + 1 })}
 
+                }
+    
+            }, 5000)
     }
 
     componentWillUnmount() {
-        
+        this.recurring = false;
     }
 
 

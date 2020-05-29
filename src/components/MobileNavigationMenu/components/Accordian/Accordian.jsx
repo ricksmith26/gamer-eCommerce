@@ -17,7 +17,11 @@ class Accordian extends Component {
                     <div className={!this.state.open ? 'triangle-bottom' : 'triangle-bottom rotate'}></div>
                 </div>
                 <div className={`${this.state.open ? 'listMenu expanded' : 'listMenu'}`}>
-                    <ReactCSSTransitionGroup transitionName="example">
+                    <ReactCSSTransitionGroup
+                        transitionName="example"
+                        transitionEnterTimeout={300}
+                        transitionLeaveTimeout={300}
+                        >
                         {this.renderMenu()}
                     </ReactCSSTransitionGroup>
                 </div>
@@ -25,8 +29,8 @@ class Accordian extends Component {
         )
     }
     renderMenu() {
-        return this.state.open && this.props.item.subcategories.map((subcategory) => {
-            return <div className="positioned"><InnerAccordian handleClose={() => this.props.handleClose()} subcategory={subcategory}></InnerAccordian></div>
+        return this.state.open && this.props.item.subcategories.map((subcategory, i) => {
+            return <div className="positioned" key={`${subcategory}${i}`}><InnerAccordian handleClose={() => this.props.handleClose()} subcategory={subcategory}></InnerAccordian></div>
         })
     }
 }

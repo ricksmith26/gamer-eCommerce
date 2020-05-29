@@ -10,14 +10,16 @@
     padding: 16px;
 }
 
-.mobileContents {
-    width: calc(100% - 16px);
-    background-color: lightgrey;
-    border-radius: 8px;
-    padding: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
-}
+@media screen and (min-width: 750px) {
+    .basketContents {
+        width: calc(100% - 16px);
+        background-color: lightgrey;
+        border-radius: 8px;
+        padding: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+  }
 
 .ViewBasketContainer {
     display: flex;

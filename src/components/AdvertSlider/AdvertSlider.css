@@ -64,7 +64,7 @@
     height: 100%;
     position: relative;
     height: calc(100vw / 3.261006289);
-    border: 16px solid white;
+    /* border: 16px solid white; */
     
 }
 .desktop {

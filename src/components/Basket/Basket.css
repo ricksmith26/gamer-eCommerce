@@ -192,6 +192,7 @@
     -o-transition: bottom 0.3s ease-in-out;
     -webkit-transition: bottom 0.3s ease-in-out;
     transition: bottom 0.3s ease-in-out;
+    z-index: 50;
 }
 
 .cartOpen {
@@ -380,18 +381,18 @@
 .screenClosed {
     padding: 1px;
     background-color: lightgrey;
-    /* transition: transform .4s, opacity0.3s; */
-    -moz-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    -o-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transform: scale(0, 0);
+    -moz-transition: transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     transition-delay: 0s;
-    width: 0px;
-    height: 0px;
+    height: 200px;
+    width: 300px;
+    right: 62px;
+    bottom: 136px;
     margin: 0 auto;
     position: absolute;
-    bottom: 244px;
-    right: 212px;
     z-index: -101;
     opacity: 0;
     border-radius: 8px;
@@ -407,10 +408,11 @@
     right: 62px;
     bottom: 136px;
     overflow: auto;
-    -moz-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    -o-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    -webkit-transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, right 0.3s ease-in-out, bottom 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transform: scale(1, 1);
+    -moz-transition: transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     transition-delay: 0.3s;
     visibility: visible;
     position: relative;

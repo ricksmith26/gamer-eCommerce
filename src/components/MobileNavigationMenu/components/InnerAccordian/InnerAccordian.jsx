@@ -20,7 +20,10 @@ class InnerAccordian extends Component {
 
                 <div className={`animContainer ${this.state.open && 'expanded'}`}>
 
-                    <ReactCSSTransitionGroup transitionName="example">
+                    <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}>
                         {this.renderList()}
                     </ReactCSSTransitionGroup>
                 </div>
@@ -32,13 +35,14 @@ class InnerAccordian extends Component {
         return this.state.open && <div>{this.props.subcategory.searchTerms.map((term, i) => {
             return (<div>
                 <Link to={term.search_term_link ? `/products/searchTerm/${term.search_term_link}+${term.search_term_id}` : '/'} style={{ textDecoration: 'none' }} onClick={() => this.props.handleClose()}><div className="searchTerm  subcategoryTitle">{term.search_term}</div></Link>
-                {i + 1 === this.props.subcategory.searchTerms.length
-                    && <Link to={this.props.subcategory.subcategory_link ? `/products/subcategory/${this.props.subcategory.subcategory_link}+${this.props.subcategory.subcategory_id}` : '/'}
-                    style={{ textDecoration: 'none', color: '#343409' }}>
+                    {i + 1 === this.props.subcategory.searchTerms.length
+                    && <Link to={this.props.subcategory.subcategory_link
+                    ? `/products/subcategory/${this.props.subcategory.subcategory_link}+${this.props.subcategory.subcategory_id}` : '/'}
+                            style={{ textDecoration: 'none', color: '#343409' }}>
 
-                    <div className='subcategoryTitle' onClick={() => this.props.handleClose()}>View All {this.props.subcategory.subcategory_name}</div>
+                        <div className='subcategoryTitle' onClick={() => this.props.handleClose()}>View All {this.props.subcategory.subcategory_name}</div>
 
-                </Link>}
+                    </Link>}
             </div>)
         })}
         </div>

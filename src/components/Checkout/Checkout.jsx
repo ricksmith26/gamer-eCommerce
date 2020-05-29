@@ -22,51 +22,54 @@ class Checkout extends Component {
 
     render() {
         return (
-            <div className="checkoutContainer">
-            
-                <div className="boxShadow checkoutDim">
+            <div className="checkoutScroll">
 
-
-                    <div className="checkoutView">
-
-                        {this.state.index === 0 && <ViewBasket
-                                                    basket={this.props.basket}
-                                                    addRemoveFromBasket={this.props.addRemoveFromBasket.bind(this)}
-                                                    deleteFromBasket={this.props.deleteFromBasket.bind(this)}
-                                                    screenWidth={this.props.screenWidth}
-                                                    changeIndex={this.changeIndex.bind(this)}
-                                                    complete={false}
-                                                    ></ViewBasket>}
-
-                        {this.state.index === 1 && <DeliveryAddress
-                                                    userProfile={this.props.userProfile}
-                                                    setDeliveryAddress={this.setDeliveryAddress.bind(this)}
-                                                    deliveryAddress={this.state.deliveryAddress}
-                                                    changeIndex={this.changeIndex.bind(this)}>
-                                                    </DeliveryAddress>}
-                        
-                        {this.state.index === 2 && <Payment
-                                                    userProfile={this.props.userProfile}
-                                                    deliveryAddress={this.state.deliveryAddress}
-                                                    basket={this.props.basket}
-                                                    changeIndex={this.changeIndex.bind(this)}
-                                                    clearBasket={this.props.clearBasket.bind(this)}
-                                                    setConfirmedBasket={this.setConfirmedBasket.bind(this)}
-                                                    setConfirmedOrder={this.setConfirmedOrder.bind(this)}
-                                                    ></Payment>}
-
-                        {this.state.index === 3 && <OrderConfirmation
-                                                    userProfile={this.props.userProfile}
-                                                    confirmedBasket={this.state.confirmedBasket}
-                                                    screenWidth={this.props.screenWidth}
-                                                    changeIndex={this.changeIndex.bind(this)}
-                                                    deliveryAddress={this.state.deliveryAddress}
-                                                    order={this.state.order}
-                                                    ></OrderConfirmation>}
-                    </div>
-
-                </div>
+                <div className="checkoutContainer">
                 
+                    <div className="boxShadow checkoutDim">
+
+
+                        <div className="checkoutView">
+
+                            {this.state.index === 0 && <ViewBasket
+                                                        basket={this.props.basket}
+                                                        addRemoveFromBasket={this.props.addRemoveFromBasket.bind(this)}
+                                                        deleteFromBasket={this.props.deleteFromBasket.bind(this)}
+                                                        screenWidth={this.props.screenWidth}
+                                                        changeIndex={this.changeIndex.bind(this)}
+                                                        complete={false}
+                                                        ></ViewBasket>}
+
+                            {this.state.index === 1 && <DeliveryAddress
+                                                        userProfile={this.props.userProfile}
+                                                        setDeliveryAddress={this.setDeliveryAddress.bind(this)}
+                                                        deliveryAddress={this.state.deliveryAddress}
+                                                        changeIndex={this.changeIndex.bind(this)}>
+                                                        </DeliveryAddress>}
+                            
+                            {this.state.index === 2 && <Payment
+                                                        userProfile={this.props.userProfile}
+                                                        deliveryAddress={this.state.deliveryAddress}
+                                                        basket={this.props.basket}
+                                                        changeIndex={this.changeIndex.bind(this)}
+                                                        clearBasket={this.props.clearBasket.bind(this)}
+                                                        setConfirmedBasket={this.setConfirmedBasket.bind(this)}
+                                                        setConfirmedOrder={this.setConfirmedOrder.bind(this)}
+                                                        ></Payment>}
+
+                            {this.state.index === 3 && <OrderConfirmation
+                                                        userProfile={this.props.userProfile}
+                                                        confirmedBasket={this.state.confirmedBasket}
+                                                        screenWidth={this.props.screenWidth}
+                                                        changeIndex={this.changeIndex.bind(this)}
+                                                        deliveryAddress={this.state.deliveryAddress}
+                                                        order={this.state.order}
+                                                        ></OrderConfirmation>}
+                        </div>
+
+                    </div>
+                    
+                </div>
             </div>
         )
     }

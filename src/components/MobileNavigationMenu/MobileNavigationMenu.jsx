@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './MobileHamburgerMenu.css';
 import '../../shared/shared.css';
 import * as api from '../../routes/menuItemsRoutes';
 import Accordian from './components/Accordian/Accordian';
 import Login from '../Login/Login';
+import mobileIcon from '../../shared/mobileicon.png';
 
 class MobileNavigation extends Component {
+    is_mounted = false;
     state = {
         menuItems: [],
         open: false
     }
 
     componentDidMount = async () => {
-        if (this.props.screenWidth < 750) {
-
-            this.setState({ menuItems: await api.getMenuItems() });
-        }
+        this.is_mounted = true;
+        api.getMenuItems().then(menuItems => {
+            if (this.is_mounted) {
+                this.setState({menuItems})
+            }
+        })
     }
 
     componentWillUnmount = async () => {
-        // await api.getMenuItems()
+        this.is_mounted = false;
+        
     }
 
     render() {
         return (
             <div>
                 <div className="header">
+                    <div className="centeredRowFlex">
+                        <Link to="/">
+                            <img src={mobileIcon} className="mobileIcon" alt="mobileIcon"/>
+                        </Link>
+                    </div>
                     <Login
                         setUserInfo={this.props.setUserInfo}
                         userProfile={this.props.userProfile}
@@ -39,8 +50,8 @@ class MobileNavigation extends Component {
                 </label>
                 <div id="sidebarMenu">
                     <ul className="sidebarMenuInner">
-                        {this.state.menuItems && this.state.open && this.state.menuItems.map((item) => {
-                            return <li className="category"><Accordian handleClose={() => this.handleClose()} item={item}>
+                        {this.state.menuItems && this.state.open && this.state.menuItems.map((item, i) => {
+                            return <li className="category" key={`li${item.category_name}${i}`}><Accordian handleClose={() => this.handleClose()} item={item}>
 
                             </Accordian></li>
                         })}</ul>

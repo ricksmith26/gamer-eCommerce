@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './Fullview.css';
 import '../../shared/shared.css';
 import SaleItems from '../SaleItems/SaleItems';
-import * as productsApi from '../../routes/gamesRoutes';
+import * as productsApi from '../../routes/productRoutes';
 
 import cartIcon from '../../shared/add-to-cart.svg';
 
@@ -96,31 +96,12 @@ class FullView extends Component {
                                         Buy now
                                     </div>
                                     <div className="buyText"
-                                        onClick={() => {
-                                            this.props.addToBasket({
-                                                product_id: this.state.product_id,
-                                                product_name: this.state.product_name,
-                                                product_description: this.state.product_description,
-                                                product_images: this.state.product_images,
-                                                product_more_details: this.state.product_more_details,
-                                                product_release_date: this.state.product_release_date,
-                                                product_price: this.state.product_price
-                                            })
-                                        }}>
+                                        onClick={() => { this.addToBasket() }}>
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
                                 :  <div className="buyText mobileBuy"
-                                        onClick={() => {
-                                            this.props.addToBasket({
-                                                product_id: this.state.product_id,
-                                                product_name: this.state.product_name,
-                                                product_description: this.state.product_description,
-                                                product_images: this.state.product_images,
-                                                product_more_details: this.state.product_more_details,
-                                                product_release_date: this.state.product_release_date
-                                            })
-                                        }}>
+                                        onClick={() => { this.addToBasket() }}>
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
                                     </div>
                                     }
@@ -137,19 +118,7 @@ class FullView extends Component {
                                         Buy now
                                     </div>
                                     <div className="buyText"
-                                        onClick={() => {
-                                            this.props.addToBasket({
-                                                product_id: this.state.product_id,
-                                                product_name: this.state.product_name,
-                                                product_description: this.state.product_description,
-                                                product_images: this.state.product_images,
-                                                product_more_details: this.state.product_more_details,
-                                                product_release_date: this.state.product_release_date,
-                                                product_price: this.state.product_price
-                                                
-                                            })
-                                        }}
-                                        >
+                                        onClick={() => { this.addToBasket() }}>
                                         <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.props.location.state.product_price}
                                     </div>
                                 </div>
@@ -187,6 +156,15 @@ class FullView extends Component {
     async getMoreLikeThis() {
         const products = await productsApi.getMoreLikeThis(this.state.search_term_id);
         this.setState({products})
+    }
+
+    addToBasket() {
+        this.props.addToBasket({
+            product_id: this.state.product_id,
+            product_name: this.state.product_name,
+            product_images: this.state.product_images,
+            product_price: this.state.product_price
+        })
     }
 }
 

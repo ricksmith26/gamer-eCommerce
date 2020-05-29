@@ -30,3 +30,13 @@ export const getMoreLikeThis = async (id) => {
 	const res = await axios.get(URL + `/products/getMoreLikeThis/${id}`);
 	return res.data;
 }
+
+export const getTitle = async (subcategory, term = 'none') => {
+	const res = await axios.post(URL + `/products/getTitle`, { term, subcategory})
+	return res.data;
+}
+
+export const getSearch = async (search) => {
+	const res = await axios.get(URL + `/products/search/${search}`)
+	return res.data;
+}

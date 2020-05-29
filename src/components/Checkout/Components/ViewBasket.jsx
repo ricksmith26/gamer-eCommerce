@@ -12,7 +12,7 @@ class ViewBasket extends Component {
         return (
             <div className="ViewBasketContainer">
                 {!this.props.complete && <h2 className="viewBasketTitle">Checkout</h2>}
-                <div className={`${this.props.screenWidth < 650 ? 'mobileContents' : 'basketContents'}`}>
+                <div className='basketContents'>
                     {Object.values(this.props.basket).length === 0 && <div>Your Basket is Empty</div>}
                     {Object.values(this.props.basket).map((item, i) => {
                         return (

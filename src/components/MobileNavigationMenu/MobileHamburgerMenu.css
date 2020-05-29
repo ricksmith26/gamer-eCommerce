@@ -9,7 +9,6 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Varela Round', sans-serif;
-    /* overflow: hidden; */
     height: 100%;
 }
 .header {
@@ -21,10 +20,16 @@ body {
     background-color: #FDED2A;
     position: relative;; 
     height: 60px!important;
-    /* overflow: hidden; */
     z-index: 10;
-    border-bottom: 1px solid #343409 ;
-    /* position: fixed; */
+    border-bottom: 1px solid #343409;
+
+}
+
+.mobileIcon {
+    height: 48px;
+    margin-top: 6px;
+    padding-left: 12px;
+    max-width: calc(100% - 36px);
 }
 .main {
     margin: 0 auto;

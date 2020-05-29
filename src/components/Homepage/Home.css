@@ -29,7 +29,7 @@
 }
 .mobHomeScroll {
     overflow: scroll;
-    height: 95vh;
+    height: max-content
 }
 
 .picks {

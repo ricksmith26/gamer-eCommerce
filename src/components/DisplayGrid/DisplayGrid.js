@@ -3,11 +3,11 @@ import '../../shared/shared.css';
 import './DisplayGrid.css';
 import cartIcon from '../../shared/add-to-cart.svg';
 import checkout from '../../shared/checkoutD.svg';
-import * as gameApi from '../../routes/gamesRoutes';
+import * as gameApi from '../../routes/productRoutes';
 import { Link } from 'react-router-dom';
 
 class DisplayGrid extends Component {
-
+    is_mounted = false;
 
     state = {
         collection: [],
@@ -37,15 +37,15 @@ class DisplayGrid extends Component {
     }
 
     async componentDidUpdate(prevProps) {
+        this.is_mounted = true;
         if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname.includes('products')) {
             this.setState({pending: true})
             this.getGames();
-
         }
     }
 
     async componentWillUnmount() {
-        this.getGames()
+        this.is_mounted = false;
     }
 
 
@@ -61,11 +61,10 @@ class DisplayGrid extends Component {
                 <div className={`gridContainer ${this.props.screenWidth < 750 && 'mobileHeight'}`}>
                     {(this.state.collection && this.state.collection.length > 0) && !this.state.pending ? this.state.collection.map((item, i) => {
                         return (
-                            <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }} key={item.product_name}>
-                                <div className="productBox boxShadow">
+                            
+                                <div className="productBox boxShadow" key={item.product_name + item.product_id}>
                                     <img className="gameImage" src={item.product_images} alt={item.product_name + item.product_id} />
                                     <div className="title darkText">{this.getName(item)}</div>
-                                    {/* <img className="brandIcon iconPosition" src={this.handleIconSelection()} /> */}
                                     <div className="greyLine linePosition"></div>
                                     <div className="priceBanner lightText">£{item.product_price}</div>
                                     <div className="mask mask-1"></div>
@@ -75,6 +74,10 @@ class DisplayGrid extends Component {
                                     </div>
                                     <div className="content">
                                         <div className="spaceBetweenCenter">
+                                            <div className="buyTextD"
+                                            onClick={(event) => this.add(event, item)}>
+                                                View Details
+                                            </div>
                                             <div className="buyTextD"
                                                 onClick={(event) => this.add(event, item)}>
                                                 <img src={cartIcon} className='cartIcon' alt='cart' /> £{item.product_price}
@@ -87,7 +90,7 @@ class DisplayGrid extends Component {
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                            
                         )
                     })
                         : <div className="loaderCon">
@@ -106,11 +109,14 @@ class DisplayGrid extends Component {
     async getProductsByTerm() {
         try {
             const term = Number(this.props.match.params.term.split('+')[1]);
-            const title = `${this.props.match.params.term.split('+')[0].match(/[A-Z][a-z]+|[0-9]+/g).join("/")}`
-            this.setState({ term });
-            const collection = await gameApi.getProductsByTerm(term);
-            this.setState({ collection, pending: false, title });
-
+            return Promise.all([
+                gameApi.getTitle(1, term),
+                gameApi.getProductsByTerm(term)
+            ]).then(([title, collection ]) => {
+                if (this.is_mounted) {
+                    this.setState({ collection, pending: false, title });
+                }
+            })
         }
 
         catch {
@@ -121,10 +127,10 @@ class DisplayGrid extends Component {
         try {
             const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const collection = await gameApi.getProductsBySubcategory(subcategory);
-            const title = `${this.props.match.params.subcategory.split('+')[0]}`;
-            this.setState({ subcategory, collection, pending: false, title });
-            // this.setState({  });
-
+            const title = await gameApi.getTitle(subcategory);
+            // if (this.is_mounted) {
+                this.setState({ subcategory, collection, pending: false, title });
+            // }
         }
 
         catch {
@@ -156,8 +162,13 @@ class DisplayGrid extends Component {
             product_release_date: item.product_release_date,
             product_price: item.product_price
         })
-
     }
+
+    // reorder(type) {
+    //     this.state.collection.sort(() => {
+            
+    //     })
+    // }
 }
 
 export default DisplayGrid;
