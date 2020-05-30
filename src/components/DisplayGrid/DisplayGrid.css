@@ -9,9 +9,11 @@
     padding-bottom: 44px; 
 }
 
-.mobileHeight {
-    height: calc(100vh - 172px);
-}
+@media screen and (max-width: 750px) {
+    .gridContainer {
+        height: calc(100vh - 172px);
+    }
+  }
 
 .productBox {
     height: 300px;

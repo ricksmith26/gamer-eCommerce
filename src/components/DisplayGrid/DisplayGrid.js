@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../shared/shared.css';
 import './DisplayGrid.css';
 import cartIcon from '../../shared/add-to-cart.svg';
-import checkout from '../../shared/checkoutD.svg';
+import checkout from '../../shared/checkoutDark.svg';
 import * as gameApi from '../../routes/productRoutes';
 import { Link } from 'react-router-dom';
 
@@ -74,10 +74,11 @@ class DisplayGrid extends Component {
                                     </div>
                                     <div className="content">
                                         <div className="spaceBetweenCenter">
-                                            <div className="buyTextD"
-                                            onClick={(event) => this.add(event, item)}>
-                                                View Details
-                                            </div>
+                                            <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }}>
+                                                <div className="buyTextD">
+                                                    View Details
+                                                </div>
+                                            </Link>
                                             <div className="buyTextD"
                                                 onClick={(event) => this.add(event, item)}>
                                                 <img src={cartIcon} className='cartIcon' alt='cart' /> £{item.product_price}
@@ -113,9 +114,9 @@ class DisplayGrid extends Component {
                 gameApi.getTitle(1, term),
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
-                if (this.is_mounted) {
+                // if (this.is_mounted) {
                     this.setState({ collection, pending: false, title });
-                }
+                // }
             })
         }
 

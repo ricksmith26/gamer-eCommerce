@@ -22,7 +22,7 @@ class SaleItems extends Component {
         document.getElementById(this.props.title).addEventListener('touchstart', function(evt) {
             this.xDown = evt.touches[0].clientX;
             this.yDown = evt.touches[0].clientY;
-        }.bind(this), false);
+        }.bind(this),  {passive: true});
         this.run();
 
         const indexMap = this.props.products.map((item, i) =>  i);
@@ -137,7 +137,7 @@ class SaleItems extends Component {
     run() {
         document.getElementById(this.props.title).addEventListener('touchmove', function(evt) {
             this.handleTouchMove(evt);
-        }.bind(this), false);
+        }.bind(this), {passive: true});
     }
 }
 
