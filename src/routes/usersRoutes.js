@@ -1,8 +1,8 @@
 
 import { addToCache } from '../utils/cache';
+import client from './client';
 const URL = 'https://sxgtr83iji.execute-api.us-east-1.amazonaws.com/dev';
 
-import client from './client';
 
 export const registerUser = async (userRequest) => {
 	const res = await client.post(URL + '/users/register', userRequest);
