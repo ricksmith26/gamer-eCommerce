@@ -114,9 +114,9 @@
       margin-top: -12px;
     }
     
-    .example {
+    /* .example {
         transform: translateX(- calc(max-content))
-    }
+    } */
     .example-enter {
     opacity: 0;
     transform:   translate(0,-250px);
