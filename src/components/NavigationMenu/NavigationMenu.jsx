@@ -16,13 +16,13 @@ class NavigationMenu extends Component {
     render() {
         return (
             <div className="menuContainer">
-                {this.state.menuItems.map((item, i) => {
+                {this.state.menuItems.length ? this.state.menuItems.map((item, i) => {
                     return(
                         <MenuItem navMenuItem={item} index={i} key={i}></MenuItem>
                        
                          
                          )
-                })}
+                }) : null}
             </div>
         )
     }

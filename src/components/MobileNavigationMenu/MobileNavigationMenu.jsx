@@ -50,11 +50,11 @@ class MobileNavigation extends Component {
                 </label>
                 <div id="sidebarMenu">
                     <ul className="sidebarMenuInner">
-                        {this.state.menuItems && this.state.open && this.state.menuItems.map((item, i) => {
+                        {this.state.menuItems.length ? this.state.open && this.state.menuItems.map((item, i) => {
                             return <li className="category" key={`li${item.category_name}${i}`}><Accordian handleClose={() => this.handleClose()} item={item}>
 
                             </Accordian></li>
-                        })}</ul>
+                        }) : null}</ul>
                 </div>
 
             </div>
