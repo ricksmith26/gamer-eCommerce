@@ -12,22 +12,22 @@ class DisplayGrid extends Component {
     state = {
         collection: [],
         term: '',
-        selected: {
-            SKU: '',
-            bundle_ids: '',
-            category_id: 0,
-            product_description: '',
-            product_genre: '',
-            product_id: 0,
-            product_images: '',
-            product_more_details: '',
-            product_name: '',
-            product_pegi: 0,
-            product_price: '',
-            product_release_date: '',
-            search_term_id: 0,
-            subcategory_id: 0,
-        },
+        // selected: {
+        //     SKU: '',
+        //     bundle_ids: '',
+        //     category_id: 0,
+        //     product_description: '',
+        //     product_genre: '',
+        //     product_id: 0,
+        //     product_images: '',
+        //     product_more_details: '',
+        //     product_name: '',
+        //     product_pegi: 0,
+        //     product_price: '',
+        //     product_release_date: '',
+        //     search_term_id: 0,
+        //     subcategory_id: 0,
+        // },
         pending: false,
         title: ''
     }
@@ -115,7 +115,7 @@ class DisplayGrid extends Component {
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
                 // if (this.is_mounted) {
-                    this.setState({ collection, pending: false, title });
+                    this.setState({ collection, pending: false, title }, () => console.log(collection[0]));
                 // }
             })
         }

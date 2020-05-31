@@ -22,10 +22,8 @@ class Checkout extends Component {
 
     render() {
         return (
-            <div className="checkoutScroll">
-
                 <div className="checkoutContainer">
-                
+                    {/* <div className="checkoutScroll"> */}
                     <div className="boxShadow checkoutDim">
 
 
@@ -67,10 +65,9 @@ class Checkout extends Component {
                                                         ></OrderConfirmation>}
                         </div>
 
+                    {/* </div> */}
                     </div>
-                    
                 </div>
-            </div>
         )
     }
 

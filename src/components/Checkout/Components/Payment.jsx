@@ -47,6 +47,7 @@ class Payment extends Component {
                     setConfirmedBasket={this.props.setConfirmedBasket.bind(this)}
                     deliveryAddress={this.props.deliveryAddress}
                     setConfirmedOrder={this.props.setConfirmedOrder.bind(this)}
+                    setError={this.setError}
                     />
                 </div>
                 {this.state.error.length > 0 && <p style={{error: '#c62d1f'}}>{this.state.error}</p>}
@@ -74,6 +75,10 @@ class Payment extends Component {
 
     setPending() {
         this.setState({pending: !this.state.pending})
+    }
+
+    setError = (error) => {
+        this.setState({error, pending: false})
     }
 }
 

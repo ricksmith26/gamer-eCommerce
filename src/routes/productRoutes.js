@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://192.168.1.12:9000';
+const URL = 'https://sxgtr83iji.execute-api.us-east-1.amazonaws.com/dev/';
 
 export const getProductsByTerm = async (id) => {
 	const res = await axios.get(URL + `/products/term/${id}`);

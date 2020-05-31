@@ -33,11 +33,11 @@ class ViewBasket extends Component {
                     })}
                     <div className="checkoutItem" style={{ marginTop: '8px' }}>
                         <div>Total: </div>
-                        <div className="itemPrice">£{this.getTotal()}</div>
+                        <div className="itemPrice">£{this.getTotal().toFixed(2)}</div>
                     </div>
 
                 </div>
-                {!this.props.complete && <button className="yellowBtn" style={{ marginTop: '24px' }} onClick={() => this.props.changeIndex(1)} disabled={Object.values(this.props.basket).length === 0}>Proceed to Delivery</button>}
+                {!this.props.complete && <button className="yellowBtn roundedYellow" style={{ marginTop: '24px' }} onClick={() => this.props.changeIndex(1)} disabled={Object.values(this.props.basket).length === 0}>Proceed to Delivery</button>}
 
             </div>
         )

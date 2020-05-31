@@ -4,11 +4,12 @@ import UserSignUp from './UserSignUp';
 import AccountDetails from './AccountDetails';
 import EditAccountDetails from './EditAccountDetail';
 import RegisteredAccount from './RegisteredAccount';
-import { addToCache } from '../../../utils/cache';
+import Login from './Login';
+import { addToCache, clear } from '../../../utils/cache';
 import darkClose from '../../../shared/darkclose.svg';
 import './PopUp.css';
 import '../../../shared/shared.css';
-import '../Login.css';
+import '../User.css';
 
 class PopUp extends Component {
     state = {
@@ -24,7 +25,10 @@ class PopUp extends Component {
         user_post_code: '',
         index: 0,
         viewProfile: false,
-        title: 'Register'
+        title: 'Register',
+        errors: {
+
+        }
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -44,29 +48,20 @@ class PopUp extends Component {
                         <img src={darkClose} alt="X" style={{height: '12px', width: '12px'}}/>
                     </div>
                     {this.state.index === 0 &&
-                        (<div className="loginContainer">
-                            <form>
-                            <h3 style={{color: '#343409'}}>Login</h3>
-                                <div className="inputContainer">
-                                    <label htmlFor="Lastname" style={{color: '#343409'}}>Email</label>
-                                    <input className="text-input inputAdj" autoComplete="email" onChange={(e) => this.handleTextInput(e, 'user_email')} />
-                                </div>
-                                <div className="inputContainer">
-                                    <label htmlFor="Lastname" style={{color: '#343409'}}>Password</label>
-                                    <input type="password" autoComplete="current-password" className="text-input inputAdj" onChange={(e) => this.handleTextInput(e, 'user_password')}/>
-                                </div>
-                            </form>
-                            <button className="yellowBtn" onClick={() => this.login({user_email: this.state.user_email, user_password: this.state.user_password})}>Login</button>
-                            <p style={{color: '#343409'}}>Not Registered?</p>
-                            <button className="yellowBtn" onClick={() => this.setState({ index: 1 })}>Register</button>
-                        </div>)
+                        <Login
+                            changeIndex={this.changeIndex}
+                            login={this.login}
+                            handleTextInput={this.handleTextInput.bind(this)}
+                            state={this.state}
+                            ></Login>
                     }
                     {this.state.index === 1 &&
                         (!this.state.created
                             ? <UserSignUp
                                 handleTextInput={this.handleTextInput.bind(this)}
-                                handleRegister={this.handleRegister}
+                                checkFormOrSubmit={this.checkFormOrSubmit}
                                 handleClose={this.props.handleClose}
+                                backToLogin={this.changeIndex}
                                 state={this.state}
                             ></UserSignUp>
                             : 
@@ -76,7 +71,8 @@ class PopUp extends Component {
                         <AccountDetails
                             userProfile={this.props.userProfile}
                             editDetails={this.editDetails.bind(this)}
-                            handleClose={this.props.handleClose.bind(this)}></AccountDetails>
+                            handleClose={this.props.handleClose.bind(this)}
+                            logoutUser={this.logoutUser}></AccountDetails>
                     )}
 
                     {this.state.index === 3 && (
@@ -95,16 +91,21 @@ class PopUp extends Component {
     }
 
     handleTextInput(e, input) {
+        console.log(e.target.value)
         this.setState({ [input]: e.target.value })
     }
 
-    async handleRegister() {
+    handleRegister = async () => {
         const user = this.state;
         const newUser = await userApi.registerUser(user);
-        if (newUser.status === 200) {
+        if (newUser.data.error === "email already exists") {
+            this.setState({errors: {user_email: newUser.data.error}})
+        }
+        else {
             this.setState({ created: true },
                 () => this.handleLoginData(user))
-        }
+        } 
+       
     }
 
     handleLoginData(user) {
@@ -113,24 +114,71 @@ class PopUp extends Component {
         this.props.setUserInfo(user);
     }
 
-    async login(loginDetails) {
+    logoutUser = () => {
+        clear('game_shack_user');
+        this.props.handleIconChange(``);
+        this.props.setUserInfo({})
+        this.setState({index: 0}, () => this.props.handleClose())
+    }
+
+    login = async (loginDetails) => {
         const userDetails = await userApi.loginFromEmail(loginDetails);
         if (userDetails.valid) {
             this.props.handleClose();
             addToCache('game_shack_user', userDetails.user);
             this.handleLoginData(userDetails.user);
-        } else {
-            this.setState({index: 2})
-        }
+        } 
     }
 
     editDetails() {
         this.setState({index: 3, title: 'Edit Details'})
     }
+
+    changeIndex = () => {
+        this.setState({index: 0})
+    }
     
     closeEdit() {
         this.props.handleClose();
         this.setState({index: 2})
+    }
+
+    checkFormOrSubmit = async () => {
+        let errors = {};
+        const emailReg =  /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/gi;
+
+        if (!this.state.user_first_name && !this.state.user_first_name.length) {
+            errors['user_first_name'] = 'First name must be entered';
+        }
+        if (!this.state.user_last_name && !this.state.user_last_name.length) {
+            errors['user_last_name'] = 'Last name must be entered';
+        }
+        if (!this.state.user_user_email && !this.state.user_email.match(emailReg)) {
+            console.log(this.state.user_email.match(emailReg), this.state.user_email,'!emailReg.test(this.state.user_user_email)!emailReg.test(this.state.user_user_email)')
+            errors['user_email'] = 'Please enter a valid email format'
+        }
+        if (!this.state.user_password && this.state.user_password !== this.state.user_confirm_password ) {
+            errors['user_password'] = 'Passwords must match';
+        }
+        if (!this.state.user_address1 && !this.state.user_address1.length) {
+            errors['user_address1'] = 'Address Line 1 must be entered';
+        }
+        if (!this.state.user_address2 && !this.state.user_address2.length) {
+            errors['user_address2'] = 'Address Line 2 must be entered';
+        }
+        if (!this.state.user_address3 && !this.state.user_address3.length) {
+            errors['user_address3'] = 'Address Line 3 must be entered';
+        }
+        if (!this.state.user_post_code && !this.state.user_post_code.length) {
+            errors['user_post_code'] = 'Post code must be entered';
+        }
+       
+        if (!Object.values(errors).length) {
+           this.handleRegister();
+        } else {
+            this.setState({errors})
+        }
+
     }
 }
 export default PopUp;

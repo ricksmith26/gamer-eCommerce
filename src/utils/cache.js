@@ -10,3 +10,7 @@ export const loadFromCache = (key) => {
 export const clear = (key) => {
     localStorage.clear(key);
 }
+
+export const clearAll = () => {
+    localStorage.clear();
+}

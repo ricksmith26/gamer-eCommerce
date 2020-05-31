@@ -4,24 +4,31 @@
     justify-content: center;
     text-align: center;
     align-content: center;
+    height: calc(100vh - 61px);
+    overflow: auto;
 }
-
-/* .viewBasketTitle {
-   width: 250px;
-} */
 
 .checkoutView {
     width: 100%;
 }
 
+@media screen and (max-width: 750px) {
+    .checkoutView {
+      width: 90vw;
+    }
+  }
+
 .checkoutDim {
     width: 90%;
     min-height: 500px;
+    height: max-content;
     justify-content: space-around;
     align-items: space-around;
+    padding-bottom: 72px;
 }
 
 .checkoutScroll {
     overflow: scroll;
     height: 100%;
 }
+

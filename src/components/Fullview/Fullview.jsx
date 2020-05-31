@@ -5,7 +5,15 @@ import '../../shared/shared.css';
 import SaleItems from '../SaleItems/SaleItems';
 import * as productsApi from '../../routes/productRoutes';
 
+import pegi3 from '../../shared/pegi3.png';
+import pegi7 from '../../shared/pegi7.png';
+import pegi12 from '../../shared/pegi12.png';
+import pegi16 from '../../shared/pegi16.png';
+import pegi18 from '../../shared/pegi18.png';
+
 import cartIcon from '../../shared/add-to-cart.svg';
+
+// import {getPegi} from '../../utils/pegi';
 
 class FullView extends Component {
 
@@ -19,6 +27,7 @@ class FullView extends Component {
             product_images: '',
             product_more_details: '',
             product_release_date: '',
+            product_pegi: 0,
             search_term_id: 0,
             ready: false,
             products:[]
@@ -28,6 +37,7 @@ class FullView extends Component {
 
     async componentDidMount() {
         if (this.props.location.state) {
+            console.log(this.props.location.state, 'this.props.location.statethis.props.location.statethis.props.location.state')
             this.setState({
                 product_id: this.props.location.state.product_id,
                 product_name: this.props.location.state.product_name,
@@ -36,10 +46,13 @@ class FullView extends Component {
                 product_more_details: this.props.location.state.product_more_details,
                 product_release_date: this.props.location.state.product_release_date,
                 product_price: this.props.location.state.product_price,
-                search_term_id: this.props.location.state.search_term_id
+                product_genre: this.props.location.state.product_genre,
+                search_term_id: this.props.location.state.search_term_id,
+                product_pegi: this.props.location.state.product_pegi
             }, () => this.getMoreLikeThis());
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
+            console.log(product, '<<<<<<<<<PRODUCTS<<<<<<<<<')
             this.setState({
                 product_id: this.props.location.state.product_id,
                 product_name: product.product_name,
@@ -48,7 +61,8 @@ class FullView extends Component {
                 product_more_details: product.product_more_details,
                 product_release_date: product.product_release_date,
                 product_price: product.product_price,
-                search_term_id: product.search_term_id
+                search_term_id: product.search_term_id,
+                product_pegi: product.product_pegi,
             }, () => this.getMoreLikeThis())
         }
         this.updateWindowDimensions()
@@ -79,16 +93,15 @@ class FullView extends Component {
 
     render() {
         return (
-            <div>
             <div className="fullView">
-            <div className='centeredRowFlex'>
+            <div className='centeredRowFlex' style={{paddingBottom: '162px'}}>
                 <div className={this.state.screenWidth < 750 ? 'mobileFullView' : 'cardContainer'}>
                     <div className='boxShadow'>
                         <div className="fullViewTitle">
                             {this.state.product_name}
                         </div>
                         <div className="spaceBetweenFlex cardOverflow">
-                            <img className="fullViewImage" src={this.props.location.state.product_images} alt={`${this.state.product_name}`} />
+                            <img className="fullViewImage" src={this.state.product_images} alt={`${this.state.product_name}`} />
                             <div className={this.state.screenWidth < 1220 ? 'smallWidthView'  : 'hidden' } >
                             {this.state.screenWidth > 444
                             ? <div className={'cardBorder centeredColumnFlex buy'}>
@@ -97,12 +110,12 @@ class FullView extends Component {
                                     </div>
                                     <div className="buyText"
                                         onClick={() => { this.addToBasket() }}>
-                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
+                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.state.product_price}
                                     </div>
                                 </div>
                                 :  <div className="buyText mobileBuy"
                                         onClick={() => { this.addToBasket() }}>
-                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.props.location.state.product_price}
+                                    <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.state.product_price}
                                     </div>
                                     }
                             </div> 
@@ -132,9 +145,19 @@ class FullView extends Component {
                                 </div>
                             </div>
                         </div>
+                    <hr/>
+                    <div className="pegiGenre">
+                        <div>
+                            <h3>Pegi</h3>
+                            <img src={this.state.pegi} style={{height: '75px'}} alt="pegi"/>
+                        </div>
+                        <div>
+                            <h3>Genre</h3>
+                            <p>{this.state.product_genre}</p>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    </div>
+            
                 {this.state.products.length === 5
                     &&  <div className="centerMore">
                             <div className={this.state.screenWidth > 800 ? "moreContainer" : "moreMobileContainer"}>
@@ -144,8 +167,9 @@ class FullView extends Component {
                             </div>
                         </div>
                         }
-            </div>
-            </div>
+                        </div>
+                </div>
+                </div>
         )
     }
 
@@ -155,7 +179,7 @@ class FullView extends Component {
 
     async getMoreLikeThis() {
         const products = await productsApi.getMoreLikeThis(this.state.search_term_id);
-        this.setState({products})
+        this.setState({products, pegi: this.getPegi(this.state.product_pegi)})
     }
 
     addToBasket() {
@@ -165,6 +189,24 @@ class FullView extends Component {
             product_images: this.state.product_images,
             product_price: this.state.product_price
         })
+    }
+    getPegi(pegi) {
+        console.log(pegi, 'PEGI<<<<<<<')
+        if (pegi === 3) {
+            return pegi3;
+        }
+        if (pegi === 7) {
+            return pegi7;
+        }
+        if (pegi === 12) {
+            return pegi12;
+        }
+        if (pegi === 16) {
+            return pegi16;
+        }
+        else {
+            return pegi18;
+        }
     }
 }
 

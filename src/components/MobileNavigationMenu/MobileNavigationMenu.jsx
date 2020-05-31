@@ -4,7 +4,7 @@ import './MobileHamburgerMenu.css';
 import '../../shared/shared.css';
 import * as api from '../../routes/menuItemsRoutes';
 import Accordian from './components/Accordian/Accordian';
-import Login from '../Login/Login';
+import Login from '../User/User';
 import mobileIcon from '../../shared/mobileicon.png';
 
 class MobileNavigation extends Component {

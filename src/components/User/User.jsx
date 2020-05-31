@@ -4,9 +4,9 @@ import userMobProfile from '../../shared/mobileusericon.svg';
 
 import PopUp from './components/PopUp';
 import '../../shared/shared.css';
-import './Login.css';
+import './User.css';
 
-class Login extends Component {
+class User extends Component {
 
     state = {
         open: false,
@@ -67,4 +67,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default User;

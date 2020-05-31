@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Userbar.css';
 import logo2 from '../../shared/deskIcon.png';
-import Login from '../Login/Login';
+import Login from '../User/User';
 import SearchBar from './Components/SearchBar';
 
 

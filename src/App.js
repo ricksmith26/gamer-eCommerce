@@ -15,7 +15,7 @@ import Basket from './components/Basket/Basket';
 
 import * as userApi from './routes/usersRoutes';
 
-import { loadFromCache, addToCache } from './utils/cache';
+import { loadFromCache, addToCache, clearAll } from './utils/cache';
 
 class App extends Component {
 
@@ -43,6 +43,7 @@ class App extends Component {
 
 		return (
 			<div className="App">
+			{/* <button onClick={() => clearAll()}>clear</button> */}
 			{this.state.screenWidth > 750
 				? 	<div>
 						<Userbar

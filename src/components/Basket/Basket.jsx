@@ -94,7 +94,7 @@ class Basket extends Component {
                         </div>
                         <div className="screenFooter">
                             <Link to={'/checkout'}>
-                                <div className="yellowBtn checkoutBtn">
+                                <div className="yellowBtn checkoutBtn" onClick={() => this.setState({open: false})}>
                                     <img src={checkoutIcon} style={{height: '10px', width: '10px', marginRight: '8px'}} alt="checkoutIcon"/>
                                     Checkout
                                 </div>

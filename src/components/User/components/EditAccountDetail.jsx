@@ -76,8 +76,8 @@ class EditAccountDetails extends Component {
                         value="Pr7 8uj" />
                 </div>
                 <div className="btnCon">
-                    <button className="yellowBtn" onClick={() => this.props.handleRegister()}>Submit</button>
-                    <button className="redBtn" onClick={() => this.props.closeEdit()}>Cancel</button>
+                    <div className="yellowBtn roundedYellow" onClick={() => this.props.handleRegister()}>Submit</div>
+                    <div className="redBtn roundedRed" onClick={() => this.props.closeEdit()}>Cancel</div>
                 </div>
 
             </div>
