@@ -6,6 +6,6 @@ const headers = {
 };
 
 export const createOrder = async (order) => {
-    const res = await fetch.post(URL + '/orders/createOrder', order, {headers});
+    const res = await axios.post(URL + '/orders/createOrder', order, {headers});
   return res.data;
 };

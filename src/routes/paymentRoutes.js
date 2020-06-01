@@ -6,16 +6,16 @@ const headers = {
   };
 
 export const storeToken = async (token) => {
-	const res = await fetch.post(URL + '/payments', token, {headers});
+	const res = await axios.post(URL + '/payments', token, {headers});
 	return res.data;
 };
 
 export const createIntent = async (basket) => {
-    const res = await fetch.post(URL + '/payments/intent', basket, {headers});
+    const res = await axios.post(URL + '/payments/intent', basket, {headers});
     return res.data
 }
 export const intentStored = async (id) => {
     console.log(id, 'ID<<<')
-    const res = await fetch.post(URL + '/payments/paymentMethods', {id}, {headers});
+    const res = await axios.post(URL + '/payments/paymentMethods', {id}, {headers});
     return res.data
 }
