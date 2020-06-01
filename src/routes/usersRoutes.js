@@ -7,18 +7,18 @@ const headers = {
   };
 
 export const registerUser = async (userRequest) => {
-	const res = await axios.post(URL + '/users/register', userRequest, {headers});
+	const res = await fetch.post(URL + '/users/register', userRequest, {headers});
 	delete userRequest['user_password'];
 	addToCache('game_shack_user', res.data);
 	return res;
 };
 
 export const loginFromToken = async (token) => {
-	const res = await axios.get(URL + `/users/token/${token}`, {headers});
+	const res = await fetch.get(URL + `/users/token/${token}`, {headers});
 	return res.data;
 }
 
 export const loginFromEmail = async (loginDetails) => {
-	const res = await axios.post(URL + '/users/login', loginDetails, {headers});
+	const res = await fetch.post(URL + '/users/login', loginDetails, {headers});
 	return res.data
 }
