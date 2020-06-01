@@ -261,13 +261,20 @@ a.info{
     position: relative;
     padding-left: 36px;
     cursor: pointer;
-    margin-top: 12px;
     margin-bottom: 8px;
+    background-position: center;
+    transition: background 0.8s;
 }
 
-.buyText:hover {
+  .buyTextD:hover {
+    background: #61A62F radial-gradient(circle, transparent 1%, #61A62F 1%) center/15000%;
+  }
+  .buyTextD:active {
+    background-color: #95D468;
+    background-size: 100%;
+    transition: background 0s;
+  }
 
-}
 .checkout {
     width: max-content;
     background-color: #FDED2A;
@@ -279,7 +286,17 @@ a.info{
     cursor: pointer;
     color: #343409;
     text-decoration: none!important;
+    background-position: center;
+    transition: background 0.8s;
 }
+.checkout:hover {
+    background: #BCBC01 radial-gradient(circle, transparent 1%, #BCBC01 1%) center/15000%;
+  }
+  .checkout:active {
+    background-color: #FEFE8A;
+    background-size: 100%;
+    transition: background 0s;
+  }
 
 .checkout:link  {
     text-decoration: none;

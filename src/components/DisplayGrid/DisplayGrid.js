@@ -73,7 +73,7 @@ class DisplayGrid extends Component {
                                         <h4 className="lightText popUpTitle">{item.product_name}</h4>
                                     </div>
                                     <div className="content">
-                                        <div className="spaceBetweenCenter">
+                                        <div className="spaceBetweenCenter" style={{marginTop: '16px'}}>
                                             <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }}>
                                                 <div className="buyTextD">
                                                     View Details

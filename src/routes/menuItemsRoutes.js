@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://sxgtr83iji.execute-api.us-east-1.amazonaws.com/dev';
+const URL = 'http://localhost:3000/dev';
 
 export const getMenuItems = async () => {
   
