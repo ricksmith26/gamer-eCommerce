@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Swipeable } from 'react-swipeable'
-// import Swipe from 'react-easy-swipe';
 import leftArrow from '../../shared/left-arrow.svg';
 import rightArrow from '../../shared/right-arrow.svg';
-import Swipe from './Components/Swipe';
 
 import './SaleItems.css';
 

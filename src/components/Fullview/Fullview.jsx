@@ -5,12 +5,6 @@ import '../../shared/shared.css';
 import SaleItems from '../SaleItems/SaleItems';
 import * as productsApi from '../../routes/productRoutes';
 
-import pegi3 from '../../shared/pegi3.png';
-import pegi7 from '../../shared/pegi7.png';
-import pegi12 from '../../shared/pegi12.png';
-import pegi16 from '../../shared/pegi16.png';
-import pegi18 from '../../shared/pegi18.png';
-
 import cartIcon from '../../shared/add-to-cart.svg';
 
 // import {getPegi} from '../../utils/pegi';
