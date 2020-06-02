@@ -29,7 +29,6 @@ export default function PaymentForm(props) {
 				},
 			}
 		});
-		// console.log(result, 'PAYMENT<<<<<<<<<<<<<<<<<<,')
 		if (result.error) {
 			// Show error to your customer (e.g., insufficient funds)
 			props.setError(result.error);

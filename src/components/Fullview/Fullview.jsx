@@ -37,7 +37,6 @@ class FullView extends Component {
 
     async componentDidMount() {
         if (this.props.location.state) {
-            console.log(this.props.location.state, 'this.props.location.statethis.props.location.statethis.props.location.state')
             this.setState({
                 product_id: this.props.location.state.product_id,
                 product_name: this.props.location.state.product_name,
@@ -48,11 +47,10 @@ class FullView extends Component {
                 product_price: this.props.location.state.product_price,
                 product_genre: this.props.location.state.product_genre,
                 search_term_id: this.props.location.state.search_term_id,
-                product_pegi: this.props.location.state.product_pegi
+                product_pegi: this.getPegi(this.props.location.state.product_pegi)
             }, () => this.getMoreLikeThis());
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
-            console.log(product, '<<<<<<<<<PRODUCTS<<<<<<<<<')
             this.setState({
                 product_id: this.props.location.state.product_id,
                 product_name: product.product_name,
@@ -62,7 +60,7 @@ class FullView extends Component {
                 product_release_date: product.product_release_date,
                 product_price: product.product_price,
                 search_term_id: product.search_term_id,
-                product_pegi: product.product_pegi,
+                product_pegi: this.getPegi(product.product_pegi),
             }, () => this.getMoreLikeThis())
         }
         this.updateWindowDimensions()
@@ -80,7 +78,8 @@ class FullView extends Component {
                 product_more_details: product.product_more_details,
                 product_release_date: product.product_release_date,
                 product_price: product.product_price,
-                search_term_id: product.search_term_id
+                search_term_id: product.search_term_id,
+                product_pegi: this.getPegi(product.product_pegi)
             }, () => this.getMoreLikeThis())
 
         }
@@ -191,7 +190,6 @@ class FullView extends Component {
         })
     }
     getPegi(pegi) {
-        console.log(pegi, 'PEGI<<<<<<<')
         if (pegi === 3) {
             return pegi3;
         }

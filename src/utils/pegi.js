@@ -5,7 +5,6 @@ import pegi16 from '../shared/pegi16.png';
 import pegi18 from '../shared/pegi18.png';
 
 export const getPegi = (pegi) => {
-    console.log(pegi, 'PEGI<<<<<<<')
     if (pegi === 3) {
         return pegi3;
     }

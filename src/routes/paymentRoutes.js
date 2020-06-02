@@ -14,7 +14,6 @@ export const createIntent = async (basket) => {
     return res.data
 }
 export const intentStored = async (id) => {
-    console.log(id, 'ID<<<')
     const res = await axios.post(URL + '/payments/paymentMethods', {id}, {headers});
     return res.data
 }

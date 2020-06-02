@@ -115,7 +115,7 @@ class DisplayGrid extends Component {
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
                 // if (this.is_mounted) {
-                    this.setState({ collection, pending: false, title }, () => console.log(collection[0]));
+                    this.setState({ collection, pending: false, title });
                 // }
             })
         }

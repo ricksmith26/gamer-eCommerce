@@ -91,7 +91,6 @@ class PopUp extends Component {
     }
 
     handleTextInput(e, input) {
-        console.log(e.target.value)
         this.setState({ [input]: e.target.value })
     }
 
@@ -154,7 +153,6 @@ class PopUp extends Component {
             errors['user_last_name'] = 'Last name must be entered';
         }
         if (!this.state.user_user_email && !this.state.user_email.match(emailReg)) {
-            console.log(this.state.user_email.match(emailReg), this.state.user_email,'!emailReg.test(this.state.user_user_email)!emailReg.test(this.state.user_user_email)')
             errors['user_email'] = 'Please enter a valid email format'
         }
         if (!this.state.user_password && this.state.user_password !== this.state.user_confirm_password ) {

@@ -180,7 +180,6 @@ class App extends Component {
 					addToCache('game_shack_user', validToken.user)
 				});
 			}
-			console.log(validToken, 'validTokenvalidToken')
 		}
 	}
 }
