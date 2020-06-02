@@ -184,25 +184,19 @@ class FullView extends Component {
         })
     }
     getPegi(pegi) {
-        console.log(pegi, '<<<<<<<<PEGI')
         if (pegi === 3) {
-            console.log(pegi, '<<<<<<<<PEGI3')
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi3.png';
         }
         if (pegi === 7) {
-            console.log(pegi, '<<<<<<<<PEGI7')
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi7.png';
         }
         if (pegi === 12) {
-            console.log(pegi, '<<<<<<<<PEGI12')
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi12.png';
         }
         if (pegi === 16) {
-            console.log(pegi, '<<<<<<<<PEGI16')
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi16.png';
         }
         else {
-             console.log(pegi, '<<<<<<<<PEGIELSE')
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi18.png';
         }
     }
