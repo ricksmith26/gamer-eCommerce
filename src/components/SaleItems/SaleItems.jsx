@@ -45,7 +45,7 @@ class SaleItems extends Component {
                                 <img src={leftArrow} alt="<" className="leftArrow"/>
                             </div>
                                 
-                            {this.props.products.length ? this.props.products.map((item, i) => {
+                            {this.props.products.map((item, i) => {
                                 return (
                                     <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }} key={item.product_name}>
                                         <div className={`saleItem${this.state.indexMap.indexOf(i)}`}>
@@ -59,7 +59,7 @@ class SaleItems extends Component {
                                     </Link>
 
                                 )
-                            }) : null}
+                            })}
                         </div> 
                     </div>
                 </div>
