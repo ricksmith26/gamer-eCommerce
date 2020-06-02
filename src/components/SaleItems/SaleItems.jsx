@@ -25,9 +25,6 @@ class SaleItems extends Component {
         const indexMap = this.props.products.map((item, i) =>  i);
 
         this.setState({indexMap})
-        // var swiper = new Swipe('#swipe');
-       
-
     }
     
     render() {
@@ -47,10 +44,6 @@ class SaleItems extends Component {
                             <div className="leftDirection" onClick={() => this.change('left')}>
                                 <img src={leftArrow} alt="<" className="leftArrow"/>
                             </div>
-                            {/* <Swipe
-                                onSwipeStart={this.onSwipeStart}
-                                onSwipeMove={this.onSwipeMove}
-                                onSwipeEnd={this.onSwipeEnd}> */}
                                 
                             {this.props.products.length ? this.props.products.map((item, i) => {
                                 return (
@@ -67,7 +60,6 @@ class SaleItems extends Component {
 
                                 )
                             }) : null}
-                            {/* </Swipe> */}
                         </div> 
                     </div>
                 </div>
