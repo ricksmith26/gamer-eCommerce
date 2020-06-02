@@ -77,6 +77,7 @@ class FullView extends Component {
             }, () => this.getMoreLikeThis())
 
         }
+        window.scrollTo(0, 0)
     }
 
     componentWillUnmount() {
