@@ -59,9 +59,8 @@ class FullView extends Component {
         }
         this.updateWindowDimensions()
         window.addEventListener("resize", () => this.updateWindowDimensions());
-        useEffect(() => {
-            window.scrollTo(0, 0)
-          }, [])
+      
+        window.scrollTo(0, 0)
     }
 
     async componentDidUpdate(prevProps) {
