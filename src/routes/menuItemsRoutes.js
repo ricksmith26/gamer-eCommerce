@@ -8,5 +8,6 @@ const headers = {
 export const getMenuItems = async () => {
   
     const res = await axios.get(URL + '/menuItems/', {headers});
+    
   return res.data;
 };
