@@ -41,7 +41,7 @@ class FullView extends Component {
                 product_price: this.props.location.state.product_price,
                 product_genre: this.props.location.state.product_genre,
                 search_term_id: this.props.location.state.search_term_id,
-                product_pegi: this.getPegi(this.props.location.state.product_pegi)
+                product_pegi: this.props.location.state.product_pegi
             }, () => this.getMoreLikeThis());
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
@@ -54,7 +54,7 @@ class FullView extends Component {
                 product_release_date: product.product_release_date,
                 product_price: product.product_price,
                 search_term_id: product.search_term_id,
-                product_pegi: this.getPegi(product.product_pegi),
+                product_pegi: product.product_pegi,
             }, () => this.getMoreLikeThis())
         }
         this.updateWindowDimensions()
@@ -73,7 +73,7 @@ class FullView extends Component {
                 product_release_date: product.product_release_date,
                 product_price: product.product_price,
                 search_term_id: product.search_term_id,
-                product_pegi: this.getPegi(product.product_pegi)
+                product_pegi: product.product_pegi
             }, () => this.getMoreLikeThis())
 
         }
@@ -125,7 +125,7 @@ class FullView extends Component {
                                     </div>
                                     <div className="buyText"
                                         onClick={() => { this.addToBasket() }}>
-                                        <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.props.location.state.product_price}
+                                        <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.state.product_price}
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ class FullView extends Component {
                     <div className="pegiGenre">
                         <div>
                             <h3>Pegi</h3>
-                            <img src={this.state.pegi} style={{height: '75px'}} alt="pegi"/>
+                            <img src={this.getPegi(this.state.product_pegi)} style={{height: '75px'}} alt="pegi"/>
                         </div>
                         <div>
                             <h3>Genre</h3>
