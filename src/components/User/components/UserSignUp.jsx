@@ -109,7 +109,7 @@ class UserSignUp extends Component {
                             <div className="yellowBtn roundedYellow" onClick={() => this.props.checkFormOrSubmit()}>Submit</div>
                             <div className="redBtn roundedRed" onClick={() => this.props.handleClose()}>Cancel</div>
                         </div>
-                        <div className="yellowBtn roundedYellow" onClick={() => this.props.backToLogin()}>Back to login</div>
+                        <div className="yellowBtn roundedYellow" onClick={() => this.props.backToLogin(0)}>Back to login</div>
 
                     </div>
         )
