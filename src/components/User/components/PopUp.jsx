@@ -134,8 +134,8 @@ class PopUp extends Component {
         this.setState({index: 3, title: 'Edit Details'})
     }
 
-    changeIndex = () => {
-        this.setState({index: 0})
+    changeIndex = (index) => {
+        this.setState({index})
     }
     
     closeEdit() {
