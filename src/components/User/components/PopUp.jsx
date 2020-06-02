@@ -122,6 +122,7 @@ class PopUp extends Component {
 
     login = async (loginDetails) => {
         const userDetails = await userApi.loginFromEmail(loginDetails);
+        console.log(userDetails, '<<<<<<<<<<<<<,')
         if (userDetails.valid) {
             this.props.handleClose();
             addToCache('game_shack_user', userDetails.user);
