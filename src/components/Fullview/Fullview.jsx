@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 
 import './Fullview.css';
 import '../../shared/shared.css';
@@ -77,7 +77,9 @@ class FullView extends Component {
             }, () => this.getMoreLikeThis())
 
         }
-        window.scrollTo(0, 0)
+        useEffect(() => {
+            window.scrollTo(0, 0)
+          }, [])
     }
 
     componentWillUnmount() {
