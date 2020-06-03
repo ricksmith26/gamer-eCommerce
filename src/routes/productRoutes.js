@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://cxgdarwya4.execute-api.eu-west-2.amazonaws.com/dev';
+const URL = 'https://klc3e3ydi2.execute-api.eu-west-2.amazonaws.com/latest';
 const headers = {
 	'Content-Type': 'application/json',
   }
