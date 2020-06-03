@@ -8,3 +8,9 @@ body {
   a {
     text-decoration: none !important;
   }
+
+  html {
+  -webkit-tap-highlight-color:transparent;
+}
+
+div { outline-style:none;}
