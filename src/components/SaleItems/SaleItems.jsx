@@ -38,10 +38,10 @@ class SaleItems extends Component {
                             <div className="saleTitle">{this.props.title}</div>
                         </div>
                          <div className="saleItemsContainer">
-                            <div className="rightDirection" onClick={() => this.change('right')}>
+                            <div className="rightDirection" onClick={() => this.change('left')}>
                                 <img src={rightArrow} alt="<" className="rightArrow"/>
                             </div>
-                            <div className="leftDirection" onClick={() => this.change('left')}>
+                            <div className="leftDirection" onClick={() => this.change('right')}>
                                 <img src={leftArrow} alt="<" className="leftArrow"/>
                             </div>
                                 
@@ -114,12 +114,12 @@ class SaleItems extends Component {
     }
 
     onLeft() {
-        this.change('right')
+        this.change('left')
         this.run();
     }
 
     onRight() {
-        this.change('left')
+        this.change('right')
         this.run();
     }
 
