@@ -336,11 +336,7 @@
     overflow: visible
 
 }
-@media screen and (max-width: 750px) {
-    .screenClosed {
-      width: 250px
-    }
-  }
+
 
 
 .screenOpen {
@@ -357,6 +353,11 @@
     transition-delay: 0.3s;
     position: relative;
 }
+@media screen and (max-width: 400px) {
+    .screenOpen {
+      width: 250px
+    }
+  }
 
 .screenFooter {
     position: absolute;

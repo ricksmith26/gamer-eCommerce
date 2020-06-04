@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 
 import './Fullview.css';
 import '../../shared/shared.css';
-
 import SaleItems from '../SaleItems/SaleItems';
 import * as productsApi from '../../routes/productRoutes';
 
 import cartIcon from '../../shared/add-to-cart.svg';
+
+// import {getPegi} from '../../utils/pegi';
 
 class FullView extends Component {
 
@@ -45,7 +46,7 @@ class FullView extends Component {
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
             this.setState({
-                product_id: product.product_id,
+                product_id: this.props.location.state.product_id,
                 product_name: product.product_name,
                 product_description: product.product_description,
                 product_images: product.product_images,
@@ -99,7 +100,7 @@ class FullView extends Component {
                         </div>
                         <div className="spaceBetweenFlex cardOverflow">
                             <img className="fullViewImage" src={this.state.product_images} alt={`${this.state.product_name}`} />
-                            <div className={this.state.screenWidth < 1220 ? 'smallWidthView'  : 'hidden' } >
+                            { this.state.screenWidth < 1220 ? <div className='smallWidthView'>
                             {this.state.screenWidth > 444
                             ? <div className={'cardBorder centeredColumnFlex buy'}>
                                     <div className="buyNow">
@@ -115,25 +116,27 @@ class FullView extends Component {
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.state.product_price}
                                     </div>
                                     }
-                            </div> 
-                            <div className={this.state.screenWidth < 1220 ? 'fullViewMobileText' : 'hidden'}>
-                                {this.state.product_description}
-                            </div>
-                            <div className={this.state.screenWidth > 1220 ? 'buyContainer' : 'hidden'}>
-                            
-                                <div className={this.state.screenWidth > 1220 ? 'fullViewText' : 'fullViewMobileText'}>
+                            </div> : null}
+                            {this.state.screenWidth < 1220
+                            ?   <div className='fullViewMobileText'>
                                     {this.state.product_description}
                                 </div>
-                                <div className={this.state.screenWidth > 1220 ? 'cardBorder centeredColumnFlex buy'  : 'hidden' }>
-                                    <div className="buyNow">
-                                        Buy now
+                            : null}
+                            {this.state.screenWidth > 1220
+                                ?   <div className='buyContainer'>
+                                        <div className='fullViewText'>
+                                            {this.state.product_description}
+                                        </div>
+                                        <div className='cardBorder centeredColumnFlex buy'>
+                                        <div className="buyNow">
+                                            Buy now
+                                        </div>
+                                        <div className="buyText"
+                                            onClick={() => { this.addToBasket() }}>
+                                            <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.state.product_price}
+                                        </div>
                                     </div>
-                                    <div className="buyText"
-                                        onClick={() => { this.addToBasket() }}>
-                                        <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.state.product_price}
-                                    </div>
-                                </div>
-                            </div>
+                            </div> : null}
                             <div>
                                 <div className="fullViewReleaseDate">
                                     Release Date: {this.state.product_release_date}
@@ -189,7 +192,7 @@ class FullView extends Component {
         })
     }
 
-    // TODO extract this to util
+    //TOD extract to util
     getPegi(pegi) {
         if (pegi === 3) {
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi3.png';

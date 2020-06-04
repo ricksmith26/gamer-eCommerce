@@ -83,17 +83,13 @@ class DisplayGrid extends Component {
                             
                         )
                     })
-                        : (this.pending ? <div className="loaderCon">
+                        :  <div className="loaderCon">
                             <div className="centeredColumnFlex">
                                 <p>one moment..</p>
                                 <div className="loader">
                                 </div>
                             </div>
-                        </div> : <div className="loaderCon">
-                            <div className="centeredColumnFlex">
-                                <p>no results</p>
-                            </div>
-                        </div>)}
+                        </div> }
                 </div>
             </div>
         )
