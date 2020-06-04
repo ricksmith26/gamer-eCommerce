@@ -46,7 +46,7 @@ class FullView extends Component {
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
             this.setState({
-                product_id: this.props.location.state.product_id,
+                product_id: product.product_name,
                 product_name: product.product_name,
                 product_description: product.product_description,
                 product_images: product.product_images,
