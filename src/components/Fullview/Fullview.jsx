@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 
 import './Fullview.css';
 import '../../shared/shared.css';
@@ -7,7 +7,7 @@ import * as productsApi from '../../routes/productRoutes';
 
 import cartIcon from '../../shared/add-to-cart.svg';
 
-// import {getPegi} from '../../utils/pegi';
+import {getPegi} from '../../utils/pegi';
 
 class FullView extends Component {
 
@@ -150,7 +150,7 @@ class FullView extends Component {
                     <div className="pegiGenre">
                         <div>
                             <h3>Pegi</h3>
-                            <img src={this.getPegi(this.state.product_pegi)} style={{height: '75px'}} alt="pegi"/>
+                            <img src={getPegi(this.state.product_pegi)} style={{height: '75px'}} alt="pegi"/>
                         </div>
                         <div>
                             <h3>Genre</h3>
@@ -180,7 +180,7 @@ class FullView extends Component {
 
     async getMoreLikeThis() {
         const products = await productsApi.getMoreLikeThis(this.state.search_term_id);
-        this.setState({products, pegi: this.getPegi(this.state.product_pegi)})
+        this.setState({products})
     }
 
     addToBasket() {
@@ -191,25 +191,7 @@ class FullView extends Component {
             product_price: this.state.product_price
         })
     }
-
-    //TOD extract to util
-    getPegi(pegi) {
-        if (pegi === 3) {
-            return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi3.png';
-        }
-        if (pegi === 7) {
-            return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi7.png';
-        }
-        if (pegi === 12) {
-            return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi12.png';
-        }
-        if (pegi === 16) {
-            return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi16.png';
-        }
-        else {
-            return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi18.png';
-        }
-    }
+   
 }
 
 export default FullView;
