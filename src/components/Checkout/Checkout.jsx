@@ -23,7 +23,7 @@ class Checkout extends Component {
     render() {
         return (
                 <div className="checkoutContainer">
-                    {/* <div className="checkoutScroll"> */}
+                
                     <div className="boxShadow checkoutDim">
 
 
@@ -64,8 +64,6 @@ class Checkout extends Component {
                                                         order={this.state.order}
                                                         ></OrderConfirmation>}
                         </div>
-
-                    {/* </div> */}
                     </div>
                 </div>
         )

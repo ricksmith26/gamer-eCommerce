@@ -100,14 +100,7 @@ class SaleItems extends Component {
             } else {
                 this.onRight();
             }
-        } 
-        // else {
-        //     if ( this.yDiff > 0 ) {
-        //         this.onUp();
-        //     } else {
-        //         this.onDown();
-        //     }
-        // }
+        }
 
         this.xDown = null;
         this.yDown = null;

@@ -46,6 +46,7 @@ class SearchBar extends Component {
             </div>
         )
     }
+    
     async getSearch(event) {
         if (!event.length) {
             return this.setState({ searchItems: [] })

@@ -26,10 +26,10 @@ class AdvertSlider extends Component {
         this.recurring = false;
     }
 
-
+        ///TODO*** add advertData with links to BE &create endpoint
     render() {
         return (
-            <div className={this.getClassName()}>
+            <div className="advertDiv">
                 {advertData.map((data, i) => {
                     return  <img
                             alt={i}
@@ -42,10 +42,5 @@ class AdvertSlider extends Component {
         )
     }
 
-    getClassName() {
-        if (this.props.screenWidth <= 750) {
-            return 'mobile';
-        } else { return 'desktop'}
-    }
 }
 export default AdvertSlider;

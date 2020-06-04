@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-
-import * as paymentAPi from '../../../routes/paymentRoutes';
-
-import PaymentForm from './PaymentForm'
-
-import '../../../shared/shared.css';
-
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+import '../../../shared/shared.css';
 
-// const stripe = require('stripe')('pk_test_0J5atEpEuRpL4XuNsm1aFBCU006SHgnIHs');
+import * as paymentAPi from '../../../routes/paymentRoutes';
+import PaymentForm from './PaymentForm'
+
+// need to move this to a credentials file
 const stripePromise = loadStripe("pk_test_0J5atEpEuRpL4XuNsm1aFBCU006SHgnIHs");
 
 
@@ -38,23 +35,23 @@ class Payment extends Component {
                 <h4>£{this.getAmount()}</h4>
                 <div className="shadowBox">
                     <PaymentForm
-                    userProfile={this.props.userProfile}
-                    client_secret={this.state.client_secret}
-                    changeIndex={this.props.changeIndex.bind(this)}
-                    setPending={this.setPending.bind(this)}
-                    pending={this.state.pending}
-                    clearBasket={this.props.clearBasket.bind(this)}
-                    setConfirmedBasket={this.props.setConfirmedBasket.bind(this)}
-                    deliveryAddress={this.props.deliveryAddress}
-                    setConfirmedOrder={this.props.setConfirmedOrder.bind(this)}
-                    setError={this.setError}
+                        userProfile={this.props.userProfile}
+                        client_secret={this.state.client_secret}
+                        changeIndex={this.props.changeIndex.bind(this)}
+                        setPending={this.setPending.bind(this)}
+                        pending={this.state.pending}
+                        clearBasket={this.props.clearBasket.bind(this)}
+                        setConfirmedBasket={this.props.setConfirmedBasket.bind(this)}
+                        deliveryAddress={this.props.deliveryAddress}
+                        setConfirmedOrder={this.props.setConfirmedOrder.bind(this)}
+                        setError={this.setError}
                     />
                 </div>
                 {this.state.error.length > 0 && <p style={{error: '#c62d1f'}}>{this.state.error}</p>}
             </Elements>
         )
     }
-
+    // calculate total for FE purpose only
     getAmount() {
         const price = Object.values(this.props.basket).reduce((acc, item) => {
             acc += item.qty * item.product_price;
@@ -63,6 +60,7 @@ class Payment extends Component {
         return price.toString().split('.')[1].length > 2 ? price.toFixed(2) : price;
     }
 
+    // create payment intent token based on total
     createIntentBasket() {
         return Object.values(this.props.basket).reduce((acc, item) => {
             acc[item.product_id] = {

@@ -4,18 +4,20 @@
     overflow-y: auto;
 }
 
-.mobileFullView {
-    height: max-content;
-}
-
 .cardOverflow {
-
+    
 }
 
 .cardContainer {
     width: 80%;
     height: 100%;
 }
+
+@media screen and (max-width: 750px) {
+    .cardContainer {
+        height: max-content;
+    }
+  }
 
 .fullViewTitle {
     font-size: 24px;
@@ -104,10 +106,6 @@
     cursor: pointer;
 }
 
-.buyText:hover {
-
-}
-
 .mobileBuy {
     position: absolute;
     left: -157px;
@@ -138,6 +136,13 @@
     margin-bottom: 24px;
     position: relative;
 }
+@media screen and (max-width: 750px) {
+    .smallWidthView{
+      display: none;
+      height: 0px;
+      width: 0px
+    }
+  }
 
 
 .centerMore{

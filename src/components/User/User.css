@@ -12,12 +12,14 @@
 
 }
 
-.mobileLogin {
-    color: #343409;
-    position: fixed;
-    right: -20px;
-    top: -4px
-}
+@media screen and (max-width: 750px) {
+    .userBarProfile {
+        color: #343409;
+        position: fixed;
+        right: -20px;
+        top: -4px
+    }
+  }
 
 .usrImg {
     height: 35px;

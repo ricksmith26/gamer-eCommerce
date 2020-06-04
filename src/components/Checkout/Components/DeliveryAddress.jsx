@@ -37,7 +37,7 @@ class DeliveryAddress extends Component {
                             </div>
                             : <div>
                                 <div className="inputContainer">
-                                    <label htmlFor="Lastname">Address Line 1</label>
+                                    <label htmlFor="address1">Address Line 1</label>
                                     <input
                                         className="text-input inputAdj"
                                         type="text"
@@ -45,7 +45,7 @@ class DeliveryAddress extends Component {
                                         value={this.props.deliveryAddress.address1} />
                                 </div>
                                 <div className="inputContainer">
-                                    <label htmlFor="Lastname">Address Line 2</label>
+                                    <label htmlFor="address2">Address Line 2</label>
                                     <input
                                         className="text-input inputAdj"
                                         type="text"
@@ -53,7 +53,7 @@ class DeliveryAddress extends Component {
                                         value={this.props.deliveryAddress.address2} />
                                 </div>
                                 <div className="inputContainer">
-                                    <label htmlFor="Lastname">Address Line 3</label>
+                                    <label htmlFor="address3">Address Line 3</label>
                                     <input
                                         className="text-input inputAdj"
                                         type="text"
@@ -61,7 +61,7 @@ class DeliveryAddress extends Component {
                                         value={this.props.deliveryAddress.address3} />
                                 </div>
                                 <div className="inputContainer">
-                                    <label htmlFor="Lastname">Postcode</label>
+                                    <label htmlFor="postcode">Postcode</label>
                                     <input
                                         className="text-input inputAdj"
                                         type="text"

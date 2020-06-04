@@ -5,10 +5,6 @@ import logo2 from '../../shared/deskIcon.png';
 import Login from '../User/User';
 import SearchBar from './Components/SearchBar';
 
-
-
-// const handler = useCallback(debounce(someFunction, 2000), []);
-
 class Userbar extends Component {
 
 

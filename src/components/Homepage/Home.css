@@ -24,33 +24,43 @@
     align-content: flex-start;
     align-items: center;
 }
+
+@media screen and (max-width: 750px) {
+    .homeContainer {
+      margin-top: 50px;
+    }
+  }
+
+
 .homeScroll {
     overflow: scroll;
 }
-.mobHomeScroll {
-    overflow: scroll;
-    height: max-content
-}
+
+@media screen and (max-width: 750px) {
+    .homeScroll {
+      height: max-content;
+    }
+  }
+
 
 .picks {
     width: calc(100% - 50px);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: center;
-    margin-left: -8px;
     height: max-content;
-}
-.mobilePicks {
-    width: calc(100% - 50px);
-    height: 100%;
+    margin-left: -8px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
     align-content: center;
-    margin-top: 200px;
 }
+
+@media screen and (max-width: 750px) {
+    .picks {
+        width: calc(100% - 50px);
+        height: 100%;
+        margin-top: 200px;
+        margin-left: 0px;
+    
+    }
+  }

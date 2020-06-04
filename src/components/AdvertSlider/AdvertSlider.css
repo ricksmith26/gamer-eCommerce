@@ -1,7 +1,3 @@
-.advertSliderContainer {
-    position: relative;
-    overflow: hidden;
-}
 
 .img-slideIn {
     width: calc(100%);
@@ -47,30 +43,20 @@
     }
 }
 
-.advertBorder {
-    width: calc(100% - 80px);
-    height: max-content;
-    border-left: 40px solid white;
-    border-right: 40px solid white;
-    z-index: 2;
-    position: relative;
-
-}
-
-
-.mobile {
-    overflow-x: hidden;
-    width: calc(100% - 32px);
-    height: 100%;
-    position: relative;
-    height: calc(100vw / 3.261006289);
-    /* border: 16px solid white; */
-    
-}
-.desktop {
+.advertDiv {
     overflow: hidden;
     width: calc(100% - 64px);
     position: relative;
     height: calc(100vw / 3.261006289);
     border: 32px solid white;
 }
+
+@media screen and (max-width: 750px) {
+    .advertDiv {
+        overflow-x: hidden;
+        width: calc(100% - 32px);
+        height: 100%;
+        position: relative;
+        height: calc(100vw / 3.261006289);
+    }
+  }

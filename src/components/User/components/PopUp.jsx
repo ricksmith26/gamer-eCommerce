@@ -94,6 +94,7 @@ class PopUp extends Component {
         this.setState({ [input]: e.target.value })
     }
 
+    // register new user
     handleRegister = async () => {
         const user = this.state;
         const newUser = await userApi.registerUser(user);
@@ -107,12 +108,14 @@ class PopUp extends Component {
        
     }
 
+    //set initials on icon and pass data to app level
     handleLoginData(user) {
         delete user['user_password'];
         this.props.handleIconChange(`${user.user_first_name[0]}${user.user_last_name[0]}`.toUpperCase());
         this.props.setUserInfo(user);
     }
 
+    // logout user and clear info
     logoutUser = () => {
         clear('game_shack_user');
         this.props.handleIconChange(``);
@@ -120,9 +123,9 @@ class PopUp extends Component {
         this.setState({index: 0}, () => this.props.handleClose())
     }
 
+    //login user
     login = async (loginDetails) => {
         const userDetails = await userApi.loginFromEmail(loginDetails);
-        console.log(userDetails, '<<<<<<<<<<<<<,')
         if (userDetails.valid) {
             this.props.handleClose();
             addToCache('game_shack_user', userDetails.user);
@@ -130,6 +133,7 @@ class PopUp extends Component {
         } 
     }
 
+    // go to edit page
     editDetails() {
         this.setState({index: 3, title: 'Edit Details'})
     }
@@ -143,6 +147,7 @@ class PopUp extends Component {
         this.setState({index: 2})
     }
 
+    // create errors object or submit
     checkFormOrSubmit = async () => {
         let errors = {};
         const emailReg =  /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/gi;

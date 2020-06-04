@@ -33,15 +33,15 @@ class Home extends Component {
     render() {
 
         return (
-            <div className={this.props.screenWidth > 750 ? "homeScroll" : "mobHomeScroll"}>
+            <div className="homeScroll">
 
-                <div className="homeContainer" style={{marginTop: this.props.screenWidth < 750 ? '50px' : '0px'}}>
+                <div className="homeContainer">
 
-                        <div className={this.props.screenWidth > 750 ? "picks" : "mobilePicks"}>
+                        <div className="picks">
 
                             <AdvertSlider screenWidth={this.props.screenWidth}></AdvertSlider>
 
-                            <div className={this.props.screenWidth > 750 ? "topGamePick" :'mobileGamePick'}>
+                            <div className="topGamePick">
 
                                 {this.state.saleGames.length ? <SaleItems
                                                                     title="Top Games"
@@ -51,7 +51,7 @@ class Home extends Component {
 
                             </div>
 
-                            <div className={this.props.screenWidth > 750 ? "topGamePick" :'mobileGamePick'}>
+                            <div className="topGamePick">
 
                                 {this.state.saleHardware.length ? <SaleItems
                                                                     title="Top Hardware"

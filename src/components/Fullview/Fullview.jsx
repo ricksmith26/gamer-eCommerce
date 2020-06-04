@@ -1,13 +1,12 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 
 import './Fullview.css';
 import '../../shared/shared.css';
+
 import SaleItems from '../SaleItems/SaleItems';
 import * as productsApi from '../../routes/productRoutes';
 
 import cartIcon from '../../shared/add-to-cart.svg';
-
-// import {getPegi} from '../../utils/pegi';
 
 class FullView extends Component {
 
@@ -46,7 +45,7 @@ class FullView extends Component {
         } else {
             const product = await productsApi.getProductById(Number(this.props.match.params.id));
             this.setState({
-                product_id: this.props.location.state.product_id,
+                product_id: product.product_id,
                 product_name: product.product_name,
                 product_description: product.product_description,
                 product_images: product.product_images,
@@ -93,7 +92,7 @@ class FullView extends Component {
         return (
             <div className="fullView">
             <div className='centeredRowFlex' style={{paddingBottom: '162px'}}>
-                <div className={this.state.screenWidth < 750 ? 'mobileFullView' : 'cardContainer'}>
+                <div className='cardContainer'>
                     <div className='boxShadow'>
                         <div className="fullViewTitle">
                             {this.state.product_name}
@@ -121,6 +120,7 @@ class FullView extends Component {
                                 {this.state.product_description}
                             </div>
                             <div className={this.state.screenWidth > 1220 ? 'buyContainer' : 'hidden'}>
+                            
                                 <div className={this.state.screenWidth > 1220 ? 'fullViewText' : 'fullViewMobileText'}>
                                     {this.state.product_description}
                                 </div>
@@ -188,6 +188,8 @@ class FullView extends Component {
             product_price: this.state.product_price
         })
     }
+
+    // TODO extract this to util
     getPegi(pegi) {
         if (pegi === 3) {
             return 'https://pegiimages.s3.eu-west-2.amazonaws.com/pegi3.png';

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link }from 'react-router-dom';
 
+import './Basket.css';
+
 import cartIcon from '../../shared/add-to-cart.svg';
 import closeIcon from '../../shared/close.svg';
 import plusIcon from '../../shared/plus.svg';
 import minusIcon from '../../shared/minus.svg';
 import checkoutIcon from '../../shared/checkoutDark.svg';
 
-import './Basket.css';
 
 class Basket extends Component {
     constructor(props) {
@@ -52,7 +53,7 @@ class Basket extends Component {
                 <div className={!this.state.open ? 'horizontalClosed1' : 'horizontalClosed1 horizontalOpen1'}></div>
                 <div className={!this.state.open ? 'horizontalClosed2' : 'horizontalClosed2 horizontalOpen2'}></div>
                 <div className={!this.state.open ? 'horizontalClosed3' : 'horizontalClosed3 horizontalOpen3'}></div>
-                <div className={!this.state.open ? `screenClosed ${this.props.screenWidth < 400 && 'mobileScreen'}` :  `screenClosed screenOpen ${this.props.screenWidth < 400 && 'mobileScreen'}`}>
+                <div className={!this.state.open ? `screenClosed` :  `screenClosed screenOpen`}>
                     <div className={!this.state.open ? `screenTextClosed` :  `screenTextClosed`}>
                         <div style={{overflow: 'auto'}}>
                             <div style={{height: '208px', width: '100%'}}>

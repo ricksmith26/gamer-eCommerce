@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+
 import './App.css';
 import './shared/shared.css';
+
 import NavigationMenu from './components/NavigationMenu/NavigationMenu'
 import Userbar from './components/Userbar/Userbar';
-// import AdvertSlider from './components/AdvertSlider/AdvertSlider';
 import Home from './components/Homepage/Home';
 import MobileNavigationMenu from './components/MobileNavigationMenu/MobileNavigationMenu';
 import Checkout from './components/Checkout/Checkout';
-
-import { Route } from 'react-router-dom';
 import FullView from './components/Fullview/Fullview';
 import View from './components/View/View';
 import Basket from './components/Basket/Basket';
-
 import * as userApi from './routes/usersRoutes';
-
-import { loadFromCache, addToCache, clearAll } from './utils/cache';
+import { loadFromCache, addToCache } from './utils/cache';
 
 class App extends Component {
 
@@ -43,7 +41,6 @@ class App extends Component {
 
 		return (
 			<div className="App">
-			{/* <button onClick={() => clearAll()}>clear</button> */}
 			{this.state.screenWidth > 750
 				? 	<div>
 						<Userbar
@@ -110,7 +107,7 @@ class App extends Component {
 	updateWindowDimensions() {
 		this.setState({ screenWidth: window.innerWidth });
 	}
-
+	// add the item to basket
 	addToBasket(item) {
 		if (Object.keys(this.state.basket).length > 0) {
 			const duplicateProducts = Object.values(this.state.basket).filter((basketItem) => {
@@ -133,6 +130,7 @@ class App extends Component {
 		}
 	}
 
+	//alters the quantity of an item in the basket
 	addRemoveFromBasket(direction, product_id) {
 		const basket = this.state.basket;
 		if (direction === 'up'){
@@ -151,7 +149,7 @@ class App extends Component {
 			}
 		} 
 	}
-
+	// deletes item from basket
 	deleteFromBasket(product_id) {
 		const basket = this.state.basket;
 		delete basket[product_id];
@@ -159,14 +157,17 @@ class App extends Component {
 			() => addToCache('game_shack_basket', this.state.basket));
 	}
 
+	// clears basket after a purchase
 	clearBasket() {
 		this.setState({basket: {}}, () => addToCache('game_shack_basket', this.state.basket))
 	}
 
+	// makes login info available at app level
 	setUserInfo(userProfile) {
 		this.setState({userProfile});
 	}
 
+	// checks the device for login token and BE validates if < 4hrs
 	async initData() {
 		const storedBasket = loadFromCache('game_shack_basket');
 		if (storedBasket) {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+
 import './View.css';
 
 import DisplayGrid from '../DisplayGrid/DisplayGrid';

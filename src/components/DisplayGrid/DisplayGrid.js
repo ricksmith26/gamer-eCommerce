@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import '../../shared/shared.css';
-import './DisplayGrid.css';
+import { Link } from 'react-router-dom';
+
 import cartIcon from '../../shared/add-to-cart.svg';
 import checkout from '../../shared/checkoutDark.svg';
 import * as gameApi from '../../routes/productRoutes';
-import { Link } from 'react-router-dom';
+
+import '../../shared/shared.css';
+import './DisplayGrid.css';
 
 class DisplayGrid extends Component {
     is_mounted = false;
@@ -12,22 +14,6 @@ class DisplayGrid extends Component {
     state = {
         collection: [],
         term: '',
-        // selected: {
-        //     SKU: '',
-        //     bundle_ids: '',
-        //     category_id: 0,
-        //     product_description: '',
-        //     product_genre: '',
-        //     product_id: 0,
-        //     product_images: '',
-        //     product_more_details: '',
-        //     product_name: '',
-        //     product_pegi: 0,
-        //     product_price: '',
-        //     product_release_date: '',
-        //     search_term_id: 0,
-        //     subcategory_id: 0,
-        // },
         pending: false,
         title: ''
     }
@@ -54,11 +40,14 @@ class DisplayGrid extends Component {
 
         return (
             <div className="gridscroll">
+
                 <div className="centerFlex">
+
                     <h2 className="displayText">{this.state.title}</h2>
+
                 </div>
 
-                <div className={`gridContainer ${this.props.screenWidth < 750 && 'mobileHeight'}`}>
+                <div className='gridContainer'>
                     {(this.state.collection && this.state.collection.length > 0) && !this.state.pending ? this.state.collection.map((item, i) => {
                         return (
                             
@@ -94,19 +83,23 @@ class DisplayGrid extends Component {
                             
                         )
                     })
-                        : <div className="loaderCon">
+                        : (this.pending ? <div className="loaderCon">
                             <div className="centeredColumnFlex">
                                 <p>one moment..</p>
                                 <div className="loader">
                                 </div>
                             </div>
-                        </div>}
+                        </div> : <div className="loaderCon">
+                            <div className="centeredColumnFlex">
+                                <p>no results</p>
+                            </div>
+                        </div>)}
                 </div>
             </div>
         )
     }
 
-
+    // search for product by search term id from params
     async getProductsByTerm() {
         try {
             const term = Number(this.props.match.params.term.split('+')[1]);
@@ -114,9 +107,7 @@ class DisplayGrid extends Component {
                 gameApi.getTitle(1, term),
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
-                // if (this.is_mounted) {
-                    this.setState({ collection, pending: false, title });
-                // }
+                this.setState({ collection, pending: false, title });
             })
         }
 
@@ -124,21 +115,22 @@ class DisplayGrid extends Component {
             this.setState({ collection: [], pending: false })
         }
     }
+
+    // search for products by subcategory from params
     async getProductsBySubcategory() {
         try {
             const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const collection = await gameApi.getProductsBySubcategory(subcategory);
             const title = await gameApi.getTitle(subcategory);
-            // if (this.is_mounted) {
                 this.setState({ subcategory, collection, pending: false, title });
-            // }
+
         }
 
         catch {
             this.setState({ collection: [], pending: false })
         }
     }
-
+    ///select search criteria
     async getGames() {
         if (this.props.match.params.subcategory.split('+')[1]) {
             return this.getProductsBySubcategory();
@@ -147,29 +139,21 @@ class DisplayGrid extends Component {
             return this.getProductsByTerm();
         }
     }
-
+    // get name and reduce if necessary
     getName(item) {
         return item.product_name.length > 66 ? `${item.product_name.slice(0, 66)}...` : item.product_name;
     }
 
+    // add item to basket
     add(event, item) {
         event.preventDefault();
         this.props.addToBasket({
             product_id: item.product_id,
             product_name: item.product_name,
-            product_description: item.product_description,
             product_images: item.product_images,
-            product_more_details: item.product_more_details,
-            product_release_date: item.product_release_date,
             product_price: item.product_price
         })
     }
-
-    // reorder(type) {
-    //     this.state.collection.sort(() => {
-            
-    //     })
-    // }
 }
 
 export default DisplayGrid;

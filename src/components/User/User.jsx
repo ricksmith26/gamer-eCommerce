@@ -27,7 +27,7 @@ class User extends Component {
 
     render() {
         return (
-            <div className={`userBarProfile ${this.props.screenWidth < 750 ? 'mobileLogin' : ''}`} id="login" onClick={() => this.handleOpen()}>
+            <div className='userBarProfile' id="login" onClick={() => this.handleOpen()}>
                 {this.state.initials.length === 0
                     ? ( this.props.screenWidth > 750
                         ?   <div>

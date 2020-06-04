@@ -11,6 +11,7 @@ class ViewBasket extends Component {
 
         return (
             <div className="ViewBasketContainer">
+
                 {!this.props.complete && <h2 className="viewBasketTitle">Checkout</h2>}
                 <div className='basketContents'>
                     {Object.values(this.props.basket).length === 0 && <div>Your Basket is Empty</div>}
@@ -23,13 +24,13 @@ class ViewBasket extends Component {
                                 </div>
                                 <div className="qtyName">
                                     <div className="itemPrice">£{item.product_price}</div>
-                                    {!this.props.complete && <div className="checkoutAdj">
-                                        <div className="addBtn" onClick={() => this.props.addRemoveFromBasket('up', item.product_id)}>+</div>
-                                        <div className="removeBtn" onClick={() => this.props.addRemoveFromBasket('down', item.product_id)}>-</div>
-                                        <div className="deleteBtn" onClick={() => this.props.deleteFromBasket(item.product_id)}>Remove</div>
-                                    </div>}
-                                </div>
-                            </div>)
+                                    {!this.props.complete &&    <div className="checkoutAdj">
+                                                                    <div className="addBtn" onClick={() => this.props.addRemoveFromBasket('up', item.product_id)}>+</div>
+                                                                    <div className="removeBtn" onClick={() => this.props.addRemoveFromBasket('down', item.product_id)}>-</div>
+                                                                    <div className="deleteBtn" onClick={() => this.props.deleteFromBasket(item.product_id)}>Remove</div>
+                                                                </div>}
+                                    </div>
+                                </div>)
                     })}
                     <div className="checkoutItem" style={{ marginTop: '8px' }}>
                         <div>Total: </div>
@@ -42,7 +43,7 @@ class ViewBasket extends Component {
             </div>
         )
     }
-
+    // returns total of basket
     getTotal() {
         return Object.values(this.props.basket).reduce((acc, item) => {
             acc += (Number(item.qty) * Number(item.product_price));
