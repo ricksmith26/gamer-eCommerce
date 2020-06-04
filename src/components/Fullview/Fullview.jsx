@@ -102,7 +102,7 @@ class FullView extends Component {
                             <img className="fullViewImage" src={this.state.product_images} alt={`${this.state.product_name}`} />
                             { this.state.screenWidth < 1220 ? <div className='smallWidthView'>
                             {this.state.screenWidth > 444
-                            ? <div className={'cardBorder centeredColumnFlex buy'}>
+                            ?   <div className={'cardBorder centeredColumnFlex buy'}>
                                     <div className="buyNow">
                                         Buy now
                                     </div>
@@ -111,10 +111,10 @@ class FullView extends Component {
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.state.product_price}
                                     </div>
                                 </div>
-                                :  <div className="buyText mobileBuy"
-                                        onClick={() => { this.addToBasket() }}>
+                            :   <div className="buyText mobileBuy"
+                                    onClick={() => { this.addToBasket() }}>
                                     <img src={cartIcon} className='cartIcon' alt='cart'/> £{this.state.product_price}
-                                    </div>
+                                </div>
                                     }
                             </div> : null}
                             {this.state.screenWidth < 1220
@@ -123,20 +123,21 @@ class FullView extends Component {
                                 </div>
                             : null}
                             {this.state.screenWidth > 1220
-                                ?   <div className='buyContainer'>
-                                        <div className='fullViewText'>
-                                            {this.state.product_description}
-                                        </div>
-                                        <div className='cardBorder centeredColumnFlex buy'>
-                                        <div className="buyNow">
-                                            Buy now
-                                        </div>
-                                        <div className="buyText"
-                                            onClick={() => { this.addToBasket() }}>
-                                            <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.state.product_price}
-                                        </div>
+                            ?   <div className='buyContainer'>
+                                    <div className='fullViewText'>
+                                        {this.state.product_description}
                                     </div>
-                            </div> : null}
+                                    <div className='cardBorder centeredColumnFlex buy'>
+                                    <div className="buyNow">
+                                        Buy now
+                                    </div>
+                                    <div className="buyText"
+                                        onClick={() => { this.addToBasket() }}>
+                                        <img src={cartIcon} className='cartIcon' alt="cart"/> £{this.state.product_price}
+                                    </div>
+                                    </div>
+                            </div>
+                            : null}
                             <div>
                                 <div className="fullViewReleaseDate">
                                     Release Date: {this.state.product_release_date}
