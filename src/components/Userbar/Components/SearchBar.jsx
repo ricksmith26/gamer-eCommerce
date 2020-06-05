@@ -1,34 +1,48 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { debounce } from "lodash";
+import history from '../../../utils/history';
 
 import * as productApi from '../../../routes/productRoutes';
 
 class SearchBar extends Component {
-
+    
     constructor() {
+        
         super()
 
         this.state = {
             value: '',
-            searchItems: []
+            searchItems: [],
+            submitted: false
         }
 
         this.changeSearch = debounce(this.getSearch, 325)
     }
 
     render() {
+        if (this.state.submitted) {
+            return (
+              <Redirect to={`/search/${this.state.value.replace(' ', '+')}`}/>
+            )
+          }
         return (
             <div style={{ position: 'relative' }}>
-                <input id="search" className="text-input" type="text" placeholder="Search.." onChange={(event) => this.handleChange(event)} />
+                <input
+                    id="search"
+                    className="text-input"
+                    type="text"
+                    placeholder="Search.."
+                    onKeyDown={(e) => this.onEnter(e)}
+                    onChange={(event) => this.handleChange(event)} />
 
-                {this.state.searchItems.length
+                {this.state.searchItems.length && !this.state.submitted
                     ? <div className="cardBorder searchResults">{this.state.searchItems.map((item, i) => {
                         return (
                             <Link to={{ pathname: `/fullView/${item.product_id}`,
                                         state: { screenWidth: this.props.screenWidth, ...item } }}
-                                    key={item.product_name + item.product_id}
-                                    style={{ color: 'inherit', textDecoration: 'none'}}>
+                                        key={item.product_name + item.product_id}
+                                        style={{ color: 'inherit', textDecoration: 'none'}}>
 
                                 <div className="searchResultBox" onClick={() => this.setState({searchItems: []})}>
                                     <div className="thumbnailBox">
@@ -62,6 +76,11 @@ class SearchBar extends Component {
         })
     }
 
+    onEnter = (e) => {
+        if (e.key === 'Enter') {
+           this.setState({submitted: true, searchItems: []}, () => this.setState({submitted: false}))
+        }
+    }
 
 }
 

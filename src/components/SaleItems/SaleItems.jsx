@@ -47,7 +47,9 @@ class SaleItems extends Component {
                                 
                             {this.props.products.map((item, i) => {
                                 return (
-                                    <Link to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }} key={item.product_name}>
+                                    <Link
+                                        to={{ pathname: `/fullView/${item.product_id}`, state: { screenWidth: this.props.screenWidth, ...item } }}
+                                        key={item.product_name + item.product_id}>
                                         <div className={`saleItem${this.state.indexMap.indexOf(i)}`}>
                                             <div className="saleProductBox boxShadow">
                                                 <img className="gameImage" src={item.product_images} alt='dasas' />

@@ -36,7 +36,7 @@ class AdvertSlider extends Component {
                             key={i}
                             className={i === this.state.currentIndex ? 'img-slideIn' : 'img-slideOut'}
                             src={advertData[i].image}
-                            />
+                            ></img>
                 })}
                 </div>
         )

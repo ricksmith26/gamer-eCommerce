@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+
 
 import './App.css';
 import './shared/shared.css';
@@ -38,7 +39,7 @@ class App extends Component {
 	}
 
 	render() {
-
+		
 		return (
 			<div className="App">
 			{this.state.screenWidth > 750
@@ -46,7 +47,8 @@ class App extends Component {
 						<Userbar
 							setUserInfo={this.setUserInfo.bind(this)}
 							userProfile={this.state.userProfile}
-							screenWidth={this.state.screenWidth}></Userbar>
+							screenWidth={this.state.screenWidth}
+							{...this.props}></Userbar>
 						<div className='yellowBackground'>
 							<div className="centeredRowFlex">
 								<NavigationMenu></NavigationMenu>
@@ -73,6 +75,14 @@ class App extends Component {
 
 					<Route 
 						path="/products/searchTerm/:subcategory/:term"
+						render={routeProps => <View
+												basket={this.state.basket}
+												addToBasket={this.addToBasket.bind(this)}
+												screenWidth={this.state.screenWidth}
+												{...routeProps} />} />
+
+					<Route 
+						path="/search/:searchRequest"
 						render={routeProps => <View
 												basket={this.state.basket}
 												addToBasket={this.addToBasket.bind(this)}

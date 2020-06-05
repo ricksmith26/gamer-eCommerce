@@ -29,6 +29,14 @@ class View extends Component {
                                             screenWidth={this.props.screenWidth}
                                             addToBasket={this.props.addToBasket.bind(this)}
                                             {...routeProps}/>}/>
+
+                <Route
+                    exact path="/search/:searchRequest"
+                    render={routeProps => <DisplayGrid
+                                            params={this.props.match.params}
+                                            screenWidth={this.props.screenWidth}
+                                            addToBasket={this.props.addToBasket.bind(this)}
+                                            {...routeProps}/>}/>
             </div>
         )
     }

@@ -140,3 +140,11 @@ Link {
     align-items: center;
     align-content: center;
   }
+
+  #searchIcon {
+      height: 28px;
+      position: absolute;
+      right: -40px;
+      top: 24px;
+      cursor: pointer;
+  }

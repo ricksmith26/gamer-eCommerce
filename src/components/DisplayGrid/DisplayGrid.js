@@ -126,13 +126,29 @@ class DisplayGrid extends Component {
             this.setState({ collection: [], pending: false })
         }
     }
+    async getProductsBySearch() {
+        try {
+            const search = this.props.match.params.searchRequest.replace('+' , ' ');
+            const collection = await gameApi.getSearch(search);
+            const title = `Results for ${search}`;
+            this.setState({ collection, pending: false, title });
+
+        }
+
+        catch {
+            this.setState({ collection: [], pending: false })
+        }
+    }
     ///select search criteria
     async getGames() {
-        if (this.props.match.params.subcategory.split('+')[1]) {
+        if (this.props.match.params.subcategory && this.props.match.params.subcategory.split('+')[1]) {
             return this.getProductsBySubcategory();
         }
-        if (this.props.match.params.term.split('+')[1]) {
+        if (this.props.match.params.term && this.props.match.params.term.split('+')[1]) {
             return this.getProductsByTerm();
+        }
+        if (this.props.match.params.searchRequest) {
+            return this.getProductsBySearch()
         }
     }
     // get name and reduce if necessary
