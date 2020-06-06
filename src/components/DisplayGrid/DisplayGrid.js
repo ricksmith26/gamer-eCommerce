@@ -24,7 +24,7 @@ class DisplayGrid extends Component {
 
     async componentDidUpdate(prevProps) {
         this.is_mounted = true;
-        if (this.props.location.pathname !== prevProps.location.pathname && this.props.location.pathname.includes('products')) {
+        if (this.props.location.pathname !== prevProps.location.pathname && (this.props.location.pathname.includes('products') || this.props.location.pathname.includes('search'))) {
             this.setState({pending: true})
             this.getGames();
         }
