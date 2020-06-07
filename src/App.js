@@ -186,9 +186,13 @@ class App extends Component {
 		const storedLogin = loadFromCache('game_shack_user');
 		if (storedLogin) {
 			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
+			console.log('returning, ', validToken.status)
+			if (validToken.status === '500') {
+				return;
+			}
 			if (validToken.valid) {
 				this.setState({userProfile: storedLogin}, () => {
-					addToCache('game_shack_user', validToken.user)
+					addToCache('game_shack_user', validToken.data.user)
 				});
 			}
 		}

@@ -21,7 +21,7 @@ export const loginFromToken = async (token) => {
 
 	const res = await axios.get(URL + `/users/token/${token}`, {headers});
 
-	return res.data;
+	return res;
 }
 
 export const loginFromEmail = async (loginDetails) => {

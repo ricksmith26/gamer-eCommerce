@@ -11,7 +11,7 @@ class AdvertSlider extends Component {
 
     componentDidMount() {
         this.recurring = true;
-            setInterval(()=> {
+            this.interval = setInterval(()=> {
                 if (this.recurring) {
                     if (this.state.currentIndex === advertData.length - 1){
                         this.setState({currentIndex: 0})
@@ -24,6 +24,7 @@ class AdvertSlider extends Component {
 
     componentWillUnmount() {
         this.recurring = false;
+        clearInterval(this.interval);
     }
 
         ///TODO*** add advertData with links to BE &create endpoint
