@@ -186,7 +186,6 @@ class App extends Component {
 		const storedLogin = loadFromCache('game_shack_user');
 		if (storedLogin) {
 			const validToken =  await userApi.loginFromToken(storedLogin.login_token);
-			console.log('returning, ', validToken.status)
 			if (validToken.status === '500') {
 				return;
 			}

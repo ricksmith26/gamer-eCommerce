@@ -46,9 +46,9 @@ export const getMoreLikeThis = async (id) => {
 	return res.data;
 }
 
-export const getTitle = async (subcategory, term = 'none') => {
+export const getTitle = async (request) => {
 
-	const res = await axios.post(URL + `/products/getTitle`, { term, subcategory }, {headers})
+	const res = await axios.post(URL + `/products/getTitle`, request, {headers})
 
 	return res.data;
 }
