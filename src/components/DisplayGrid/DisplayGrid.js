@@ -44,7 +44,7 @@ class DisplayGrid extends Component {
 
                 <div className="centerFlex">
 
-                    {/* <h2 className="displayText">{this.state.title}</h2> */}
+                    <h2 className="displayText">{this.state.title}</h2>
 
                 </div>
 
@@ -99,14 +99,14 @@ class DisplayGrid extends Component {
     // search for product by search term id from params
     async getProductsByTerm() {
         try {
-            const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const term = Number(this.props.match.params.term.split('+')[1]);
-            console.log(subcategory, term,this.props.match.params,'<<<<,,')
+            console.log(term, 'TERM<<<<<<<<<<<<,,')
             return Promise.all([
-                // gameApi.getTitle(subcategory, term),
+                gameApi.getTitle('none', term),
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
-                this.setState({ collection, pending: false });
+                console.log(title)
+                this.setState({ collection, pending: false, title: `${title[0].subcategory_name} ${title[0].search_term}` });
             })
         }
 
@@ -120,8 +120,9 @@ class DisplayGrid extends Component {
         try {
             const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const collection = await gameApi.getProductsBySubcategory(subcategory);
-            // const title = await gameApi.getTitle(subcategory);
-            this.setState({ subcategory, collection, pending: false });
+            const title = await gameApi.getTitle(subcategory);
+            console.log(title)
+            this.setState({ subcategory, collection, pending: false, title });
 
         }
 
