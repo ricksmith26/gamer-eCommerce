@@ -44,7 +44,7 @@ class DisplayGrid extends Component {
 
                 <div className="centerFlex">
 
-                    <h2 className="displayText">{this.state.title}</h2>
+                    {/* <h2 className="displayText">{this.state.title}</h2> */}
 
                 </div>
 
@@ -102,7 +102,7 @@ class DisplayGrid extends Component {
             const term = Number(this.props.match.params.term.split('+')[1]);
             console.log(term, 'TERM<<<<<<<<<<<<,,')
             return Promise.all([
-                gameApi.getTitle('none', term),
+                gameApi.getTitle(1, term),
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
                 console.log(title)
