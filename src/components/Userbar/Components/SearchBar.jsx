@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { debounce } from "lodash";
-import history from '../../../utils/history';
-
 import * as productApi from '../../../routes/productRoutes';
 
 class SearchBar extends Component {

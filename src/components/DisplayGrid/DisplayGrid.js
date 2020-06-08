@@ -33,6 +33,7 @@ class DisplayGrid extends Component {
 
     async componentWillUnmount() {
         this.is_mounted = false;
+        this.getGames();
     }
 
 

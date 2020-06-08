@@ -8,6 +8,7 @@ import './SaleItems.css';
 const arr = [0,1,2, 3 ,4]
 
 class SaleItems extends Component {
+    is_mounted = false;
 
     state = {
         indexMap: arr,
@@ -16,15 +17,24 @@ class SaleItems extends Component {
     }
 
     async componentDidMount() {
-        document.getElementById(this.props.title).addEventListener('touchstart', function(evt) {
-            this.xDown = evt.touches[0].clientX;
-            this.yDown = evt.touches[0].clientY;
-        }.bind(this),  {passive: true});
-        this.run();
+        this.is_mounted = true;
+        if (this.is_mounted) {
 
-        const indexMap = this.props.products.map((item, i) =>  i);
+            document.getElementById(this.props.title).addEventListener('touchstart', function(evt) {
+                this.xDown = evt.touches[0].clientX;
+                this.yDown = evt.touches[0].clientY;
+            }.bind(this),  {passive: true});
+            this.run();
+    
+            const indexMap = this.props.products.map((item, i) =>  i);
+    
+            this.setState({indexMap})
+        }
+    }
 
-        this.setState({indexMap})
+    async componentWillUnmount() {
+        this.is_mounted = false;
+        window.removeEventListener("touchstart", () => {});
     }
     
     render() {

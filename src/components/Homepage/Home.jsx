@@ -15,14 +15,15 @@ class Home extends Component {
 
     componentDidMount() {
         this._isMounted = true;
-        if (this._isMounted) {
+       
             Promise.all([
                 productApi.getSaleItems(),
                 productApi.getSaleHardware()
             ]).then(([saleGames, saleHardware]) => {
+                if (this._isMounted) {
                 this.setState({saleGames, saleHardware})
+                }
             })
-        }
     }
 
     componentWillUnmount() {

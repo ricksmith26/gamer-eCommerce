@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 
 import './App.css';
@@ -35,7 +35,8 @@ class App extends Component {
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("resize", this.updateWindowDimensions)
+		window.removeEventListener("resize", this.updateWindowDimensions);
+		this.initData();
 	}
 
 	render() {
