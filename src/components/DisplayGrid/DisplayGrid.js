@@ -26,8 +26,10 @@ class DisplayGrid extends Component {
         this.is_mounted = true;
         if (this.props.location.pathname !== prevProps.location.pathname
             && (this.props.location.pathname.includes('products') || this.props.location.pathname.includes('search'))) {
-            this.setState({pending: true})
-            this.getGames();
+            if (this.is_mounted) {
+                this.setState({pending: true})
+                this.getGames();
+            }
         }
     }
 
@@ -105,11 +107,13 @@ class DisplayGrid extends Component {
                 gameApi.getTitle({term}),
                 gameApi.getProductsByTerm(term)
             ]).then(([title, collection ]) => {
-                this.setState({
-                    collection,
-                    pending: false,
-                    title
-                });
+                // if (this.is_mounted) {
+                    this.setState({
+                        collection,
+                        pending: false,
+                        title
+                    });
+                // }
             })
         }
 
@@ -124,12 +128,16 @@ class DisplayGrid extends Component {
             const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const collection = await gameApi.getProductsBySubcategory(subcategory);
             const title = await gameApi.getTitle({subcategory});
-            this.setState({ subcategory, collection, pending: false, title });
+            // if (this.is_mounted) {
+                this.setState({ subcategory, collection, pending: false, title });
+            // }
 
         }
 
         catch {
-            this.setState({ collection: [], pending: false })
+            if (this.is_mounted) {
+                this.setState({ collection: [], pending: false })
+            }
         }
     }
     async getProductsBySearch() {
@@ -137,12 +145,16 @@ class DisplayGrid extends Component {
             const search = this.props.match.params.searchRequest.replace('+' , ' ');
             const collection = await gameApi.getSearch(search);
             const title = `Results for ${search}`;
-            this.setState({ collection, pending: false, title });
+            // if (this.is_mounted) {
+                this.setState({ collection, pending: false, title });
+            // }
 
         }
 
         catch {
-            this.setState({ collection: [], pending: false })
+            if (this.is_mounted) {
+                this.setState({ collection: [], pending: false })
+            }
         }
     }
     ///select search criteria
