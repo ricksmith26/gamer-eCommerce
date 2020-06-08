@@ -47,7 +47,7 @@ class DisplayGrid extends Component {
 
                 <div className="centerFlex">
 
-                    <h2 className="displayText">{this.state.title}</h2>
+                    <h2 className="displayText" id="displayGridTitle">{this.state.title}</h2>
 
                 </div>
 
