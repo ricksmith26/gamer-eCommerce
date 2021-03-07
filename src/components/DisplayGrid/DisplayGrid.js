@@ -131,7 +131,9 @@ class DisplayGrid extends Component {
             const collection = await gameApi.getProductsBySubcategory(subcategory);
             // const title = await gameApi.getTitle({subcategory});
             // if (this.is_mounted) {
-                this.setState({ subcategory, collection, pending: false, title });
+                this.setState({ subcategory, collection, pending: false, 
+                    // title
+                 });
             // }
 
         }
