@@ -104,14 +104,16 @@ class DisplayGrid extends Component {
         try {
             const term = Number(this.props.match.params.term.split('+')[1]);
             return Promise.all([
-                gameApi.getTitle({term}),
+                // gameApi.getTitle({term}),
                 gameApi.getProductsByTerm(term)
-            ]).then(([title, collection ]) => {
+            ]).then(([
+                // title,
+                 collection ]) => {
                 // if (this.is_mounted) {
                     this.setState({
                         collection,
                         pending: false,
-                        title
+                        // title
                     });
                 // }
             })
@@ -127,7 +129,7 @@ class DisplayGrid extends Component {
         try {
             const subcategory = Number(this.props.match.params.subcategory.split('+')[1]);
             const collection = await gameApi.getProductsBySubcategory(subcategory);
-            const title = await gameApi.getTitle({subcategory});
+            // const title = await gameApi.getTitle({subcategory});
             // if (this.is_mounted) {
                 this.setState({ subcategory, collection, pending: false, title });
             // }
