@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { addToCache } from '../utils/cache';
 
-const URL = 'https://pwmmtkqzwc.execute-api.eu-west-2.amazonaws.com/latest';
+const URL = 'https://p2jjqvd8ga.execute-api.eu-west-2.amazonaws.com/latest';
 const headers = {
 	'Content-Type': 'application/json',
   }
