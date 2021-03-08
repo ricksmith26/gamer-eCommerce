@@ -56,6 +56,6 @@ export const getTitle = async (request) => {
 export const getSearch = async (search) => {
 
 	const res = await axios.get(URL + `/products/search/${search}`, {headers})
-	
+	console.log(res.data)
 	return res.data;
 }
